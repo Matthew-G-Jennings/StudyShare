@@ -371,7 +371,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="IYH-Ec-u5t">
-                                <rect key="frame" x="7" y="638" width="400" height="184"/>
+                                <rect key="frame" x="7" y="689" width="400" height="133"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufZ-OZ-pcc">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="31"/>
@@ -396,11 +396,6 @@
                                         <connections>
                                             <segue destination="b4e-Vb-xnA" kind="show" id="Isy-Ym-zfD"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qlO-p1-nVF">
-                                        <rect key="frame" x="0.0" y="153" width="400" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="My content"/>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -597,21 +592,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f2w-uj-mWV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3318.840579710145" y="817.63392857142856"/>
-        </scene>
-        <!--My Content View Controller-->
-        <scene sceneID="x9h-8s-0CC">
-            <objects>
-                <viewController id="Gpb-h5-ku6" customClass="MyContentViewController" customModule="StudyShare" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="XUd-cy-wcw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="9V9-nS-n2R"/>
-                        <color key="backgroundColor" red="0.051928359129999997" green="0.090184948779999996" blue="0.24532468060000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ar0-qe-68C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4183" y="818"/>
         </scene>
         <!--Add Class View Controller-->
         <scene sceneID="CEI-s0-HvK">
@@ -914,7 +894,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Dtc-fW-cIE"/>
+        <segue reference="0v8-vI-JgU"/>
         <segue reference="bGz-9e-Wbi"/>
         <segue reference="0UF-5S-zLo"/>
     </inferredMetricsTieBreakers>
