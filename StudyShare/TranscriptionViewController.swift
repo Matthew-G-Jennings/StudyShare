@@ -12,7 +12,6 @@
 import UIKit
 import Speech
 import AVKit
-import UIKit
 
 class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate {
 
