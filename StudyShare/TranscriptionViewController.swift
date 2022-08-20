@@ -2,74 +2,73 @@
 //  TranscriptionViewController.swift
 //  StudyShare
 //
-//  Created by Matthew Jennings on 7/08/22.
+//  - simulator catch for the moment: you need to press several times
+//    start/stop transcription before it works
+//  - 60seconds apple limit patch does not work in simulator!
+//  - line 97 contains the final result to save
 //
-
+//  Created by CGi on 12/08/22.
+//
 import UIKit
 import Speech
 import AVKit
+import UIKit
 
-class TranscriptionViewController: UIViewController {
+class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     
     @IBOutlet weak var transcriptionText: UITextView!
     @IBOutlet weak var beginButton: UIButton!
     
-    let speechRecognizer        = SFSpeechRecognizer(locale: Locale(identifier: "en-NZ"))
-    var recognitionRequest      : SFSpeechAudioBufferRecognitionRequest?
+    let speechRecognizer        = SFSpeechRecognizer(locale: Locale(identifier: "en-EN"))
     var recognitionTask         : SFSpeechRecognitionTask?
+    var recognitionRequest      : SFSpeechAudioBufferRecognitionRequest?
     let audioEngine             = AVAudioEngine()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
     func setupSpeech() {
-
-        self.beginButton.isEnabled = false
-        //self.speechRecognizer?.delegate = self
+        
+        self.beginButton?.isEnabled = true
+        self.speechRecognizer?.delegate = self
+        
         SFSpeechRecognizer.requestAuthorization { (authStatus) in
 
             var isButtonEnabled = false
 
             switch authStatus {
-            case .authorized:
-                isButtonEnabled = true
-
-            case .denied:
-                isButtonEnabled = false
-                print("User denied access to speech recognition")
-
-            case .restricted:
-                isButtonEnabled = false
-                print("Speech recognition restricted on this device")
-
-            case .notDetermined:
-                isButtonEnabled = false
-                print("Speech recognition not yet authorized")
-            @unknown default:
-                fatalError()
+                case .authorized:
+                    isButtonEnabled = true
+                case .denied:
+                    isButtonEnabled = false
+                case .notDetermined:
+                    isButtonEnabled = false
+                case .restricted:
+                    isButtonEnabled = false
+                @unknown default:
+                    fatalError()
             }
-
+            
             OperationQueue.main.addOperation() {
                 self.beginButton.isEnabled = isButtonEnabled
             }
         }
     }
-
+    
     func startRecording() {
         if recognitionTask != nil {
             recognitionTask?.cancel()
             recognitionTask = nil
         }
-
+        
+        if #available(iOS 13, *) { 
+            // patch around the 60seconds apple limit, does not work in simulator!
+            self.recognitionRequest?.requiresOnDeviceRecognition = true
+        }
+        
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(AVAudioSession.Category.record, mode: AVAudioSession.Mode.measurement, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
-            print("audioSession properties weren't set because of an error.")
         }
 
         self.recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
@@ -79,7 +78,6 @@ class TranscriptionViewController: UIViewController {
         guard let recognitionRequest = recognitionRequest else {
             fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
         }
-
         recognitionRequest.shouldReportPartialResults = true
 
         self.recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
@@ -87,7 +85,6 @@ class TranscriptionViewController: UIViewController {
             var isFinal = false
 
             if result != nil {
-
                 self.transcriptionText.text = result?.bestTranscription.formattedString
                 isFinal = (result?.isFinal)!
             }
@@ -97,7 +94,8 @@ class TranscriptionViewController: UIViewController {
                 inputNode.removeTap(onBus: 0)
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
-                self.beginButton.isEnabled = true
+                
+                //self.transcriptionText.text! << this final to save!
             }
         })
 
@@ -111,26 +109,31 @@ class TranscriptionViewController: UIViewController {
         do {
             try self.audioEngine.start()
         } catch {
-            print("audioEngine couldn't start because of an error.")
+            print("audioEngine encountered an error.")
         }
-
-        self.transcriptionText.text = "Say something, I'm listening!"
+        self.transcriptionText.text = "Start speaking"
+        self.beginButton?.setTitle("Stop", for: .normal)
     }
     
-    @IBAction func beginButtonTapped(_ sender: Any) {
-        // User has tapped the "Begin Transcription" button
-        if audioEngine.isRunning {
-            self.audioEngine.stop()
+    override func viewDidLoad() {
+        self.beginButton?.isEnabled = true
+        super.viewDidLoad()
+        self.setupSpeech()
+    }
+    
+    @IBAction func beginButtonTapped(_ sender: UIButton) {
+        print("button tapped") // debug!
+          if audioEngine.isRunning {
+             self.audioEngine.stop()
             self.recognitionRequest?.endAudio()
-            self.beginButton.isEnabled = false
-            self.beginButton.setTitle("Start Recording", for: .normal)
-        } else {
+              self.beginButton?.setTitle("Start Transcription", for: .normal)
+          } else {
             self.startRecording()
-            self.beginButton.setTitle("Stop Recording", for: .normal)
+              self.beginButton?.setTitle("Stop Transcription", for: .normal)
         }
     }
     
-    @IBAction func saveTapped(_ sender: Any) {
+    @IBAction func saveTapped(_ sender: UIButton) {
         // User has tapped the save button
     }
     /*
@@ -142,15 +145,6 @@ class TranscriptionViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
 
-extension TranscriptionViewController: SFSpeechRecognizerDelegate {
-    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-        if available {
-            self.beginButton.isEnabled = true
-        } else {
-            self.beginButton.isEnabled = false
-        }
-    }
-}
