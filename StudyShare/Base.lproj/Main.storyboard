@@ -444,37 +444,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rBW-H1-kfd">
-                                <rect key="frame" x="20" y="106" width="374" height="400"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press button to begin transcription." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ae-me-18J">
-                                        <rect key="frame" x="5" y="5" width="364" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.16770195960000001" green="0.18196699020000001" blue="0.21454000470000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="1ae-me-18J" firstAttribute="leading" secondItem="rBW-H1-kfd" secondAttribute="leading" constant="5" id="CwL-Rb-8Vz"/>
-                                    <constraint firstAttribute="trailing" secondItem="1ae-me-18J" secondAttribute="trailing" constant="5" id="OGF-eE-dw1"/>
-                                    <constraint firstItem="1ae-me-18J" firstAttribute="top" secondItem="rBW-H1-kfd" secondAttribute="top" constant="5" id="Tzb-7I-WYy"/>
-                                    <constraint firstAttribute="height" constant="400" id="sq3-wl-ViF"/>
-                                </constraints>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3ds-lv-O87">
-                                <rect key="frame" x="131" y="526" width="149" height="31"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AT1-su-9ne">
-                                        <rect key="frame" x="0.0" y="0.0" width="149" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Begin Transcription" titleAlignment="center"/>
-                                        <connections>
-                                            <action selector="beginButtonTapped:" destination="b4e-Vb-xnA" eventType="touchUpInside" id="Ho4-6U-aDX"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mTG-Ju-a2N">
                                 <rect key="frame" x="20" y="736" width="75" height="31"/>
                                 <subviews>
@@ -492,6 +461,16 @@
                                     <constraint firstAttribute="width" constant="75" id="JAM-WB-Dpx"/>
                                 </constraints>
                             </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Press button to begin transcription" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7jM-Sv-bml">
+                                <rect key="frame" x="20" y="84" width="374" height="550"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="550" id="cEg-y9-nLN"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dXF-Na-j8e">
                                 <rect key="frame" x="338.5" y="736" width="55.5" height="31"/>
                                 <subviews>
@@ -508,31 +487,41 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AT1-su-9ne">
+                                <rect key="frame" x="20" y="685" width="374" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Begin Transcription" titleAlignment="center"/>
+                                <connections>
+                                    <action selector="beginButtonTapped:" destination="b4e-Vb-xnA" eventType="touchUpInside" id="Ho4-6U-aDX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sZB-nn-tes"/>
                         <color key="backgroundColor" red="0.051928359129999997" green="0.090184948779999996" blue="0.24532468060000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mTG-Ju-a2N" firstAttribute="leading" secondItem="sZB-nn-tes" secondAttribute="leading" constant="20" id="D7l-j2-7Vi"/>
-                            <constraint firstItem="rBW-H1-kfd" firstAttribute="leading" secondItem="sZB-nn-tes" secondAttribute="leading" constant="20" id="GrW-Ng-lk8"/>
+                            <constraint firstItem="AT1-su-9ne" firstAttribute="leading" secondItem="sZB-nn-tes" secondAttribute="leading" constant="20" id="NOg-rK-0UT"/>
                             <constraint firstItem="sZB-nn-tes" firstAttribute="bottom" secondItem="mTG-Ju-a2N" secondAttribute="bottom" constant="75" id="Tq3-bz-5jb"/>
-                            <constraint firstItem="3ds-lv-O87" firstAttribute="leading" secondItem="sZB-nn-tes" secondAttribute="leading" constant="131" id="cro-hM-d0H"/>
-                            <constraint firstItem="sZB-nn-tes" firstAttribute="trailing" secondItem="rBW-H1-kfd" secondAttribute="trailing" constant="20" id="j9p-BP-nsV"/>
+                            <constraint firstItem="7jM-Sv-bml" firstAttribute="leading" secondItem="sZB-nn-tes" secondAttribute="leading" constant="20" id="Wjk-YE-mgM"/>
+                            <constraint firstItem="sZB-nn-tes" firstAttribute="trailing" secondItem="AT1-su-9ne" secondAttribute="trailing" constant="20" id="aOM-ek-8zp"/>
+                            <constraint firstItem="AT1-su-9ne" firstAttribute="leading" secondItem="sZB-nn-tes" secondAttribute="leading" constant="20" id="ecM-LX-fzP"/>
+                            <constraint firstItem="sZB-nn-tes" firstAttribute="trailing" secondItem="AT1-su-9ne" secondAttribute="trailing" constant="20" id="fWI-qc-KX5"/>
+                            <constraint firstItem="sZB-nn-tes" firstAttribute="trailing" secondItem="7jM-Sv-bml" secondAttribute="trailing" constant="20" id="iSZ-7M-eK8"/>
                             <constraint firstItem="sZB-nn-tes" firstAttribute="bottom" secondItem="dXF-Na-j8e" secondAttribute="bottom" constant="75" id="pMC-fe-WpV"/>
-                            <constraint firstItem="3ds-lv-O87" firstAttribute="top" secondItem="rBW-H1-kfd" secondAttribute="bottom" constant="20" id="uq9-Ww-Eh1"/>
-                            <constraint firstItem="rBW-H1-kfd" firstAttribute="top" secondItem="sZB-nn-tes" secondAttribute="top" constant="62" id="x6O-95-LWv"/>
+                            <constraint firstItem="mTG-Ju-a2N" firstAttribute="top" secondItem="AT1-su-9ne" secondAttribute="bottom" constant="20" id="sYD-li-Ktt"/>
+                            <constraint firstItem="7jM-Sv-bml" firstAttribute="top" secondItem="sZB-nn-tes" secondAttribute="top" constant="40" id="urC-GF-v67"/>
                             <constraint firstItem="sZB-nn-tes" firstAttribute="trailing" secondItem="dXF-Na-j8e" secondAttribute="trailing" constant="20" id="zIP-c0-INo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QTt-0E-0sp"/>
                     <connections>
                         <outlet property="beginButton" destination="AT1-su-9ne" id="p7e-je-leL"/>
-                        <outlet property="transcriptionText" destination="1ae-me-18J" id="BPO-Pr-FDm"/>
-                        <outlet property="transcriptionView" destination="rBW-H1-kfd" id="mP4-PQ-imp"/>
+                        <outlet property="transcriptionText" destination="7jM-Sv-bml" id="igo-he-HCu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eBS-G4-jUf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2445" y="818"/>
+            <point key="canvasLocation" x="2444.9275362318845" y="817.63392857142856"/>
         </scene>
         <!--Recording View Controller-->
         <scene sceneID="RV8-Ha-rmP">
@@ -938,6 +927,9 @@
     <resources>
         <image name="HomeScreenLogo" width="348" height="339"/>
         <image name="StudyShareHeader" width="158" height="39"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

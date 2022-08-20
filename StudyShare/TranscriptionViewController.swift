@@ -11,8 +11,8 @@ import AVKit
 
 class TranscriptionViewController: UIViewController {
 
-    @IBOutlet weak var transcriptionView: UIView!
-    @IBOutlet weak var transcriptionText: UILabel!
+    
+    @IBOutlet weak var transcriptionText: UITextView!
     @IBOutlet weak var beginButton: UIButton!
     
     let speechRecognizer        = SFSpeechRecognizer(locale: Locale(identifier: "en-NZ"))
