@@ -78,24 +78,24 @@ class CreateClassViewController: UIViewController {
         }
         if !yearField.hasText{
             return "Please fill out year"
-            let yearNum = Int(yearField.text!) ?? 0
-            let currYear = Calendar.current.component(.year, from: Date())
-            if yearNum != currYear && yearNum != currYear + 1{
-                return "Year must be this year or next year"
-            }
         }
         if !semesterField.hasText{
             return "Please fill out semester"
-            let semNum = Int(semesterField.text!) ?? 0
-            if semNum != 1 && semNum != 2{
-                return "Semester must be 1 or 2"
-            }
         }
         if !institutionField.hasText{
             return "Please fill out institution"
             // TODO: Validate this a valid institution
         }
         //TODO: Add more validation, prevent duplicates by checking db for existing name+year+sem combo
+        let semNum = Int(semesterField.text!) ?? 0
+        if semNum != 1 && semNum != 2{
+            return "Semester must be 1 or 2"
+        }
+        let yearNum = Int(yearField.text!) ?? 0
+        let currYear = Calendar.current.component(.year, from: Date())
+        if yearNum != currYear && yearNum != currYear + 1{
+            return "Year must be this year or next year"
+        }
         return nil
     }
     
