@@ -458,10 +458,10 @@
                                 </constraints>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Press button to begin transcription" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7jM-Sv-bml">
-                                <rect key="frame" x="20" y="84" width="374" height="550"/>
+                                <rect key="frame" x="20" y="84" width="374" height="500"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="550" id="cEg-y9-nLN"/>
+                                    <constraint firstAttribute="height" constant="500" id="F9W-0d-cCp"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -491,13 +491,24 @@
                                     <action selector="beginButtonTapped:" destination="b4e-Vb-xnA" eventType="touchUpInside" id="Ho4-6U-aDX"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter filename to save as" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ifl-kG-74o">
+                                <rect key="frame" x="20" y="604" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Bba-qq-nZ0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sZB-nn-tes"/>
                         <color key="backgroundColor" red="0.051928359129999997" green="0.090184948779999996" blue="0.24532468060000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mTG-Ju-a2N" firstAttribute="leading" secondItem="sZB-nn-tes" secondAttribute="leading" constant="20" id="D7l-j2-7Vi"/>
+                            <constraint firstItem="Ifl-kG-74o" firstAttribute="top" secondItem="7jM-Sv-bml" secondAttribute="bottom" constant="20" id="DRi-sB-GJ5"/>
+                            <constraint firstItem="Ifl-kG-74o" firstAttribute="leading" secondItem="sZB-nn-tes" secondAttribute="leading" constant="20" id="GO2-JT-hax"/>
                             <constraint firstItem="AT1-su-9ne" firstAttribute="leading" secondItem="sZB-nn-tes" secondAttribute="leading" constant="20" id="NOg-rK-0UT"/>
                             <constraint firstItem="sZB-nn-tes" firstAttribute="bottom" secondItem="mTG-Ju-a2N" secondAttribute="bottom" constant="75" id="Tq3-bz-5jb"/>
+                            <constraint firstItem="sZB-nn-tes" firstAttribute="trailing" secondItem="Ifl-kG-74o" secondAttribute="trailing" constant="20" id="Uki-lh-Voc"/>
                             <constraint firstItem="7jM-Sv-bml" firstAttribute="leading" secondItem="sZB-nn-tes" secondAttribute="leading" constant="20" id="Wjk-YE-mgM"/>
                             <constraint firstItem="sZB-nn-tes" firstAttribute="trailing" secondItem="AT1-su-9ne" secondAttribute="trailing" constant="20" id="aOM-ek-8zp"/>
                             <constraint firstItem="AT1-su-9ne" firstAttribute="leading" secondItem="sZB-nn-tes" secondAttribute="leading" constant="20" id="ecM-LX-fzP"/>
@@ -512,6 +523,7 @@
                     <navigationItem key="navigationItem" id="QTt-0E-0sp"/>
                     <connections>
                         <outlet property="beginButton" destination="AT1-su-9ne" id="p7e-je-leL"/>
+                        <outlet property="fileNameField" destination="Ifl-kG-74o" id="gkC-lj-3hV"/>
                         <outlet property="transcriptionText" destination="7jM-Sv-bml" id="igo-he-HCu"/>
                     </connections>
                 </viewController>

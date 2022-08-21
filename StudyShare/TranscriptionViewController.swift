@@ -16,6 +16,7 @@ import AVKit
 class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate {
 
     
+    @IBOutlet weak var fileNameField: UITextField!
     @IBOutlet weak var transcriptionText: UITextView!
     @IBOutlet weak var beginButton: UIButton!
     
@@ -121,7 +122,6 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
     }
     
     @IBAction func beginButtonTapped(_ sender: UIButton) {
-        print("button tapped") // debug!
           if audioEngine.isRunning {
              self.audioEngine.stop()
             self.recognitionRequest?.endAudio()
@@ -133,7 +133,38 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
     }
     
     @IBAction func saveTapped(_ sender: UIButton) {
-        // User has tapped the save button
+        let saveError = saveValidate()
+        if saveError != nil{
+            //Do error stuff, need to add an error label..
+        } else {
+            let saveData = transcriptionText.text!.data(using: .utf8)
+            let manager = FileManager.default
+            guard let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else{
+                return
+            }
+            let transDir = url.appendingPathComponent("Transcriptions")
+            print(transDir)
+            let filePath = transDir.appendingPathComponent(fileNameField.text!)
+            do{
+                try manager.createDirectory(at: transDir, withIntermediateDirectories: true)
+            } catch {
+                print(error)
+            }
+            manager.createFile(atPath: filePath.path, contents: saveData)
+            print("Successfully created file")
+            print(filePath)
+        }
+        
+    }
+    
+    func saveValidate() -> String?{
+        // TODO: Validated fields for saving
+        if !transcriptionText.hasText{
+            return "No text to save"
+        } else if !fileNameField.hasText{
+            return "Please specify a filename"
+        }
+        return nil
     }
     /*
     // MARK: - Navigation
