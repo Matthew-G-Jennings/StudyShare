@@ -51,14 +51,12 @@ class CreateClassViewController: UIViewController {
             let instit = institutionField.text!
             let dirName = name + "_" + yearField.text! + "_" + semesterField.text!
             
-            let storage = Storage.storage()
-            let storageRef = storage.reference()
-            let classStorageLoc = storageRef.child(dirName)
+            
             let db = Firestore.firestore()
             db.collection("classes").addDocument(data: ["Name" : name,
                                                       "Description" : desc,
-                                                      "Year" : year,
-                                                        "Semester": sem,
+                                                      "Year" : String(year!),
+                                                        "Semester": String(sem!),
                                                         "Institution" : instit,
                                                         "Filepath" : dirName]) { (error) in
                 if error != nil{
@@ -66,6 +64,13 @@ class CreateClassViewController: UIViewController {
                     self.showError("Could not connect to database, class not created")
                 }
             }
+            let storerr = initStorage(dirName)
+            if storerr != nil{
+                showError(storerr!)
+            } else{
+                
+            }
+            
         }
     }
     
@@ -102,5 +107,14 @@ class CreateClassViewController: UIViewController {
     func showError(_ message:String){
         errorLabel.text = message
         errorLabel.alpha = 1
+    }
+    
+    func initStorage(_ filePath:String)->String? {
+        let data: Data? = "init".data(using: .utf8)
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let classStorageLoc = storageRef.child(filePath + "/temp.txt")
+        classStorageLoc.putData(data!)
+        return nil
     }
 }
