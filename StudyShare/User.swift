@@ -8,8 +8,9 @@
 import Foundation
 
 struct User{
-    static var UID: String? = nil
-    static let firstName: String? = nil
-    static let lastName: String? = nil
-    static let groups: [String]? = nil
+    static var UID: String = "nil"
+    static var docID: String = "nil"
+    static var firstName: String = "nil"
+    static var lastName: String = "nil"
+    static var groups: [String] = ["nil"]
 }

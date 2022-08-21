@@ -70,7 +70,11 @@ class CreateClassViewController: UIViewController {
             } else{
                 
             }
-            
+            let userRef = db.collection("users").document(User.docID)
+            userRef.updateData(["groups": FieldValue.arrayUnion([dirName])])
+            User.groups.append(dirName)
+            print("USER GROUPS")
+            print(User.groups)
         }
     }
     
