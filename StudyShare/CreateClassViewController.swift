@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import FirebaseStorage
+import FirebaseFirestore
+import Firebase
 
 class CreateClassViewController: UIViewController {
 
@@ -37,5 +40,49 @@ class CreateClassViewController: UIViewController {
     */
 
     @IBAction func createButtonTapped(_ sender: Any) {
+        let error = validateFields()
+        if error != nil {
+            errorLabel.text = error
+        } else {
+            let name = paperCodeField.text!
+            let desc = paperDescField.text!
+            let year = Int(yearField.text!)
+            let sem = Int(semesterField.text!)
+            let instit = institutionField.text!
+            let dirName = name + "_" + year + "_" + semesterField.text!
+            
+            let storage = Storage.storage()
+            
+        }
+    }
+    
+    func validateFields() -> String?{
+        if !paperCodeField.hasText{
+            return "Please fill out name"
+        }
+        if !paperDescField.hasText{
+            return "Please fill out description"
+        }
+        if !yearField.hasText{
+            return "Please fill out year"
+            let yearNum = Int(yearField.text!) ?? 0
+            let currYear = Calendar.current.component(.year, from: Date())
+            if yearNum != currYear && yearNum != currYear + 1{
+                return "Year must be this year or next year"
+            }
+        }
+        if !semesterField.hasText{
+            return "Please fill out semester"
+            let semNum = Int(semesterField.text!) ?? 0
+            if semNum != 1 && semNum != 2{
+                return "Semester must be 1 or 2"
+            }
+        }
+        if !institutionField.hasText{
+            return "Please fill out institution"
+            // TODO: Validate this a valid institution
+        }
+        //TODO: Add more validation, prevent duplicates by checking db for existing name+year+sem combo
+        return nil
     }
 }
