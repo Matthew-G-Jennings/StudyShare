@@ -49,7 +49,7 @@ class CreateClassViewController: UIViewController {
             let year = Int(yearField.text!)
             let sem = Int(semesterField.text!)
             let instit = institutionField.text!
-            let dirName = name + "_" + year + "_" + semesterField.text!
+            let dirName = name + "_" + yearField.text! + "_" + semesterField.text!
             
             let storage = Storage.storage()
             
