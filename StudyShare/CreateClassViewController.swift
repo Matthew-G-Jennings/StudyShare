@@ -52,7 +52,20 @@ class CreateClassViewController: UIViewController {
             let dirName = name + "_" + yearField.text! + "_" + semesterField.text!
             
             let storage = Storage.storage()
-            
+            let storageRef = storage.reference()
+            let classStorageLoc = storageRef.child(dirName)
+            let db = Firestore.firestore()
+            db.collection("classes").addDocument(data: ["Name" : name,
+                                                      "Description" : desc,
+                                                      "Year" : year,
+                                                        "Semester": sem,
+                                                        "Institution" : instit,
+                                                        "Filepath" : dirName]) { (error) in
+                if error != nil{
+                    // There was an error
+                    self.showError("Could not connect to database, class not created")
+                }
+            }
         }
     }
     
@@ -84,5 +97,10 @@ class CreateClassViewController: UIViewController {
         }
         //TODO: Add more validation, prevent duplicates by checking db for existing name+year+sem combo
         return nil
+    }
+    
+    func showError(_ message:String){
+        errorLabel.text = message
+        errorLabel.alpha = 1
     }
 }
