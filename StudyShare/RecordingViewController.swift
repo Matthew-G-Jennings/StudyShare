@@ -2,37 +2,59 @@
 //  RecordingViewController.swift
 //  StudyShare
 //
-//  Created by Matthew Jennings on 7/08/22.
+//  Created by CGi on 22/08/22.
+//
+//  inspiration & some material taken from koffler - swift, rheinwerk
+//  & swift documentation, eg. https://developer.apple.com/documentation/uikit/UIImagePickerController
 //
 
 import UIKit
+import AVKit
 
-class RecordingViewController: UIViewController {
-    
+import MobileCoreServices
+import SafariServices
+
+class RecordingViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+     
+    @IBAction func recordTapped(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) == false
+        {
+            print("camera not available")
+          return
+        } else {
+            record(delegate:self)
+        }
+    }
+
+    func record(delegate: UIViewController & UINavigationControllerDelegate & UIImagePickerControllerDelegate) {
+        let imgPicker = UIImagePickerController()
+        imgPicker.sourceType = .camera
+        imgPicker.mediaTypes = [kUTTypeMovie as String]
+        imgPicker.delegate = delegate //self
+        delegate.present(imgPicker, animated: true, completion: nil)
+    }
+
     // Generic view for containing video, this may not be what we want here
     @IBOutlet weak var videoView: UIView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
     
-    @IBAction func recordTapped(_ sender: Any) {
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+    ) {
+        dismiss(animated: true, completion: nil)
+
+        guard
+            let mediaType = info[UIImagePickerController.InfoKey.mediaType] as? String,
+            mediaType == (kUTTypeMovie as String) // dont forget to add a comma when using next line!
+// ->       let url = info[UIImagePickerController.InfoKey.mediaURL] as? URL // << what we need.
+        else { return }
     }
     
     @IBAction func saveTapped(_ sender: Any) {
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    @IBAction func backTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }
+
