@@ -32,4 +32,9 @@ class AddClassViewController: UIViewController {
     @IBAction func addTapped(_ sender: Any) {
     }
     
+    @IBAction func backTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
