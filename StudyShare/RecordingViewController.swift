@@ -50,6 +50,9 @@ class RecordingViewController: UIViewController, UIImagePickerControllerDelegate
         else { return }
     }
     
+    @IBAction func backTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBAction func saveTapped(_ sender: Any) {
     }
     

@@ -628,7 +628,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Back"/>
                                         <connections>
-                                            <action selector="backTapped:" destination="3YQ-Ie-AIy" eventType="touchUpInside" id="iBa-Be-YCI"/>
+                                            <action selector="backTapped:" destination="3YQ-Ie-AIy" eventType="touchUpInside" id="2QJ-qq-LV4"/>
                                         </connections>
                                     </button>
                                 </subviews>
