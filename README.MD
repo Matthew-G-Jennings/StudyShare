@@ -10,11 +10,19 @@ Git Assignment repository for COSC345.2022S2
 
 ## Code Sources/References:
 Firebase authentication/logins - codewithchris
+
 Speech to text - developer.apple.com (no longer exists here, has been replaced with SwiftUI based system, fundamentally the same)
+
 Database interactions - firebase documentation/guides
+
 Storage interactions - firebase documentation/guides
+
 https://www.anycodings.com/1questions/4119941/optimizing-get-from-firestore-in-swift
+
 https://www.anycodings.com/1questions/4243830/how-to-init-firebase-storage-image-in-flutter
+
 https://www.youtube.com/watch?v=s27S6H1bM0w
+
 koffler swift5 (book, not english)
+
 apple developer documentation
