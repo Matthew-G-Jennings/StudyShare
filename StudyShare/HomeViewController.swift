@@ -25,12 +25,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         classTable.dataSource = self
         classTable.delegate = self
         
+        title = "Swipe Actions"
+        
         self.classTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
         
         // Do any additional setup after loading the view.
     }
-    
-    //Get selected element and move to the class content view controller, display more information about it
     
     /**
      Utilizes the classes to retreive their list of classes from the firebase db
@@ -56,8 +56,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     group.Year = (groupsDataDict["Year"] as? String ?? "")
                     
                     let g = Group(Description: group.Description, Filepath: group.Filepath, Institution: group.Institution, Name: group.Name, Semester: group.Semester, Year: group.Year)
-                    
-                    print(g)
                     
                     if(!User.groups.contains(g.Filepath))
                     {
@@ -120,6 +118,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         }
     }
+    
     
     /**
      Utilizes the currently logged in users UID to retreive their full info from firebase db
