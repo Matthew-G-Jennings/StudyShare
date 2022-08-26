@@ -26,7 +26,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.classTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
         
-        
         // Do any additional setup after loading the view.
     }
     
@@ -98,7 +97,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //        let selectedClass = User.groupData[indexPath.row]
         //        let vc = ClassContentViewController()
         //        vc.title = selectedClass.Name
-        self.transitionToClassContent()
+        // self.transitionToClassContent()
     }
     //
     //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -136,11 +135,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             // Something has gone horribly wrong
         }
     }
-    
+    /*
     func transitionToClassContent(){
-        let classContentController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.classContentController) as? CreateClassViewController
-        view.window?.rootViewController = classContentController
-        view.window?.makeKeyAndVisible()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let classContentController = storyboard.instantiateViewController(withIdentifier: "ClassContentVC")
+        print("Class Content Controller is:")
+        print(classContentController)
+        present(classContentController, animated: true, completion: nil)
     }
-    
+    */
 }

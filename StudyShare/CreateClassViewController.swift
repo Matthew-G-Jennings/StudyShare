@@ -28,7 +28,7 @@ class CreateClassViewController: UIViewController {
     /**
     Attempts to create a new class given the provided information.
     Sets up this class in firebase and in local static User.swift
-    If successful will also initialize a directectoy in firestore for this classes 
+    If successful will also initialize a directory in firestore for this classes
     content.
     */
     @IBAction func createButtonTapped(_ sender: Any) {
@@ -65,7 +65,7 @@ class CreateClassViewController: UIViewController {
             let userRef = db.collection("users").document(User.docID)
             userRef.updateData(["groups": FieldValue.arrayUnion([dirName])])
             User.groups.append(dirName)
-            self.transitionToClassContent()
+            //self.transitionToClassContent()
         }
     }
     

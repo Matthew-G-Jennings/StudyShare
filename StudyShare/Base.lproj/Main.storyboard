@@ -524,7 +524,7 @@
             <objects>
                 <viewController storyboardIdentifier="ClassContentVC" id="YOj-zn-CyC" customClass="ClassContentViewController" customModule="StudyShare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iif-E5-eec" customClass="ClassCon">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLASSNAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fv-js-pRm">
@@ -534,11 +534,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cVm-J1-iAt">
-                                <rect key="frame" x="20" y="134" width="374" height="627"/>
+                                <rect key="frame" x="20" y="134" width="374" height="607"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="105" translatesAutoresizingMaskIntoConstraints="NO" id="rfG-1x-3XU">
-                                <rect key="frame" x="49" y="801" width="316" height="31"/>
+                                <rect key="frame" x="49" y="781" width="316" height="31"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4nN-Qb-NEs">
                                         <rect key="frame" x="0.0" y="0.0" width="105.5" height="31"/>
@@ -566,6 +566,7 @@
                             <constraint firstItem="1Fv-js-pRm" firstAttribute="top" secondItem="Mgr-gw-Pan" secondAttribute="top" constant="40" id="vVJ-2B-vtr"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Txy-f8-euG"/>
                     <connections>
                         <outlet property="classNameLabel" destination="1Fv-js-pRm" id="bdi-mS-rCc"/>
                         <outlet property="contentTable" destination="cVm-J1-iAt" id="KUe-hq-PF1"/>
@@ -644,6 +645,19 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OBq-Sq-IZn">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="400"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="3QG-AO-ir1">
+                                                <rect key="frame" x="0.0" y="44.5" width="374" height="43.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3QG-AO-ir1" id="23H-uv-Dbb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <segue destination="YOj-zn-CyC" kind="show" id="GTL-5W-c64"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
                                     </tableView>
                                 </subviews>
                                 <constraints>
@@ -1186,7 +1200,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="LRq-DT-xyw"/>
+        <segue reference="qjp-0u-26K"/>
+        <segue reference="0UF-5S-zLo"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="HomeScreenLogo" width="348" height="339"/>
