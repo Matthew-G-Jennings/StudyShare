@@ -22,45 +22,41 @@
                                     <constraint firstAttribute="width" secondItem="LlT-Iz-LV7" secondAttribute="height" multiplier="80:113" id="N6e-kV-kwD"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0A-N9-FcV">
-                                <rect key="frame" x="40" y="716" width="334" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpM-hG-kZ8">
-                                        <rect key="frame" x="0.0" y="0.0" width="167" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="F6f-v1-S85"/>
-                                        </constraints>
-                                        <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
-                                        <connections>
-                                            <segue destination="zpS-YU-FpY" kind="show" id="qjp-0u-26K"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMH-tU-ytk">
-                                        <rect key="frame" x="167" y="0.0" width="167" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="1Da-Mi-X4h"/>
-                                        </constraints>
-                                        <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Login"/>
-                                        <connections>
-                                            <segue destination="6nL-hv-Hd2" kind="show" id="eAQ-et-Dob"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMH-tU-ytk">
+                                <rect key="frame" x="177.5" y="574" width="59.5" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1Da-Mi-X4h"/>
+                                </constraints>
+                                <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Login"/>
+                                <connections>
+                                    <segue destination="6nL-hv-Hd2" kind="show" id="eAQ-et-Dob"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpM-hG-kZ8">
+                                <rect key="frame" x="169.5" y="664" width="75" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="F6f-v1-S85"/>
+                                </constraints>
+                                <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
+                                <connections>
+                                    <segue destination="zpS-YU-FpY" kind="show" id="qjp-0u-26K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.051928359129999997" green="0.090184948779999996" blue="0.24532468060000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="LlT-Iz-LV7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="4SS-Wa-vo3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="J0A-N9-FcV" secondAttribute="trailing" constant="40" id="806-Az-sQB"/>
+                            <constraint firstItem="GpM-hG-kZ8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Dn-xj-ufK"/>
+                            <constraint firstItem="pMH-tU-ytk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dl0-jn-E9z"/>
                             <constraint firstItem="LlT-Iz-LV7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="H3L-t7-iSj"/>
-                            <constraint firstItem="J0A-N9-FcV" firstAttribute="top" secondItem="LlT-Iz-LV7" secondAttribute="bottom" constant="150" id="Kad-jJ-046"/>
+                            <constraint firstItem="pMH-tU-ytk" firstAttribute="top" secondItem="LlT-Iz-LV7" secondAttribute="bottom" constant="8" symbolic="YES" id="ICE-hI-C76"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LlT-Iz-LV7" secondAttribute="trailing" constant="40" id="XYB-xy-dHm"/>
-                            <constraint firstItem="J0A-N9-FcV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="Zb0-dY-M1h"/>
+                            <constraint firstItem="GpM-hG-kZ8" firstAttribute="top" secondItem="pMH-tU-ytk" secondAttribute="bottom" constant="40" id="sJX-69-VOI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6fv-aR-JTR"/>
@@ -544,6 +540,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="105.5" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                        <connections>
+                                            <action selector="backButtonTapped:" destination="YOj-zn-CyC" eventType="touchUpInside" id="97Q-Ad-Bnx"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPq-mT-6IR">
                                         <rect key="frame" x="210.5" y="0.0" width="105.5" height="31"/>
