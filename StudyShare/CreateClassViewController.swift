@@ -12,7 +12,6 @@ import Firebase
 
 class CreateClassViewController: UIViewController {
     
-    
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var paperCodeField: UITextField!
     @IBOutlet weak var paperDescField: UITextField!
@@ -23,22 +22,15 @@ class CreateClassViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        errorLabel.alpha = 1
-        
-        // Do any additional setup after loading the view.
+        errorLabel.alpha = 0
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    /**
+    Attempts to create a new class given the provided information.
+    Sets up this class in firebase and in local static User.swift
+    If successful will also initialize a directectoy in firestore for this classes 
+    content.
+    */
     @IBAction func createButtonTapped(_ sender: Any) {
         let error = validateFields()
         if error != nil {
@@ -77,6 +69,10 @@ class CreateClassViewController: UIViewController {
         }
     }
     
+    /**
+    Validates the fields are free from errors
+        -Returns: String containing the error message if an error occured, otherwise nil
+    */
     func validateFields() -> String?{
         if !paperCodeField.hasText{
             return "Please fill out name"
@@ -107,11 +103,21 @@ class CreateClassViewController: UIViewController {
         return nil
     }
     
+    /**
+    Displays the provided error message in error UI label
+    -Parameters:
+        - message: String: The error message to display
+    */
     func showError(_ message:String){
         errorLabel.text = message
         errorLabel.alpha = 1
     }
     
+    /**
+    Initializes the firebase storage.
+    Should only be called from createButtonTapped and after full validation.
+        -Returns: String: The error message if an error occurred, otherwise nil
+    */
     func initStorage(_ filePath:String)->String? {
         let data: Data? = "init".data(using: .utf8)
         let storage = Storage.storage()
@@ -121,10 +127,17 @@ class CreateClassViewController: UIViewController {
         return nil
     }
     
+    /**
+    Dismisses this screen if the back button is tapped
+    */
     @IBAction func backTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    /**
+    Instantiates and transitions to the home view controller.
+    Necessary to force reloading of the class data.
+    */
     func transitionToHome(){
         let homeViewController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? HomeViewController
         view.window?.rootViewController = homeViewController
