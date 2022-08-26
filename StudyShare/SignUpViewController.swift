@@ -17,37 +17,17 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var signUpButton: UIButton!
-    
     @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.alpha = 0
-        // setUpElements()
+    }
     
-
-        // Do any additional setup after loading the view.
-    }
-    func setUpElements(){
-        errorLabel.alpha = 0
-        //Style text fields here?
-        Utilities.styleTextField(firstNameTextField)
-        Utilities.styleTextField(lastNameTextField)
-        Utilities.styleTextField(emailTextField)
-        Utilities.styleTextField(passwordTextField)
-        Utilities.styleFilledButton(signUpButton)
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
+    /**
+    Validates the fields are correct
+    Returns: String: Contains the error message if an error occurred, otherwise nil
     */
-    // Check data, if no problems, return nil, if problem returns error message
     func validateFields() -> String? {
         // Check all fields have data
         if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
@@ -62,11 +42,13 @@ class SignUpViewController: UIViewController {
         if Utilities.isPasswordValid(passwordClean) == false{
             return "Password must contain at least 8 characters, a number and a symbol"
         }
-        
         return nil
     }
     
-    
+    /**
+    Attempts to create the user given the information supplied
+    If successful will transition to the home screen with this user logged in.
+    */
     @IBAction func signUpTapped(_ sender: Any) {
         
         // Validate fields
@@ -76,21 +58,17 @@ class SignUpViewController: UIViewController {
             // We have an error
             showError(error!)
         } else {
-            
             // Create cleaned versions of fields
-            
             let firstname = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let lastname = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            
             // Create the user
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
                 // Check for errors
                 if err != nil {
                     // We have an error
                     let errorMessage = err?.localizedDescription.description
-                    
                     self.showError(errorMessage!)
                 } else {
                     // Success
@@ -109,19 +87,23 @@ class SignUpViewController: UIViewController {
                     // Move to home screen
                     self.transitionToHome()
                 }
-                
             }
-            
-            // Move to home screen
         }
-        
     }
     
+    /**
+    Displays an error in the UI label
+    - Parameters:
+            - message: String: The error message to display
+    */
     func showError(_ message:String){
         errorLabel.text = message
         errorLabel.alpha = 1
     }
     
+    /**
+    Instantiates a home screen view controller and transitions to it.
+    */
     func transitionToHome(){
         let homeViewController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? HomeViewController
         view.window?.rootViewController = homeViewController
