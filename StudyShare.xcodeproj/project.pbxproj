@@ -21,6 +21,9 @@
 		B1888AE928AF6812002565DE /* CreateClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1888AE828AF6812002565DE /* CreateClassViewController.swift */; };
 		B1888AEB28B1DB8C002565DE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1888AEA28B1DB8C002565DE /* User.swift */; };
 		B1888AED28B61153002565DE /* ClassContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1888AEC28B61153002565DE /* ClassContentViewController.swift */; };
+		B1888AEF28B88819002565DE /* ShowNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1888AEE28B88819002565DE /* ShowNotesViewController.swift */; };
+		B1888AF128B88832002565DE /* ShowVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1888AF028B88832002565DE /* ShowVideoViewController.swift */; };
+		B1888AF328B88842002565DE /* ShowTranscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1888AF228B88842002565DE /* ShowTranscriptionViewController.swift */; };
 		B1AA57162896245400A3A8A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AA57152896245400A3A8A0 /* AppDelegate.swift */; };
 		B1AA57182896245400A3A8A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AA57172896245400A3A8A0 /* SceneDelegate.swift */; };
 		B1AA571A2896245400A3A8A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AA57192896245400A3A8A0 /* ViewController.swift */; };
@@ -63,6 +66,9 @@
 		B1888AE828AF6812002565DE /* CreateClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateClassViewController.swift; sourceTree = "<group>"; };
 		B1888AEA28B1DB8C002565DE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B1888AEC28B61153002565DE /* ClassContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassContentViewController.swift; sourceTree = "<group>"; };
+		B1888AEE28B88819002565DE /* ShowNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNotesViewController.swift; sourceTree = "<group>"; };
+		B1888AF028B88832002565DE /* ShowVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowVideoViewController.swift; sourceTree = "<group>"; };
+		B1888AF228B88842002565DE /* ShowTranscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTranscriptionViewController.swift; sourceTree = "<group>"; };
 		B1AA57122896245400A3A8A0 /* StudyShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1AA57152896245400A3A8A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1AA57172896245400A3A8A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +160,9 @@
 				B1888AEA28B1DB8C002565DE /* User.swift */,
 				1DD59BF228B851C00029EB06 /* Group.swift */,
 				B1888AEC28B61153002565DE /* ClassContentViewController.swift */,
+				B1888AEE28B88819002565DE /* ShowNotesViewController.swift */,
+				B1888AF028B88832002565DE /* ShowVideoViewController.swift */,
+				B1888AF228B88842002565DE /* ShowTranscriptionViewController.swift */,
 			);
 			path = StudyShare;
 			sourceTree = "<group>";
@@ -324,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1888AEB28B1DB8C002565DE /* User.swift in Sources */,
+				B1888AEF28B88819002565DE /* ShowNotesViewController.swift in Sources */,
 				B1AA571A2896245400A3A8A0 /* ViewController.swift in Sources */,
 				B1793FD2289F528800A2F9F3 /* AddClassViewController.swift in Sources */,
 				1DD59BF328B851C00029EB06 /* Group.swift in Sources */,
@@ -336,8 +346,10 @@
 				B1793FD4289F529C00A2F9F3 /* RecordingViewController.swift in Sources */,
 				B1AA57182896245400A3A8A0 /* SceneDelegate.swift in Sources */,
 				B1793FD6289F52AA00A2F9F3 /* TranscriptionViewController.swift in Sources */,
+				B1888AF328B88842002565DE /* ShowTranscriptionViewController.swift in Sources */,
 				B1AA574A289628EF00A3A8A0 /* HomeViewController.swift in Sources */,
 				B1793FC92898EAD400A2F9F3 /* Constants.swift in Sources */,
+				B1888AF128B88832002565DE /* ShowVideoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
