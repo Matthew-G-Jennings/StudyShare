@@ -14,7 +14,6 @@ import Speech
 import AVKit
 
 class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate {
-
     
     @IBOutlet weak var fileNameField: UITextField!
     @IBOutlet weak var transcriptionText: UITextView!
@@ -119,6 +118,10 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
         self.beginButton?.isEnabled = true
         super.viewDidLoad()
         self.setupSpeech()
+        // make the keyboard disappear, when click outside fields
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tapGesture)
+
     }
     
     @IBAction func beginButtonTapped(_ sender: UIButton) {

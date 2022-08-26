@@ -15,6 +15,23 @@ import MobileCoreServices
 import SafariServices
 
 class RecordingViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    @objc func video( // callback for video dialog
+      _ videoPath: String,
+      didFinishSavingWithError error: Error?,
+      contextInfo info: AnyObject
+    ) {
+        if (error != nil) { // error handling, if video not saved in photolibrary
+          let alert = UIAlertController(
+            title: "Error",
+            message: "Video not saved",
+            preferredStyle: .alert)
+          alert.addAction(UIAlertAction(
+            title: "OK",
+            style: UIAlertAction.Style.cancel,
+            handler: nil))
+          present(alert, animated: true, completion: nil)
+        }
+    }
      
     @IBAction func recordTapped(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.camera) == false
@@ -45,9 +62,16 @@ class RecordingViewController: UIViewController, UIImagePickerControllerDelegate
 
         guard
             let mediaType = info[UIImagePickerController.InfoKey.mediaType] as? String,
-            mediaType == (kUTTypeMovie as String) // dont forget to add a comma when using next line!
-// ->       let url = info[UIImagePickerController.InfoKey.mediaURL] as? URL // << what we need.
+            mediaType == (kUTTypeMovie as String),
+            let url = info[UIImagePickerController.InfoKey.mediaURL] as? URL, // << what we need.
+            UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(url.path)
         else { return }
+        
+        UISaveVideoAtPathToSavedPhotosAlbum( // save video in library
+          url.path,
+          self,
+          #selector(video(_:didFinishSavingWithError:contextInfo:)),
+          nil)
     }
     
     @IBAction func backTapped(_ sender: Any) {
