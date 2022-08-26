@@ -2,21 +2,41 @@
 //  ShowVideoViewController.swift
 //  StudyShare
 //
-//  Created by Matthew Jennings on 26/08/22.
+//  this uses the iphone dialog to chose a media from the photo library
+//
+//  Created by CGi on 26/08/22.
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
-class ShowVideoViewController: UIViewController {
+import MobileCoreServices
+
+class ShowVideoViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
     @IBOutlet weak var videoTitle: UILabel!
     @IBOutlet weak var videoView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
+    // choosevideo is the iphone dialog to choose media from the library!
+    @IBAction func chooseVideo(_ sender: AnyObject) {
+      if UIImagePickerController
+          .isSourceTypeAvailable(.savedPhotosAlbum) == false {
+        return
+      }
+  
+      let imgPicker = UIImagePickerController()
+      imgPicker.sourceType = .savedPhotosAlbum
+      imgPicker.mediaTypes = [kUTTypeMovie  as String]
+      imgPicker.delegate = self
+      
+      // show
+      self.present(imgPicker, animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation
