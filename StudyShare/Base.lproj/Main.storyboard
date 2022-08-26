@@ -332,7 +332,7 @@
         <!--Class Content View Controller-->
         <scene sceneID="gxi-Ag-puQ">
             <objects>
-                <viewController id="YOj-zn-CyC" customClass="ClassContentViewController" customModule="StudyShare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ClassContentVC" id="YOj-zn-CyC" customClass="ClassContentViewController" customModule="StudyShare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iif-E5-eec" customClass="ClassCon">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

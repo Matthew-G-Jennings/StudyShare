@@ -15,7 +15,7 @@ import Firebase
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var classTable: UITableView!
-    var groupData : [Group] = []
+    //   var groupData : [Group] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +23,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         setUpGroupDetails()
         classTable.dataSource = self
         classTable.delegate = self
+        
         self.classTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
-
-
+        
+        
         // Do any additional setup after loading the view.
     }
-
+    
+    //Get selected element and move to the class content view controller, display more information about it
+    
     /**
      Utilizes the classes to retreive their list of classes from the firebase db
      Stores this information in a class dedicated to holding the group info.
@@ -53,13 +56,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     group.Year = (groupsDataDict["Year"] as? String ?? "")
                     
                     let g = Group(Description: group.Description, Filepath: group.Filepath, Institution:group.Institution, Name: group.Name, Semester: group.Semester, Year: group.Year)
-
+                    
                     if(!User.groups.contains(g.Filepath))
                     {
                         continue
                     }
                     
-                    self.groupData.append(g)
+                    User.groupData.append(g)
                 }
             }
             DispatchQueue.main.async {
@@ -69,26 +72,42 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     /**
-        - Parameters:
-            - value: UITableView: The basic appearance of the cell
-            - value: section: Seperates the number of rows into sections
-        - Returns: The current count of data in the groupData array
-    */
+     - Parameters:
+     - value: UITableView: The basic appearance of the cell
+     - value: section: Seperates the number of rows into sections
+     - Returns: The current count of data in the groupData array
+     */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.groupData.count
+        return User.groupData.count
     }
     
     /**
-        - Parameters:
-            - value: UITableView: The basic appearance of the cell
-            - value: Indexpath: Represents the path to a specific location
-        - Returns: Displays the class name which the user just created to the cell
-    */
+     - Parameters:
+     - value: UITableView: The basic appearance of the cell
+     - value: Indexpath: Represents the path to a specific location
+     - Returns: Displays the class name which the user just created to the cell
+     */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
-        cell.textLabel?.text = self.groupData[indexPath.row].Name
+        cell.textLabel?.text = User.groupData[indexPath.row].Name
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // tableView.deselectRow(at: indexPath, animated: true)
+        //        let selectedClass = User.groupData[indexPath.row]
+        //        let vc = ClassContentViewController()
+        //        vc.title = selectedClass.Name
+        self.transitionToClassContent()
+    }
+    //
+    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //        let selectedClass = self.groupData[indexPath.row]
+    //        if let viewController = storyboard?.instantiateViewController(identifier: "ClassContentViewController") as? ClassContentViewController {
+    //            viewController.class = selectedClass
+    //            navigationController?.pushViewController(viewController, animated: true)
+    //        }
+    //    }
     
     /**
      Utilizes the currently logged in users UID to retreive their full info from firebase db
@@ -116,6 +135,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             // Something has gone horribly wrong
         }
+    }
+    
+    func transitionToClassContent(){
+        let classContentController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.classContentController) as? CreateClassViewController
+        view.window?.rootViewController = classContentController
+        view.window?.makeKeyAndVisible()
     }
     
 }
