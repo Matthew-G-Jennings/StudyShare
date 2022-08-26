@@ -17,19 +17,12 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.alpha = 0
-        // Do any additional setup after loading the view.
-        // setUpElements()
-    }
-    
-    func setUpElements(){
-        errorLabel.alpha = 0
-        //Style text fields here?
-        Utilities.styleTextField(emailTextField)
-        Utilities.styleTextField(passwordTextField)
-        Utilities.styleFilledButton(loginButton)
     }
 
-
+    /**
+    Performs the login operation for a user.
+    If valid user data is entered, will transition the user to the home screen.
+    */
     @IBAction func loginButtonTapped(_ sender: Any) {
         // Valid text fields
         let err = validateFields()
@@ -49,25 +42,34 @@ class LoginViewController: UIViewController {
                 }
             }
         }
-
-        
     }
-    // Check data, if no problems, return nil, if problem returns error message
+    
+    /**
+    Validates the fields are correct
+     - Returns: A String with an error message if invalid, otherwise nil
+    */
     func validateFields() -> String? {
         // Check all fields have data
         if  emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             return "Please fill in all fields"
         }
-        
         return nil
     }
     
+    /**
+    Sets error label to the given String
+     - Parameters:
+            - message: String: The error message to display
+    */
     func showError(_ message:String){
         errorLabel.text = message
         errorLabel.alpha = 1
     }
     
+    /**
+    Initilizes the home screen view controller and navigates to it
+    */
     func transitionToHome(){
         let homeViewController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? HomeViewController
         view.window?.rootViewController = homeViewController
