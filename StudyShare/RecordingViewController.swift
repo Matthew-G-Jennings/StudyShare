@@ -15,18 +15,15 @@ import MobileCoreServices
 import SafariServices
 
 class RecordingViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-    @objc func video( // callback for videodialog
+    @objc func video( // callback for video dialog
       _ videoPath: String,
       didFinishSavingWithError error: Error?,
       contextInfo info: AnyObject
     ) {
         if (error != nil) { // error handling, if video not saved in photolibrary
-          let title = "Error"
-          let message = "Video not saved"
-
           let alert = UIAlertController(
-            title: title,
-            message: message,
+            title: "Error",
+            message: "Video not saved",
             preferredStyle: .alert)
           alert.addAction(UIAlertAction(
             title: "OK",
