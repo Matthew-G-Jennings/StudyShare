@@ -1,4 +1,8 @@
-Git Assignment repository for COSC345.2022S2
+## Git Assignment repository for COSC345.2022S2
+
+## StudyShare
+
+An inclusive app designed to assist in facilitating shared learning experiences!
 
 ## Badges
 
