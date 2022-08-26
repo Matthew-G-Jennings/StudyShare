@@ -65,7 +65,7 @@ class CreateClassViewController: UIViewController {
             let userRef = db.collection("users").document(User.docID)
             userRef.updateData(["groups": FieldValue.arrayUnion([dirName])])
             User.groups.append(dirName)
-            //self.transitionToClassContent()
+            self.transitionToHome()
         }
     }
     
@@ -143,11 +143,4 @@ class CreateClassViewController: UIViewController {
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()
     }
-    
-    func transitionToClassContent(){
-        let classContentController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.classContentController) as? CreateClassViewController
-       // self.present(classContentController, animated: true, completion: nil)
-        //self.navigationController?.pushViewController(classContentController, animated: true)
-    }
-    
 }

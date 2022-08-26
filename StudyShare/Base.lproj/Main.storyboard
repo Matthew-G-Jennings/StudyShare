@@ -13,7 +13,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="StudyShare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeScreenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="LlT-Iz-LV7">
@@ -78,7 +78,7 @@
             <objects>
                 <viewController id="6nL-hv-Hd2" customClass="LoginViewController" customModule="StudyShare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Pl-bX-eNJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ntd-Z0-ZDq">
@@ -133,7 +133,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQa-3U-tt8">
-                                <rect key="frame" x="40" y="722" width="334" height="40"/>
+                                <rect key="frame" x="40" y="742" width="334" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="IXk-HF-fEk"/>
                                 </constraints>
@@ -192,7 +192,7 @@
             <objects>
                 <viewController id="zpS-YU-FpY" customClass="SignUpViewController" customModule="StudyShare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ha1-vU-hH1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9gQ-vB-p4Z">
@@ -272,7 +272,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TmY-3h-XgP">
-                                <rect key="frame" x="40" y="722" width="334" height="40"/>
+                                <rect key="frame" x="40" y="742" width="334" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="osD-l7-h8F"/>
                                 </constraints>
@@ -654,7 +654,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <segue destination="YOj-zn-CyC" kind="show" id="GTL-5W-c64"/>
+                                                    <segue destination="YOj-zn-CyC" kind="show" identifier="transition" id="GTL-5W-c64"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -1200,8 +1200,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qjp-0u-26K"/>
-        <segue reference="0UF-5S-zLo"/>
+        <segue reference="5dh-rh-IKz"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="HomeScreenLogo" width="348" height="339"/>

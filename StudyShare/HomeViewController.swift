@@ -15,7 +15,8 @@ import Firebase
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var classTable: UITableView!
-    //   var groupData : [Group] = []
+    
+    var selectedIndexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
      */
     func setUpGroupDetails(){
         let db = Firestore.firestore()
-        let all = User.groups
+      //  let all = User.groups
         db.collection("classes").getDocuments(){ (querySnapshot, err) in
             if let err = err {
                 print("Error retrieving user data: \(err)")
@@ -54,7 +55,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     group.Semester = (groupsDataDict["Semester"] as? String ?? "")
                     group.Year = (groupsDataDict["Year"] as? String ?? "")
                     
-                    let g = Group(Description: group.Description, Filepath: group.Filepath, Institution:group.Institution, Name: group.Name, Semester: group.Semester, Year: group.Year)
+                    let g = Group(Description: group.Description, Filepath: group.Filepath, Institution: group.Institution, Name: group.Name, Semester: group.Semester, Year: group.Year)
+                    
+                    print(g)
                     
                     if(!User.groups.contains(g.Filepath))
                     {
@@ -72,7 +75,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     /**
      - Parameters:
-     - value: UITableView: The basic appearance of the cell
+     - value:tableview: A table view object requesting the cell
      - value: section: Seperates the number of rows into sections
      - Returns: The current count of data in the groupData array
      */
@@ -82,7 +85,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     /**
      - Parameters:
-     - value: UITableView: The basic appearance of the cell
+     - value:tableview: A table view object requesting the cell
      - value: Indexpath: Represents the path to a specific location
      - Returns: Displays the class name which the user just created to the cell
      */
@@ -92,21 +95,31 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+    /**
+     - Parameters:
+     - value:tableview: A table view object requesting the cell
+     - value: Indexpath: An index path locating a row in tableView
+     */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // tableView.deselectRow(at: indexPath, animated: true)
-        //        let selectedClass = User.groupData[indexPath.row]
-        //        let vc = ClassContentViewController()
-        //        vc.title = selectedClass.Name
-        // self.transitionToClassContent()
+       // let selectedClass = User.groupData[indexPath.row]
+        performSegue(withIdentifier: "transition", sender: nil)
+        
     }
-    //
-    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //        let selectedClass = self.groupData[indexPath.row]
-    //        if let viewController = storyboard?.instantiateViewController(identifier: "ClassContentViewController") as? ClassContentViewController {
-    //            viewController.class = selectedClass
-    //            navigationController?.pushViewController(viewController, animated: true)
-    //        }
-    //    }
+    
+    /**
+     - Parameters:
+     - value:segue: The segue object containing information about the view controllers involved in the segue.
+     - value: sender: The object that initiated the segue.
+     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "transition"{
+            if let indexPath = classTable.indexPathForSelectedRow{
+                let nextViewController = segue.destination as! ClassContentViewController
+                nextViewController.name = User.groupData[indexPath.row].Name
+            }
+            
+        }
+    }
     
     /**
      Utilizes the currently logged in users UID to retreive their full info from firebase db
@@ -135,13 +148,4 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             // Something has gone horribly wrong
         }
     }
-    /*
-    func transitionToClassContent(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let classContentController = storyboard.instantiateViewController(withIdentifier: "ClassContentVC")
-        print("Class Content Controller is:")
-        print(classContentController)
-        present(classContentController, animated: true, completion: nil)
-    }
-    */
 }
