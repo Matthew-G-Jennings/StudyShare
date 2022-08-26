@@ -11,8 +11,8 @@ import FirebaseFirestore
 import Firebase
 
 class CreateClassViewController: UIViewController {
-
-
+    
+    
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var paperCodeField: UITextField!
     @IBOutlet weak var paperDescField: UITextField!
@@ -24,21 +24,21 @@ class CreateClassViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.alpha = 1
-
+        
         // Do any additional setup after loading the view.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     @IBAction func createButtonTapped(_ sender: Any) {
         let error = validateFields()
         if error != nil {
@@ -54,8 +54,8 @@ class CreateClassViewController: UIViewController {
             
             let db = Firestore.firestore()
             db.collection("classes").addDocument(data: ["Name" : name,
-                                                      "Description" : desc,
-                                                      "Year" : String(year!),
+                                                        "Description" : desc,
+                                                        "Year" : String(year!),
                                                         "Semester": String(sem!),
                                                         "Institution" : instit,
                                                         "Filepath" : dirName]) { (error) in
@@ -73,8 +73,7 @@ class CreateClassViewController: UIViewController {
             let userRef = db.collection("users").document(User.docID)
             userRef.updateData(["groups": FieldValue.arrayUnion([dirName])])
             User.groups.append(dirName)
-            print("USER GROUPS")
-            print(User.groups)
+            self.transitionToHome()
         }
     }
     
@@ -124,6 +123,12 @@ class CreateClassViewController: UIViewController {
     
     @IBAction func backTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func transitionToHome(){
+        let homeViewController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        view.window?.rootViewController = homeViewController
+        view.window?.makeKeyAndVisible()
     }
     
 }
