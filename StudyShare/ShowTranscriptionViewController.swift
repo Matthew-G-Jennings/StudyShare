@@ -6,27 +6,36 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class ShowTranscriptionViewController: UIViewController {
+    
+    var filepath: String?
+    var filename: String?
 
     @IBOutlet weak var transcriptionTitle: UILabel!
     @IBOutlet weak var transcriptionView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        transcriptionTitle.text = filename
+        loadFileToText()
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func loadFileToText(){
+        let storage = Storage.storage()
+        let path = filepath! + "/" + filename!
+        let pathRef = storage.reference(withPath: path)
+        pathRef.getData(maxSize: 4 * 1024 * 1024) {data, error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                self.transcriptionView.text = String(decoding: data!, as: UTF8.self)         }
+        }
+        
     }
-    */
+    
     @IBAction func likeButtonTapped(_ sender: Any) {
     }
     

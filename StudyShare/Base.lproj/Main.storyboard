@@ -393,7 +393,7 @@
             <objects>
                 <viewController id="CYL-wl-UC9" customClass="ShowTranscriptionViewController" customModule="StudyShare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sR6-70-KhO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRANSCRIPTTITLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oW1-Su-GAs">
@@ -403,7 +403,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4KB-cB-Vor">
-                                <rect key="frame" x="20" y="102.5" width="374" height="668.5"/>
+                                <rect key="frame" x="20" y="102.5" width="374" height="648.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -411,7 +411,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="179" translatesAutoresizingMaskIntoConstraints="NO" id="uPM-Bt-5AA">
-                                <rect key="frame" x="29" y="811" width="356" height="31"/>
+                                <rect key="frame" x="29" y="791" width="356" height="31"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZD-vN-wCv">
                                         <rect key="frame" x="0.0" y="0.0" width="88.5" height="31"/>
@@ -445,6 +445,7 @@
                             <constraint firstItem="C7c-Wh-vj5" firstAttribute="trailing" secondItem="4KB-cB-Vor" secondAttribute="trailing" constant="20" id="sus-M4-Qjh"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="dOH-ZG-cHL"/>
                     <connections>
                         <outlet property="transcriptionTitle" destination="oW1-Su-GAs" id="pJE-sA-JRu"/>
                         <outlet property="transcriptionView" destination="4KB-cB-Vor" id="t6J-Nq-FUd"/>
@@ -541,6 +542,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="CYL-wl-UC9" kind="show" identifier="transcriptiontrans" id="HV2-Hy-GwH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
