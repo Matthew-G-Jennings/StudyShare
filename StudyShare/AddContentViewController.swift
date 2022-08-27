@@ -50,8 +50,8 @@ class AddContentViewController: UIViewController {
             guard let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else{
                 return
             }
-            let pathToFile = "file://" + url.path.trimmingCharacters(in: .whitespacesAndNewlines) + "/" + User.currentGroup.trimmingCharacters(in: .whitespacesAndNewlines) + "/" + selectedFile.trimmingCharacters(in: .whitespacesAndNewlines)
-            let fileToUpload = URL(string: pathToFile)
+            let pathToFile = "file://" + url.path.trimmingCharacters(in: .whitespacesAndNewlines) + "/" + "Transcriptions" + "/" + selectedFile.trimmingCharacters(in: .whitespacesAndNewlines)
+            let fileToUpload = URL(string: pathToFile)!
             let storage = Storage.storage()
             let storageRef = storage.reference()
             let targetDir = User.currentGroup + "/" + selectedFile
@@ -60,8 +60,9 @@ class AddContentViewController: UIViewController {
             print(fileToUpload)
             print("TO")
             print(targetDir)
-            
-            let uploadTask = targetRef.putFile(from: fileToUpload!, metadata: nil)
+            print("FILE EXISTS:")
+            print(manager.fileExists(atPath: fileToUpload.path))
+            let uploadTask = targetRef.putFile(from: fileToUpload)
             print("TASK STATE")
             print(uploadTask.snapshot)
             
