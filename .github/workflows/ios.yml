@@ -52,6 +52,7 @@ jobs:
            inputs: "StudyShare"
            module-name: MyLibrary
            output: "Documentation"
+           build-args: "--minimum-access-level, internal"
       - name: Upload Documentation to Wiki
         uses: SwiftDocOrg/github-wiki-publish-action@v1
         with:
