@@ -21,14 +21,14 @@ class ClassContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         classNameLabel.text = name
-        self.filenames = getFileNames()
+        getFileNames()
         contentTable.dataSource = self
         contentTable.delegate = self
         self.contentTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
         // Do any additional setup after loading the view.
     }
     
-    func getFileNames() -> [String?]{
+    func getFileNames(){
         let storage = Storage.storage()
         let storageRef = storage.reference().child(filepath!)
         var filenames: [String?] = []
@@ -39,10 +39,11 @@ class ClassContentViewController: UIViewController {
             for item in result!.items{
                 filenames.append(item.name)
             }
-            print("FILENAMES")
-            print(filenames)
+            self.filenames = filenames
+            DispatchQueue.main.async {
+                self.contentTable.reloadData()
+            }
         }
-        return filenames
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -61,7 +62,7 @@ extension ClassContentViewController: UITableViewDataSource{
         return filenames.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
         cell.textLabel?.text = filenames[indexPath.row]
         return cell
     }
