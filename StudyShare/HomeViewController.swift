@@ -21,7 +21,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUserDetails()
-        setUpGroupDetails()
         classTable.dataSource = self
         classTable.delegate = self
         
@@ -30,43 +29,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.classTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
         
         // Do any additional setup after loading the view.
-    }
-    
-    /**
-     Utilizes the classes to retreive their list of classes from the firebase db
-     Stores this information in a class dedicated to holding the group info.
-     Retrives and stores description, filepath, institution, name, semester and year (firebase reference to this user)
-     */
-    func setUpGroupDetails(){
-        let db = Firestore.firestore()
-      //  let all = User.groups
-        db.collection("classes").getDocuments(){ (querySnapshot, err) in
-            if let err = err {
-                print("Error retrieving user data: \(err)")
-            } else{
-                for document in querySnapshot!.documents {
-                    let groupsDataDict = document.data()
-                    var group = Group()
-                    
-                    group.Description   = (groupsDataDict["Description"] as? String ?? "")
-                    group.Filepath = (groupsDataDict["Filepath"] as? String ?? "")
-                    group.Institution = (groupsDataDict["Institution"] as? String ?? "")
-                    group.Name = (groupsDataDict["Name"] as? String ?? "")
-                    group.Semester = (groupsDataDict["Semester"] as? String ?? "")
-                    group.Year = (groupsDataDict["Year"] as? String ?? "")
-                    
-                    let g = Group(Description: group.Description, Filepath: group.Filepath, Institution: group.Institution, Name: group.Name, Semester: group.Semester, Year: group.Year)
-                    
-                    if(User.groups.contains(g.Filepath))
-                    {
-                        User.groupData.append(g)
-                    }
-                }
-            }
-            DispatchQueue.main.async {
-                self.classTable.reloadData()
-            }
-        }
     }
     
     /**
@@ -113,6 +75,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let nextViewController = segue.destination as! ClassContentViewController
                 nextViewController.name = User.groupData[indexPath.row].Name
                 nextViewController.filepath = User.groupData[indexPath.row].Filepath
+                User.currentGroup = User.groupData[indexPath.row].Filepath
             }
         }
     }
@@ -139,6 +102,35 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     User.firstName = (userDataDict["firstname"] as! String)
                     User.lastName = (userDataDict["lastname"] as! String)
                     User.docID = document.documentID
+                    User.groups = (userDataDict["groups"] as! [String])
+                }
+                let db = Firestore.firestore()
+                db.collection("classes").getDocuments(){ (querySnapshot, err) in
+                    if let err = err {
+                        print("Error retrieving user data: \(err)")
+                    } else{
+                        for document in querySnapshot!.documents {
+                            let groupsDataDict = document.data()
+                            var group = Group()
+                            
+                            group.Description   = (groupsDataDict["Description"] as? String ?? "")
+                            group.Filepath = (groupsDataDict["Filepath"] as? String ?? "")
+                            group.Institution = (groupsDataDict["Institution"] as? String ?? "")
+                            group.Name = (groupsDataDict["Name"] as? String ?? "")
+                            group.Semester = (groupsDataDict["Semester"] as? String ?? "")
+                            group.Year = (groupsDataDict["Year"] as? String ?? "")
+                            
+                            let g = Group(Description: group.Description, Filepath: group.Filepath, Institution: group.Institution, Name: group.Name, Semester: group.Semester, Year: group.Year)
+                            
+                            if(User.groups.contains(g.Filepath))
+                            {
+                                User.groupData.append(g)
+                            }
+                        }
+                    }
+                    DispatchQueue.main.async {
+                        self.classTable.reloadData()
+                    }
                 }
             }
         } else {

@@ -10,6 +10,8 @@ import UIKit
 class AddContentViewController: UIViewController {
     
     var filenames: [String?] = []
+    var selectedFile: String = ""
+    var previousSelection = 0
 
     @IBOutlet weak var typeSelector: UIButton!
     @IBOutlet weak var contentTable: UITableView!
@@ -41,12 +43,19 @@ class AddContentViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func addTapped(_ sender: Any) {
+        
     }
 }
 
 extension AddContentViewController: UITableViewDelegate{
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let prevPath = IndexPath(arrayLiteral: 0, previousSelection)
+        tableView.cellForRow(at: prevPath)?.setHighlighted(false, animated: true)
+        tableView.cellForRow(at: indexPath)?.setHighlighted(true, animated: true)
+        previousSelection = indexPath.row
+        selectedFile = filenames[previousSelection]!
     }
 }
 

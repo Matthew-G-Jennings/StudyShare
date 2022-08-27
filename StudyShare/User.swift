@@ -14,4 +14,5 @@ struct User{
     static var lastName: String = "nil"
     static var groups: [String] = ["nil"]
     static var groupData : [Group] = []
+    static var currentGroup: String = "nil"
 }
