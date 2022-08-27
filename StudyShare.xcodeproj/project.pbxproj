@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DD59BF328B851C00029EB06 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD59BF228B851C00029EB06 /* Group.swift */; };
+		B16179D028B9B293006464BF /* AddContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16179CF28B9B293006464BF /* AddContentViewController.swift */; };
 		B1793FAA2897778000A2F9F3 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1793FA92897778000A2F9F3 /* Utilities.swift */; };
 		B1793FAC28977D4500A2F9F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1793FAB28977D4500A2F9F3 /* GoogleService-Info.plist */; };
 		B1793FC92898EAD400A2F9F3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1793FC82898EAD400A2F9F3 /* Constants.swift */; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		1DD59BF228B851C00029EB06 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		B16179CF28B9B293006464BF /* AddContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentViewController.swift; sourceTree = "<group>"; };
 		B1793FA92897778000A2F9F3 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B1793FAB28977D4500A2F9F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B1793FC82898EAD400A2F9F3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				B1888AEE28B88819002565DE /* ShowNotesViewController.swift */,
 				B1888AF028B88832002565DE /* ShowVideoViewController.swift */,
 				B1888AF228B88842002565DE /* ShowTranscriptionViewController.swift */,
+				B16179CF28B9B293006464BF /* AddContentViewController.swift */,
 			);
 			path = StudyShare;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				1DD59BF328B851C00029EB06 /* Group.swift in Sources */,
 				B1AA57162896245400A3A8A0 /* AppDelegate.swift in Sources */,
 				B1888AE928AF6812002565DE /* CreateClassViewController.swift in Sources */,
+				B16179D028B9B293006464BF /* AddContentViewController.swift in Sources */,
 				B1793FAA2897778000A2F9F3 /* Utilities.swift in Sources */,
 				B1888AED28B61153002565DE /* ClassContentViewController.swift in Sources */,
 				B1AA5746289624B500A3A8A0 /* SignUpViewController.swift in Sources */,
