@@ -49,7 +49,7 @@ jobs:
       - name: Extract Documentation
         uses: SwiftDocOrg/swift-doc@master
         with:
-           inputs: "StudyShare --minimum-access-level internal"
+           inputs: "StudyShare"
            module-name: MyLibrary
            output: "Documentation"
       - name: Upload Documentation to Wiki
