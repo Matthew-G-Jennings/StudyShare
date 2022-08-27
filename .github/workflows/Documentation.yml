@@ -1,50 +1,21 @@
-name: "Swift Doc"
-description: "Generates documentation for your Swift project"
+name: Documentation
 
-inputs:
-  inputs:
-    description: "A path to a directory containing Swift (`.swift`) files in your workspace"
-    required: true
-    default: "./StudyShare"
-  module-name:
-    description: "The name of the module"
-    required: true
-  format:
-    description: "The output format (commonmark or html)"
-    required: false
-    default: "html"
-  base-url:
-    description: "The base URL for all relative URLs generated in documents"
-    required: false
-    default: "./"
-  output:
-    description: "The path for generated output"
-    required: true
-    default: "./.build/documentation"
-  minimum-access-level:
-    description: "The minimum access level of the symbols which should be included (public, internal, or private)"
-    required: false
-    default: "internal"
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - .github/workflows/documentation.yml
+      - Sources/SwiftDoc/**.swift
 
-runs:
-  using: "docker"
-  image: "docker://swiftdoc/swift-doc:latest"
-  args:
-    [
-      generate,
-      "${{ inputs.inputs }}",
-      --format,
-      "${{ inputs.format }}",
-      --base-url,
-      "${{ inputs.base-url }}",
-      --module-name,
-      "${{ inputs.module-name }}",
-      --output,
-      "${{ inputs.output }}",
-      --minimum-access-level,
-      "${{ inputs.minimum-access-level }}"
-    ]
-
-branding:
-  icon: "book"
-  color: "orange"
+jobs:
+  DocumentatonJob:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fwcd/swift-docc-action@v1
+        with:
+          target: StudyShare
+          output: ./docs
+          hosting-base-path: yourproject
+          disable-indexing: 'true'
+          transform-for-static-hosting: 'true'
