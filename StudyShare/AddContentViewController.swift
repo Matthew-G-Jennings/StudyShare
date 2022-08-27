@@ -17,8 +17,9 @@ class AddContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getFileNames()
-        print("DIRECTORY CONTENTS")
-        print(filenames)
+        contentTable.delegate = self
+        contentTable.dataSource = self
+        self.contentTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
     }
     
     func getFileNames(){
@@ -40,5 +41,23 @@ class AddContentViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func addTapped(_ sender: Any) {
+    }
+}
+
+extension AddContentViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+}
+
+extension AddContentViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.filenames.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = contentTable.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
+        cell.textLabel?.text = self.filenames[indexPath.row]
+        return cell
     }
 }

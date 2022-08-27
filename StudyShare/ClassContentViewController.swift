@@ -22,6 +22,9 @@ class ClassContentViewController: UIViewController {
         super.viewDidLoad()
         classNameLabel.text = name
         self.filenames = getFileNames()
+        contentTable.dataSource = self
+        contentTable.delegate = self
+        self.contentTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
         // Do any additional setup after loading the view.
     }
     
@@ -46,4 +49,20 @@ class ClassContentViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+}
+
+extension ClassContentViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+}
+
+extension ClassContentViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filenames.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = filenames[indexPath.row]
+        return cell
+    }
 }
