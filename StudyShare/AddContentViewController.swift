@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class AddContentViewController: UIViewController {
     
@@ -30,8 +31,6 @@ class AddContentViewController: UIViewController {
             return
         }
         let currDir = url.appendingPathComponent("Transcriptions")
-        print("Current Directory is:")
-        print(currDir)
         do {
             self.filenames = try manager.contentsOfDirectory(atPath: currDir.path)
         } catch {
@@ -42,8 +41,43 @@ class AddContentViewController: UIViewController {
     @IBAction func backTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    /**
+        The add button has been tapped, confirm a file is selected and if so upload it to the firebase storage for this class
+     */
     @IBAction func addTapped(_ sender: Any) {
-        
+        if (selectedFile.count > 0){
+            let manager = FileManager.default
+            guard let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else{
+                return
+            }
+            let pathToFile = url.path.trimmingCharacters(in: .whitespacesAndNewlines) + "/" + User.currentGroup.trimmingCharacters(in: .whitespacesAndNewlines) + "/ " + selectedFile.trimmingCharacters(in: .whitespacesAndNewlines)
+            print("PATH TO FILE")
+            print(pathToFile)
+            let fileToUpload = URL(string: pathToFile)
+            print("URL TO FILE")
+            print(fileToUpload)
+            let storage = Storage.storage()
+            let storageRef = storage.reference()
+            let targetDir = User.currentGroup + "/" + selectedFile
+            let targetRef = storageRef.child(targetDir)
+            
+            let uploadTask = targetRef.putFile(from: fileToUpload!, metadata: nil){ metadata, error in
+                guard let metadata = metadata else {
+                    print("Error uploading file")
+                    return
+                }
+                let size = metadata.size
+                targetRef.downloadURL{ (url, error) in
+                    guard let downloadURL = url else {
+                        print("Error uploading file")
+                        return
+                    }
+                }
+            }
+        } else {
+            print("Please select a file")
+            return
+        }
     }
 }
 

@@ -87,7 +87,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
      Retrives and stores firstname, lastname, documentID(firebase reference to this user)
      */
     func setUpUserDetails(){
-        
+        User.UID = "nil"
+        User.docID = "nil"
+        User.firstName = "nil"
+        User.lastName = "nil"
+        User.groups = ["nil"]
+        User.groupData = []
+        User.currentGroup = "nil"
         if Auth.auth().currentUser != nil{
             let user = Auth.auth().currentUser
             User.UID = user!.uid
