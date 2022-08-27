@@ -57,12 +57,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                     let g = Group(Description: group.Description, Filepath: group.Filepath, Institution: group.Institution, Name: group.Name, Semester: group.Semester, Year: group.Year)
                     
-                    if(!User.groups.contains(g.Filepath))
+                    if(User.groups.contains(g.Filepath))
                     {
-                        continue
+                        User.groupData.append(g)
                     }
-                    
-                    User.groupData.append(g)
                 }
             }
             DispatchQueue.main.async {
@@ -114,8 +112,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let indexPath = classTable.indexPathForSelectedRow{
                 let nextViewController = segue.destination as! ClassContentViewController
                 nextViewController.name = User.groupData[indexPath.row].Name
+                nextViewController.filepath = User.groupData[indexPath.row].Filepath
             }
-            
         }
     }
     

@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class ClassContentViewController: UIViewController {
     
     var name : String?
+    var filepath : String?
+    var filenames: [String?] = []
     
     @IBOutlet weak var classNameLabel: UILabel!
     @IBOutlet weak var contentTable: UITableView!
@@ -18,21 +21,27 @@ class ClassContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         classNameLabel.text = name
-
+        self.filenames = getFileNames()
         // Do any additional setup after loading the view.
     }
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getFileNames() -> [String?]{
+        let storage = Storage.storage()
+        let storageRef = storage.reference().child(filepath!)
+        var filenames: [String?] = []
+        storageRef.listAll {(result, error) in
+            if let error = error {
+                print(error)
+            }
+            for item in result!.items{
+                filenames.append(item.name)
+            }
+            print("FILENAMES")
+            print(filenames)
+        }
+        return filenames
     }
-    */
+    
     @IBAction func backButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
