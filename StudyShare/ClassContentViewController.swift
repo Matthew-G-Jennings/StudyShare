@@ -13,7 +13,6 @@ class ClassContentViewController: UIViewController {
     var filepath: String?
     var filenames: [String?] = []
     var previousSelection = -1
-    
     @IBOutlet weak var classNameLabel: UILabel!
     @IBOutlet weak var contentTable: UITableView!
    

@@ -19,9 +19,7 @@ class ShowVideoViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var videoView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-    
     // choosevideo is the iphone dialog to choose media from the library!
     @IBAction func chooseVideo(_ sender: AnyObject) {
       if UIImagePickerController

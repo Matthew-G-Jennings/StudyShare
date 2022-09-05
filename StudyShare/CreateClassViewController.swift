@@ -11,7 +11,6 @@ import FirebaseFirestore
 import Firebase
 
 class CreateClassViewController: UIViewController {
-    
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var paperCodeField: UITextField!
     @IBOutlet weak var paperDescField: UITextField!

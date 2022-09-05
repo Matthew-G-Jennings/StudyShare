@@ -11,11 +11,9 @@ import FirebaseFirestore
 class AddClassViewController: UIViewController {
     var groups: [Group?] = []
     var previousSelection = -1
-
     @IBOutlet weak var searchTable: UITableView!
     @IBOutlet weak var filterField: UITextField!
     @IBOutlet weak var addButton: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         getGroups()
@@ -26,7 +24,7 @@ class AddClassViewController: UIViewController {
     
     func getGroups() {
         let database = Firestore.firestore()
-        database.collection("classes").getDocuments(){ (querySnapshot, err) in
+        database.collection("classes").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error retrieving user data: \(err)")
             } else {
@@ -39,9 +37,9 @@ class AddClassViewController: UIViewController {
                     group.name = (groupsDataDict["Name"] as? String ?? "")
                     group.semester = (groupsDataDict["Semester"] as? String ?? "")
                     group.year = (groupsDataDict["Year"] as? String ?? "")
-                    let g = Group(description: group.description, filepath: group.filepath, institution: group.institution, name: group.name, semester: group.semester, year: group.year)
+                    let groupVar = Group(description: group.description, filepath: group.filepath, institution: group.institution, name: group.name, semester: group.semester, year: group.year)
                     
-                    self.groups.append(g)
+                    self.groups.append(groupVar)
                 }
             }
             DispatchQueue.main.async {
@@ -52,9 +50,9 @@ class AddClassViewController: UIViewController {
     
     @IBAction func addTapped(_ sender: Any) {
         if previousSelection >= 0 {
-            let db = Firestore.firestore()
+            let database = Firestore.firestore()
             let dirName = groups[previousSelection]!.filepath
-            let userRef = db.collection("users").document(User.docID)
+            let userRef = database.collection("users").document(User.docID)
             userRef.updateData(["groups": FieldValue.arrayUnion([dirName])])
             User.groups.append(dirName)
             self.transitionToHome()

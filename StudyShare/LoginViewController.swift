@@ -13,7 +13,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.alpha = 0
@@ -65,7 +64,7 @@ class LoginViewController: UIViewController {
      - Parameters:
             - message: String: The error message to display
     */
-    func showError(_ message:String) {
+    func showError(_ message: String) {
         errorLabel.text = message
         errorLabel.alpha = 1
     }

@@ -69,7 +69,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
      */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "transition" {
-            if let indexPath = classTable.indexPathForSelectedRow{
+            if let indexPath = classTable.indexPathForSelectedRow {
                 let nextViewController = segue.destination as! ClassContentViewController
                 nextViewController.name = User.groupData[indexPath.row].name
                 nextViewController.filepath = User.groupData[indexPath.row].filepath
@@ -77,7 +77,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
     }
-    
     
     /**
      Utilizes the currently logged in users UID to retreive their full info from firebase db
@@ -95,9 +94,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if Auth.auth().currentUser != nil {
             let user = Auth.auth().currentUser
             User.UID = user!.uid
-            let db = Firestore.firestore()
-            let userData = db.collection("users").whereField("uid", isEqualTo: User.UID)
-            userData.getDocuments(){ (querySnaphot, err) in
+            let database = Firestore.firestore()
+            let userData = database.collection("users").whereField("uid", isEqualTo: User.UID)
+            userData.getDocuments() { (querySnaphot, err) in
                 if let err = err {
                     print("Error retrieving user data: \(err)")
                 } else {
@@ -109,10 +108,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     User.groups = (userDataDict["groups"] as! [String])
                 }
                 let database = Firestore.firestore()
-                database.collection("classes").getDocuments(){ (querySnapshot, err) in
+                database.collection("classes").getDocuments() { (querySnapshot, err) in
                     if let err = err {
                         print("Error retrieving user data: \(err)")
-                    } else{
+                    } else {
                         for document in querySnapshot!.documents {
                             let groupsDataDict = document.data()
                             var group = Group()
@@ -136,8 +135,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     }
                 }
             }
-        } else {
-            // Something has gone horribly wrong
         }
     }
 }

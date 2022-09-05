@@ -17,7 +17,6 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
     @IBOutlet weak var fileNameField: UITextField!
     @IBOutlet weak var transcriptionText: UITextView!
     @IBOutlet weak var beginButton: UIButton!
-    
     let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-EN"))
     var recognitionTask: SFSpeechRecognitionTask?
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?

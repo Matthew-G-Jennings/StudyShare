@@ -11,10 +11,8 @@ import FirebaseStorage
 class ShowTranscriptionViewController: UIViewController {
     var filepath: String?
     var filename: String?
-
     @IBOutlet weak var transcriptionTitle: UILabel!
     @IBOutlet weak var transcriptionView: UITextView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         transcriptionTitle.text = filename

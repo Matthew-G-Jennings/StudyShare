@@ -32,7 +32,6 @@ class RecordingViewController: UIViewController, UIImagePickerControllerDelegate
           present(alert, animated: true, completion: nil)
         }
     }
-     
     @IBAction func recordTapped(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.camera) == false {
             print("camera not available")
