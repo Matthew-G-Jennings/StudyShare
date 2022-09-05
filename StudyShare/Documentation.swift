@@ -12,12 +12,10 @@ import Foundation
 		- value: [in] The number to return.
 	- Returns: The parameter passed to it.
 */
-public func identity(value : Int) -> Int
-	{
+public func identity(value: Int) -> Int {
 	return value
 	}
 
-public func two() -> Int
-	{
+public func two() -> Int {
 	return identity(value: 6)
 	}
