@@ -20,7 +20,7 @@ class RecordingViewController: UIViewController, UIImagePickerControllerDelegate
       didFinishSavingWithError error: Error?,
       contextInfo info: AnyObject
     ) {
-        if (error != nil) { // error handling, if video not saved in photolibrary
+        if error != nil { // error handling, if video not saved in photolibrary
           let alert = UIAlertController(
             title: "Error",
             message: "Video not saved",
@@ -34,12 +34,11 @@ class RecordingViewController: UIViewController, UIImagePickerControllerDelegate
     }
      
     @IBAction func recordTapped(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) == false
-        {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) == false {
             print("camera not available")
           return
         } else {
-            record(delegate:self)
+            record(delegate: self)
         }
     }
 
@@ -84,4 +83,3 @@ class RecordingViewController: UIViewController, UIImagePickerControllerDelegate
         super.viewDidLoad()
     }
 }
-

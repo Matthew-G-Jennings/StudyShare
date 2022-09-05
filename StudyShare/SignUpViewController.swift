@@ -15,7 +15,6 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     
@@ -42,7 +41,7 @@ class SignUpViewController: UIViewController {
         
         // Check if the password meets security standards
         let passwordClean = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        if Utilities.isPasswordValid(passwordClean) == false{
+        if Utilities.isPasswordValid(passwordClean) == false {
             return "Password must contain at least 8 characters, a number and a symbol"
         }
         return nil
@@ -75,14 +74,14 @@ class SignUpViewController: UIViewController {
                     self.showError(errorMessage!)
                 } else {
                     // Success
-                    let db = Firestore.firestore()
+                    let database = Firestore.firestore()
                     let groups = ["INIT"]
-                    db.collection("users").addDocument(data: ["firstname" : firstname,
-                                                              "lastname" : lastname,
-                                                              "uid" : result!.user.uid,
-                                                              "groups" : groups]
+                    database.collection("users").addDocument(data: ["firstname": firstname,
+                                                              "lastname": lastname,
+                                                              "uid": result!.user.uid,
+                                                              "groups": groups]
                                                               ) { (error) in
-                        if error != nil{
+                        if error != nil {
                             // There was an error
                             self.showError("Could not connect to database, user data not stored")
                         }
@@ -99,7 +98,7 @@ class SignUpViewController: UIViewController {
     - Parameters:
             - message: String: The error message to display
     */
-    func showError(_ message:String){
+    func showError(_ message: String) {
         errorLabel.text = message
         errorLabel.alpha = 1
     }
@@ -107,7 +106,7 @@ class SignUpViewController: UIViewController {
     /**
     Instantiates a home screen view controller and transitions to it.
     */
-    func transitionToHome(){
+    func transitionToHome() {
         let homeViewController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? HomeViewController
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()

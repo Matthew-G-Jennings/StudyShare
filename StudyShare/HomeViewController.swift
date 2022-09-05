@@ -11,9 +11,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import Firebase
 
-
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
     @IBOutlet weak var classTable: UITableView!
     
     var selectedIndexPath: IndexPath?
@@ -49,7 +47,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
      */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
-        cell.textLabel?.text = User.groupData[indexPath.row].Name
+        cell.textLabel?.text = User.groupData[indexPath.row].name
         return cell
     }
     
@@ -70,12 +68,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
      - value: sender: The object that initiated the segue.
      */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "transition"{
+        if segue.identifier == "transition" {
             if let indexPath = classTable.indexPathForSelectedRow{
                 let nextViewController = segue.destination as! ClassContentViewController
-                nextViewController.name = User.groupData[indexPath.row].Name
-                nextViewController.filepath = User.groupData[indexPath.row].Filepath
-                User.currentGroup = User.groupData[indexPath.row].Filepath
+                nextViewController.name = User.groupData[indexPath.row].name
+                nextViewController.filepath = User.groupData[indexPath.row].filepath
+                User.currentGroup = User.groupData[indexPath.row].filepath
             }
         }
     }
@@ -86,7 +84,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
      Stores this information in a class dedicated to holding the users info.
      Retrives and stores firstname, lastname, documentID(firebase reference to this user)
      */
-    func setUpUserDetails(){
+    func setUpUserDetails() {
         User.UID = "nil"
         User.docID = "nil"
         User.firstName = "nil"
@@ -94,7 +92,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         User.groups = ["nil"]
         User.groupData = []
         User.currentGroup = "nil"
-        if Auth.auth().currentUser != nil{
+        if Auth.auth().currentUser != nil {
             let user = Auth.auth().currentUser
             User.UID = user!.uid
             let db = Firestore.firestore()
@@ -102,7 +100,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             userData.getDocuments(){ (querySnaphot, err) in
                 if let err = err {
                     print("Error retrieving user data: \(err)")
-                } else{
+                } else {
                     let document = querySnaphot!.documents[0]
                     let userDataDict = document.data()
                     User.firstName = (userDataDict["firstname"] as! String)
@@ -110,8 +108,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     User.docID = document.documentID
                     User.groups = (userDataDict["groups"] as! [String])
                 }
-                let db = Firestore.firestore()
-                db.collection("classes").getDocuments(){ (querySnapshot, err) in
+                let database = Firestore.firestore()
+                database.collection("classes").getDocuments(){ (querySnapshot, err) in
                     if let err = err {
                         print("Error retrieving user data: \(err)")
                     } else{
@@ -119,18 +117,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                             let groupsDataDict = document.data()
                             var group = Group()
                             
-                            group.Description   = (groupsDataDict["Description"] as? String ?? "")
-                            group.Filepath = (groupsDataDict["Filepath"] as? String ?? "")
-                            group.Institution = (groupsDataDict["Institution"] as? String ?? "")
-                            group.Name = (groupsDataDict["Name"] as? String ?? "")
-                            group.Semester = (groupsDataDict["Semester"] as? String ?? "")
-                            group.Year = (groupsDataDict["Year"] as? String ?? "")
+                            group.description   = (groupsDataDict["description"] as? String ?? "")
+                            group.filepath = (groupsDataDict["filepath"] as? String ?? "")
+                            group.institution = (groupsDataDict["institution"] as? String ?? "")
+                            group.name = (groupsDataDict["name"] as? String ?? "")
+                            group.semester = (groupsDataDict["semester"] as? String ?? "")
+                            group.year = (groupsDataDict["year"] as? String ?? "")
                             
-                            let g = Group(Description: group.Description, Filepath: group.Filepath, Institution: group.Institution, Name: group.Name, Semester: group.Semester, Year: group.Year)
+                            let groupVar = Group(description: group.description, filepath: group.filepath, institution: group.institution, name: group.name, semester: group.semester, year: group.year)
                             
-                            if(User.groups.contains(g.Filepath))
-                            {
-                                User.groupData.append(g)
+                            if User.groups.contains(groupVar.filepath) {
+                                User.groupData.append(groupVar)
                             }
                         }
                     }

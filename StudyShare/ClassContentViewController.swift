@@ -9,16 +9,14 @@ import UIKit
 import FirebaseStorage
 
 class ClassContentViewController: UIViewController {
-    
-    var name : String?
-    var filepath : String?
+    var name: String?
+    var filepath: String?
     var filenames: [String?] = []
     var previousSelection = -1
     
     @IBOutlet weak var classNameLabel: UILabel!
     @IBOutlet weak var contentTable: UITableView!
    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         classNameLabel.text = name
@@ -29,7 +27,7 @@ class ClassContentViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func getFileNames(){
+    func getFileNames() {
         let storage = Storage.storage()
         let storageRef = storage.reference().child(filepath!)
         var filenames: [String?] = []
@@ -37,7 +35,7 @@ class ClassContentViewController: UIViewController {
             if let error = error {
                 print(error)
             }
-            for item in result!.items{
+            for item in result!.items {
                 filenames.append(item.name)
             }
             self.filenames = filenames
@@ -53,7 +51,7 @@ class ClassContentViewController: UIViewController {
     
 }
 
-extension ClassContentViewController: UITableViewDelegate{
+extension ClassContentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         previousSelection = indexPath.row
         performSegue(withIdentifier: "transcriptiontrans", sender: nil)
@@ -64,8 +62,8 @@ extension ClassContentViewController: UITableViewDelegate{
      - value: sender: The object that initiated the segue.
      */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "transcriptiontrans"{
-            if let indexPath = contentTable.indexPathForSelectedRow{
+        if segue.identifier == "transcriptiontrans" {
+            if let indexPath = contentTable.indexPathForSelectedRow {
                 let nextViewController = segue.destination as! ShowTranscriptionViewController
                 nextViewController.filepath = filepath
                 nextViewController.filename = filenames[previousSelection]
@@ -74,7 +72,7 @@ extension ClassContentViewController: UITableViewDelegate{
     }
 }
 
-extension ClassContentViewController: UITableViewDataSource{
+extension ClassContentViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filenames.count
     }

@@ -9,7 +9,6 @@ import UIKit
 import FirebaseStorage
 
 class ShowTranscriptionViewController: UIViewController {
-    
     var filepath: String?
     var filename: String?
 
@@ -23,7 +22,7 @@ class ShowTranscriptionViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func loadFileToText(){
+    func loadFileToText() {
         let storage = Storage.storage()
         let path = filepath! + "/" + filename!
         let pathRef = storage.reference(withPath: path)
@@ -31,7 +30,8 @@ class ShowTranscriptionViewController: UIViewController {
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                self.transcriptionView.text = String(decoding: data!, as: UTF8.self)         }
+                self.transcriptionView.text = String(decoding: data!, as: UTF8.self)
+            }
         }
         
     }

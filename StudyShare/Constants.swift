@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Constants{
-    struct Storyboard{
+struct Constants {
+    struct Storyboard {
         static let homeViewController = "HomeVC"
         static let classContentController = "ClassContentVC"
     }

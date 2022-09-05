@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct User{
+struct User {
     static var UID: String = "nil"
     static var docID: String = "nil"
     static var firstName: String = "nil"
     static var lastName: String = "nil"
     static var groups: [String] = ["nil"]
-    static var groupData : [Group] = []
+    static var groupData: [Group] = []
     static var currentGroup: String = "nil"
 }

@@ -43,26 +43,25 @@ class CreateClassViewController: UIViewController {
             let instit = institutionField.text!
             let dirName = name + "_" + yearField.text! + "_" + semesterField.text!
             
-            
-            let db = Firestore.firestore()
-            db.collection("classes").addDocument(data: ["Name" : name,
-                                                        "Description" : desc,
-                                                        "Year" : String(year!),
+            let database = Firestore.firestore()
+            database.collection("classes").addDocument(data: ["Name": name,
+                                                        "Description": desc,
+                                                        "Year": String(year!),
                                                         "Semester": String(sem!),
-                                                        "Institution" : instit,
-                                                        "Filepath" : dirName]) { (error) in
-                if error != nil{
+                                                        "Institution": instit,
+                                                        "Filepath": dirName]) { (error) in
+                if error != nil {
                     // There was an error
                     self.showError("Could not connect to database, class not created")
                 }
             }
             let storerr = initStorage(dirName)
-            if storerr != nil{
+            if storerr != nil {
                 showError(storerr!)
-            } else{
+            } else {
                 
             }
-            let userRef = db.collection("users").document(User.docID)
+            let userRef = database.collection("users").document(User.docID)
             userRef.updateData(["groups": FieldValue.arrayUnion([dirName])])
             User.groups.append(dirName)
             self.transitionToHome()
@@ -73,31 +72,31 @@ class CreateClassViewController: UIViewController {
     Validates the fields are free from errors
         -Returns: String containing the error message if an error occured, otherwise nil
     */
-    func validateFields() -> String?{
-        if !paperCodeField.hasText{
+    func validateFields() -> String? {
+        if !paperCodeField.hasText {
             return "Please fill out name"
         }
-        if !paperDescField.hasText{
+        if !paperDescField.hasText {
             return "Please fill out description"
         }
-        if !yearField.hasText{
+        if !yearField.hasText {
             return "Please fill out year"
         }
-        if !semesterField.hasText{
+        if !semesterField.hasText {
             return "Please fill out semester"
         }
-        if !institutionField.hasText{
+        if !institutionField.hasText {
             return "Please fill out institution"
             // TODO: Validate this a valid institution
         }
         //TODO: Add more validation, prevent duplicates by checking db for existing name+year+sem combo
         let semNum = Int(semesterField.text!) ?? 0
-        if semNum != 1 && semNum != 2{
+        if semNum != 1 && semNum != 2 {
             return "Semester must be 1 or 2"
         }
         let yearNum = Int(yearField.text!) ?? 0
         let currYear = Calendar.current.component(.year, from: Date())
-        if yearNum != currYear && yearNum != currYear + 1{
+        if yearNum != currYear && yearNum != currYear + 1 {
             return "Year must be this year or next year"
         }
         return nil
@@ -108,7 +107,7 @@ class CreateClassViewController: UIViewController {
     -Parameters:
         - message: String: The error message to display
     */
-    func showError(_ message:String){
+    func showError(_ message: String) {
         errorLabel.text = message
         errorLabel.alpha = 1
     }
@@ -118,7 +117,7 @@ class CreateClassViewController: UIViewController {
     Should only be called from createButtonTapped and after full validation.
         -Returns: String: The error message if an error occurred, otherwise nil
     */
-    func initStorage(_ filePath:String)->String? {
+    func initStorage(_ filePath: String) -> String? {
         let data: Data? = "init".data(using: .utf8)
         let storage = Storage.storage()
         let storageRef = storage.reference()
@@ -138,7 +137,7 @@ class CreateClassViewController: UIViewController {
     Instantiates and transitions to the home view controller.
     Necessary to force reloading of the class data.
     */
-    func transitionToHome(){
+    func transitionToHome() {
         let homeViewController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController) as? HomeViewController
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()

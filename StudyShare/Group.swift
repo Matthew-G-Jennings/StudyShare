@@ -7,12 +7,11 @@
 
 import Foundation
 
-struct Group{
-    var Description: String = ""
-    var Filepath: String = ""
-    var Institution: String = ""
-    var Name: String = ""
-    var Semester: String = ""
-    var Year: String = ""
+struct Group {
+    var description: String = ""
+    var filepath: String = ""
+    var institution: String = ""
+    var name: String = ""
+    var semester: String = ""
+    var year: String = ""
 }
-

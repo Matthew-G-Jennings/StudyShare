@@ -9,7 +9,6 @@ import UIKit
 import FirebaseStorage
 
 class AddContentViewController: UIViewController {
-    
     var filenames: [String?] = []
     var selectedFile: String = ""
     var previousSelection = 0
@@ -25,9 +24,9 @@ class AddContentViewController: UIViewController {
         self.contentTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
     }
     
-    func getFileNames(){
+    func getFileNames() {
         let manager = FileManager.default
-        guard let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else{
+        guard let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return
         }
         let currDir = url.appendingPathComponent("Transcriptions")
@@ -45,9 +44,9 @@ class AddContentViewController: UIViewController {
         The add button has been tapped, confirm a file is selected and if so upload it to the firebase storage for this class
      */
     @IBAction func addTapped(_ sender: Any) {
-        if (selectedFile.count > 0){
+        if selectedFile.count > 0 {
             let manager = FileManager.default
-            guard let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else{
+            guard let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {
                 return
             }
             let pathToFile = "file://" + url.path.trimmingCharacters(in: .whitespacesAndNewlines) + "/" + "Transcriptions" + "/" + selectedFile.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -73,7 +72,7 @@ class AddContentViewController: UIViewController {
     }
 }
 
-extension AddContentViewController: UITableViewDelegate{
+extension AddContentViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -85,7 +84,7 @@ extension AddContentViewController: UITableViewDelegate{
     }
 }
 
-extension AddContentViewController: UITableViewDataSource{
+extension AddContentViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.filenames.count
     }
