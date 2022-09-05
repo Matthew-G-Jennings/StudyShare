@@ -12,7 +12,7 @@ An inclusive app designed to assist in facilitating shared learning experiences!
 
 [![codecov](https://codecov.io/gh/Matthew-G-Jennings/StudyShare/branch/main/graph/badge.svg?token=5CN4FZIA13)](https://codecov.io/gh/Matthew-G-Jennings/StudyShare)
 
-## Code Sources/References:
+## Code Sources/References
 Firebase authentication/logins - codewithchris
 
 Speech to text - developer.apple.com (no longer exists here, has been replaced with SwiftUI based system, fundamentally the same)
