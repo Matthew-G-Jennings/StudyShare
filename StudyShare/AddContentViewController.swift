@@ -15,7 +15,6 @@ class AddContentViewController: UIViewController {
 
     @IBOutlet weak var typeSelector: UIButton!
     @IBOutlet weak var contentTable: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         getFileNames()

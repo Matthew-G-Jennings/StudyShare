@@ -13,7 +13,6 @@ import Firebase
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var classTable: UITableView!
-    
     var selectedIndexPath: IndexPath?
     
     override func viewDidLoad() {
@@ -77,7 +76,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
     }
-    
+
     /**
      Utilizes the currently logged in users UID to retreive their full info from firebase db
      Stores this information in a class dedicated to holding the users info.
