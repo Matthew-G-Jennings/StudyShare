@@ -13,10 +13,12 @@ class AddContentViewController: UIViewController {
     var selectedFile: String = ""
     var previousSelection = 0
 
+    @IBOutlet weak var feedbackLabel: UILabel!
     @IBOutlet weak var typeSelector: UIButton!
     @IBOutlet weak var contentTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        feedbackLabel.alpha = 0
         getFileNames()
         contentTable.delegate = self
         contentTable.dataSource = self
@@ -32,8 +34,24 @@ class AddContentViewController: UIViewController {
         do {
             self.filenames = try manager.contentsOfDirectory(atPath: currDir.path)
         } catch {
-            print("An error has occurred in reading directory contents")
+            showLabel("An error has occurred in reading directory contents", true)
         }
+    }
+    
+    /**
+    Sets label to the given String
+     - Parameters:
+            - message: String: The message to display
+            - error: Bool True if this is an error, False if feedback
+    */
+    func showLabel(_ message: String, _ error: Bool) {
+        if error {
+            feedbackLabel.textColor = UIColor.red
+        } else {
+            feedbackLabel.textColor = UIColor.green
+        }
+        feedbackLabel.text = message
+        feedbackLabel.alpha = 1
     }
 
     @IBAction func backTapped(_ sender: Any) {
@@ -54,18 +72,14 @@ class AddContentViewController: UIViewController {
             let storageRef = storage.reference()
             let targetDir = User.currentGroup + "/" + selectedFile
             let targetRef = storageRef.child(targetDir)
-            print("UPLOADING FROM")
-            print(fileToUpload)
-            print("TO")
-            print(targetDir)
-            print("FILE EXISTS:")
-            print(manager.fileExists(atPath: fileToUpload.path))
-            let uploadTask = targetRef.putFile(from: fileToUpload)
-            print("TASK STATE")
-            print(uploadTask.snapshot)
+            if (!manager.fileExists(atPath: fileToUpload.path)){
+                showLabel("Failed to read file", true)
+            }
+            let _ = targetRef.putFile(from: fileToUpload)
+            showLabel("Uploaded successfully", false)
             
         } else {
-            print("Please select a file")
+            showLabel("Please select a file", true)
             return
         }
     }

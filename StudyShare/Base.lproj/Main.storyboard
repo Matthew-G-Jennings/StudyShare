@@ -645,6 +645,12 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gx8-nc-INs">
+                                <rect key="frame" x="186.5" y="752.5" width="41.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xIc-mj-UUL"/>
                         <color key="backgroundColor" red="0.075020408450000006" green="0.071105441970000002" blue="0.23801707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -657,6 +663,8 @@
                             <constraint firstItem="kV2-eR-gmc" firstAttribute="centerX" secondItem="0PD-J1-GvA" secondAttribute="centerX" id="br9-DM-2yQ"/>
                             <constraint firstItem="kV2-eR-gmc" firstAttribute="top" secondItem="EaJ-QK-OOi" secondAttribute="bottom" constant="8" symbolic="YES" id="bso-gS-klt"/>
                             <constraint firstItem="t2T-3o-v4B" firstAttribute="centerX" secondItem="0PD-J1-GvA" secondAttribute="centerX" id="c6E-wd-AgV"/>
+                            <constraint firstItem="6PH-yt-VSQ" firstAttribute="top" secondItem="gx8-nc-INs" secondAttribute="bottom" constant="8" symbolic="YES" id="cex-IZ-xI5"/>
+                            <constraint firstItem="gx8-nc-INs" firstAttribute="centerX" secondItem="0PD-J1-GvA" secondAttribute="centerX" id="hrN-kw-Ssz"/>
                             <constraint firstItem="EaJ-QK-OOi" firstAttribute="centerX" secondItem="0PD-J1-GvA" secondAttribute="centerX" id="ipU-9J-21f"/>
                             <constraint firstItem="xIc-mj-UUL" firstAttribute="bottom" secondItem="t2T-3o-v4B" secondAttribute="bottom" constant="100" id="sYi-EO-XDO"/>
                             <constraint firstItem="EaJ-QK-OOi" firstAttribute="top" secondItem="xIc-mj-UUL" secondAttribute="top" constant="30" id="sym-7B-fxW"/>
@@ -667,6 +675,7 @@
                     <navigationItem key="navigationItem" id="R7E-cV-5YX"/>
                     <connections>
                         <outlet property="contentTable" destination="t2T-3o-v4B" id="xVE-dk-X8L"/>
+                        <outlet property="feedbackLabel" destination="gx8-nc-INs" id="YP8-ta-vq5"/>
                         <outlet property="typeSelector" destination="kV2-eR-gmc" id="Jrx-43-dOC"/>
                     </connections>
                 </viewController>
@@ -1259,7 +1268,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eAQ-et-Dob"/>
         <segue reference="LRq-DT-xyw"/>
     </inferredMetricsTieBreakers>
     <resources>
