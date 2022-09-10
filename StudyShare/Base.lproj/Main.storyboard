@@ -689,103 +689,77 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZGX-5i-fkd">
-                                <rect key="frame" x="20" y="44" width="158" height="39"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StudyShareHeader" translatesAutoresizingMaskIntoConstraints="NO" id="mP8-Qc-dTq">
-                                        <rect key="frame" x="0.0" y="0.0" width="158" height="39"/>
-                                    </imageView>
-                                </subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Classes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg1-fJ-YKe">
+                                <rect key="frame" x="163.5" y="111" width="87" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StudyShareHeader" translatesAutoresizingMaskIntoConstraints="NO" id="mP8-Qc-dTq">
+                                <rect key="frame" x="20" y="64" width="200" height="39"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="158" id="pA9-nx-4zk"/>
-                                    <constraint firstAttribute="height" constant="39" id="u8e-bP-wUC"/>
+                                    <constraint firstAttribute="width" constant="200" id="EnN-34-Xyc"/>
                                 </constraints>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hf2-ye-321">
-                                <rect key="frame" x="0.0" y="113" width="414" height="20.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Classes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg1-fJ-YKe">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="IYH-Ec-u5t">
-                                <rect key="frame" x="7" y="709" width="400" height="133"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufZ-OZ-pcc">
-                                        <rect key="frame" x="0.0" y="0.0" width="400" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Add Class"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3e-ZW-N4s">
+                                <rect key="frame" x="141" y="792" width="132.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Create recording"/>
+                                <connections>
+                                    <segue destination="3YQ-Ie-AIy" kind="show" id="pI4-JN-iLF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iFF-TW-ptn">
+                                <rect key="frame" x="130.5" y="831" width="153" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Create transcription"/>
+                                <connections>
+                                    <segue destination="b4e-Vb-xnA" kind="show" id="Isy-Ym-zfD"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OBq-Sq-IZn">
+                                <rect key="frame" x="0.0" y="139" width="414" height="606.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="3QG-AO-ir1">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3QG-AO-ir1" id="23H-uv-Dbb">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="RNF-VR-9WW" kind="show" id="0v8-vI-JgU"/>
+                                            <segue destination="YOj-zn-CyC" kind="show" identifier="transition" id="GTL-5W-c64"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3e-ZW-N4s">
-                                        <rect key="frame" x="0.0" y="51" width="400" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Create recording"/>
-                                        <connections>
-                                            <segue destination="3YQ-Ie-AIy" kind="show" id="pI4-JN-iLF"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iFF-TW-ptn">
-                                        <rect key="frame" x="0.0" y="102" width="400" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Create transcription"/>
-                                        <connections>
-                                            <segue destination="b4e-Vb-xnA" kind="show" id="Isy-Ym-zfD"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="400" id="kk1-4L-dRx"/>
-                                </constraints>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OOU-Ha-0Y7">
-                                <rect key="frame" x="20" y="138.5" width="374" height="400"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OBq-Sq-IZn">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="400"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="3QG-AO-ir1">
-                                                <rect key="frame" x="0.0" y="44.5" width="374" height="43.5"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3QG-AO-ir1" id="23H-uv-Dbb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </tableViewCellContentView>
-                                                <connections>
-                                                    <segue destination="YOj-zn-CyC" kind="show" identifier="transition" id="GTL-5W-c64"/>
-                                                </connections>
-                                            </tableViewCell>
-                                        </prototypes>
-                                    </tableView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="0XM-xc-fNU"/>
-                                </constraints>
-                            </stackView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufZ-OZ-pcc">
+                                <rect key="frame" x="162.5" y="753" width="89" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add Class"/>
+                                <connections>
+                                    <segue destination="RNF-VR-9WW" kind="show" id="0v8-vI-JgU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="i2D-eT-TKy"/>
                         <color key="backgroundColor" red="0.051928359129999997" green="0.090184948779999996" blue="0.24532468060000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="i2D-eT-TKy" firstAttribute="trailing" secondItem="OOU-Ha-0Y7" secondAttribute="trailing" constant="20" id="2Qf-Da-y1k"/>
-                            <constraint firstItem="hf2-ye-321" firstAttribute="leading" secondItem="i2D-eT-TKy" secondAttribute="leading" id="5uW-8q-JaF"/>
-                            <constraint firstItem="OOU-Ha-0Y7" firstAttribute="top" secondItem="hf2-ye-321" secondAttribute="bottom" constant="5" id="96F-hz-1Mn"/>
-                            <constraint firstItem="OOU-Ha-0Y7" firstAttribute="leading" secondItem="i2D-eT-TKy" secondAttribute="leading" constant="20" id="HDO-58-DzB"/>
-                            <constraint firstItem="ZGX-5i-fkd" firstAttribute="top" secondItem="i2D-eT-TKy" secondAttribute="top" id="K8Q-Co-6ao"/>
-                            <constraint firstItem="ZGX-5i-fkd" firstAttribute="leading" secondItem="i2D-eT-TKy" secondAttribute="leading" constant="20" id="RPx-li-9rk"/>
-                            <constraint firstItem="hf2-ye-321" firstAttribute="leading" secondItem="i2D-eT-TKy" secondAttribute="leading" id="Ttf-J1-jIB"/>
-                            <constraint firstItem="i2D-eT-TKy" firstAttribute="bottom" secondItem="IYH-Ec-u5t" secondAttribute="bottom" constant="20" id="Xr6-yv-XrZ"/>
-                            <constraint firstItem="hf2-ye-321" firstAttribute="trailing" secondItem="i2D-eT-TKy" secondAttribute="trailing" id="a6o-h1-Mcr"/>
-                            <constraint firstItem="i2D-eT-TKy" firstAttribute="trailing" secondItem="IYH-Ec-u5t" secondAttribute="trailing" constant="7" id="gcO-ph-Sco"/>
-                            <constraint firstItem="IYH-Ec-u5t" firstAttribute="leading" secondItem="i2D-eT-TKy" secondAttribute="leading" constant="7" id="jv6-Sf-FUM"/>
-                            <constraint firstItem="hf2-ye-321" firstAttribute="trailing" secondItem="i2D-eT-TKy" secondAttribute="trailing" id="lg0-Fw-l3Z"/>
-                            <constraint firstItem="hf2-ye-321" firstAttribute="top" secondItem="ZGX-5i-fkd" secondAttribute="bottom" constant="30" id="yx5-na-gHN"/>
+                            <constraint firstItem="OBq-Sq-IZn" firstAttribute="top" secondItem="eg1-fJ-YKe" secondAttribute="bottom" constant="7.5" id="2BK-3f-3Ta"/>
+                            <constraint firstItem="c3e-ZW-N4s" firstAttribute="top" secondItem="ufZ-OZ-pcc" secondAttribute="bottom" constant="8" symbolic="YES" id="6gW-ag-7C6"/>
+                            <constraint firstItem="ufZ-OZ-pcc" firstAttribute="centerX" secondItem="AmT-D5-nYs" secondAttribute="centerX" id="BBq-dN-TMv"/>
+                            <constraint firstItem="iFF-TW-ptn" firstAttribute="centerX" secondItem="AmT-D5-nYs" secondAttribute="centerX" id="Bki-gD-s3C"/>
+                            <constraint firstItem="c3e-ZW-N4s" firstAttribute="centerX" secondItem="AmT-D5-nYs" secondAttribute="centerX" id="I9H-CE-L2F"/>
+                            <constraint firstItem="OBq-Sq-IZn" firstAttribute="leading" secondItem="i2D-eT-TKy" secondAttribute="leading" id="QSS-9k-opB"/>
+                            <constraint firstItem="i2D-eT-TKy" firstAttribute="trailing" secondItem="OBq-Sq-IZn" secondAttribute="trailing" id="RIq-rW-pkg"/>
+                            <constraint firstItem="mP8-Qc-dTq" firstAttribute="leading" secondItem="AmT-D5-nYs" secondAttribute="leading" constant="20" id="VMV-TV-pFw"/>
+                            <constraint firstItem="mP8-Qc-dTq" firstAttribute="top" secondItem="i2D-eT-TKy" secondAttribute="top" constant="20" id="azv-t4-bH5"/>
+                            <constraint firstItem="iFF-TW-ptn" firstAttribute="bottom" secondItem="i2D-eT-TKy" secondAttribute="bottom" id="exb-II-qYD"/>
+                            <constraint firstItem="eg1-fJ-YKe" firstAttribute="top" secondItem="mP8-Qc-dTq" secondAttribute="bottom" constant="8" symbolic="YES" id="pTC-Mi-dPL"/>
+                            <constraint firstItem="ufZ-OZ-pcc" firstAttribute="top" secondItem="OBq-Sq-IZn" secondAttribute="bottom" constant="7.5" id="qm7-cf-WVc"/>
+                            <constraint firstItem="eg1-fJ-YKe" firstAttribute="centerX" secondItem="AmT-D5-nYs" secondAttribute="centerX" id="sm4-sY-tCL"/>
+                            <constraint firstItem="iFF-TW-ptn" firstAttribute="top" secondItem="c3e-ZW-N4s" secondAttribute="bottom" constant="8" symbolic="YES" id="uvp-7v-GWB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mWT-Me-6o0"/>

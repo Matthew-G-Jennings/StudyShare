@@ -20,7 +20,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         setUpUserDetails()
         classTable.dataSource = self
         classTable.delegate = self
-        
+        print("User groups:")
+        print(User.groupData)
         title = "Swipe Actions"
         
         self.classTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
@@ -105,6 +106,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     User.lastName = (userDataDict["lastname"] as! String)
                     User.docID = document.documentID
                     User.groups = (userDataDict["groups"] as! [String])
+                    print("User.groups")
+                    print(User.groups)
                 }
                 let database = Firestore.firestore()
                 database.collection("classes").getDocuments() { (querySnapshot, err) in
@@ -115,15 +118,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                             let groupsDataDict = document.data()
                             var group = Group()
                             
-                            group.description   = (groupsDataDict["description"] as? String ?? "")
-                            group.filepath = (groupsDataDict["filepath"] as? String ?? "")
-                            group.institution = (groupsDataDict["institution"] as? String ?? "")
-                            group.name = (groupsDataDict["name"] as? String ?? "")
-                            group.semester = (groupsDataDict["semester"] as? String ?? "")
-                            group.year = (groupsDataDict["year"] as? String ?? "")
+                            group.description   = (groupsDataDict["Description"] as? String ?? "")
+                            group.filepath = (groupsDataDict["Filepath"] as? String ?? "")
+                            group.institution = (groupsDataDict["Institution"] as? String ?? "")
+                            group.name = (groupsDataDict["Name"] as? String ?? "")
+                            group.semester = (groupsDataDict["Semester"] as? String ?? "")
+                            group.year = (groupsDataDict["Year"] as? String ?? "")
                             
                             let groupVar = Group(description: group.description, filepath: group.filepath, institution: group.institution, name: group.name, semester: group.semester, year: group.year)
-                            
                             if User.groups.contains(groupVar.filepath) {
                                 User.groupData.append(groupVar)
                             }
