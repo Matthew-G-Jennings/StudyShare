@@ -14,6 +14,7 @@ import Speech
 import AVKit
 
 class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate {
+    @IBOutlet weak var feedbackLabel: UILabel!
     @IBOutlet weak var fileNameField: UITextField!
     @IBOutlet weak var transcriptionText: UITextView!
     @IBOutlet weak var beginButton: UIButton!
@@ -115,6 +116,7 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
         self.beginButton?.isEnabled = true
         super.viewDidLoad()
         self.setupSpeech()
+        self.feedbackLabel.alpha = 0
         // make the keyboard disappear, when click outside fields
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tapGesture)
@@ -135,7 +137,7 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
     @IBAction func saveTapped(_ sender: UIButton) {
         let saveError = saveValidate()
         if saveError != nil {
-            //Do error stuff, need to add an error label..
+            showLabel(saveError!, true)
         } else {
             let saveData = transcriptionText.text!.data(using: .utf8)
             let manager = FileManager.default
@@ -150,11 +152,26 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
             } catch {
                 print(error)
             }
-            manager.createFile(atPath: filePath.path, contents: saveData)
-            print("Successfully created file")
-            print(filePath)
+            manager.createFile(atPath: filePath.path + ".txt", contents: saveData)
+            showLabel("Successfully created file " + fileNameField.text! + ".txt", false)
         }
         
+    }
+    
+    /**
+    Sets label to the given String
+     - Parameters:
+            - message: String: The message to display
+            - error: Bool True if this is an error, False if feedback
+    */
+    func showLabel(_ message: String, _ error: Bool) {
+        if error {
+            feedbackLabel.textColor = UIColor.red
+        } else {
+            feedbackLabel.textColor = UIColor.green
+        }
+        feedbackLabel.text = message
+        feedbackLabel.alpha = 1
     }
     
     func saveValidate() -> String? {
@@ -166,15 +183,7 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
         }
         return nil
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
     @IBAction func backTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
