@@ -106,8 +106,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     User.lastName = (userDataDict["lastname"] as! String)
                     User.docID = document.documentID
                     User.groups = (userDataDict["groups"] as! [String])
-                    print("User.groups")
-                    print(User.groups)
                 }
                 let database = Firestore.firestore()
                 database.collection("classes").getDocuments() { (querySnapshot, err) in
