@@ -127,6 +127,7 @@
 				B1AA57132896245400A3A8A0 /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		B1AA57132896245400A3A8A0 /* Products */ = {
 			isa = PBXGroup;

@@ -12,6 +12,7 @@ class AddContentViewController: UIViewController {
     var filenames: [String?] = []
     var selectedFile: String = ""
     var previousSelection = 0
+    var contentVC: ClassContentViewController? = nil
 
     @IBOutlet weak var feedbackLabel: UILabel!
     @IBOutlet weak var typeSelector: UIButton!
@@ -77,6 +78,7 @@ class AddContentViewController: UIViewController {
             }
             let _ = targetRef.putFile(from: fileToUpload)
             showLabel("Uploaded successfully", false)
+            contentVC?.newFileAdded(selectedFile.trimmingCharacters(in: .whitespacesAndNewlines))
             
         } else {
             showLabel("Please select a file", true)

@@ -556,7 +556,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Add Content"/>
                                         <connections>
-                                            <segue destination="BZl-Id-lWH" kind="show" id="wlu-IH-Dds"/>
+                                            <segue destination="BZl-Id-lWH" kind="show" identifier="addContent" id="wlu-IH-Dds"/>
                                         </connections>
                                     </button>
                                 </subviews>

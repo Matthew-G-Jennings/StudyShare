@@ -26,6 +26,15 @@ class ClassContentViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func newFileAdded(_ filename: String){
+        print("adding file")
+        print(filename)
+        self.filenames.append(filename)
+        DispatchQueue.main.async {
+            self.contentTable.reloadData()
+        }
+    }
+    
     func getFileNames() {
         let storage = Storage.storage()
         let storageRef = storage.reference().child(filepath!)
@@ -67,6 +76,9 @@ extension ClassContentViewController: UITableViewDelegate {
                 nextViewController.filepath = filepath
                 nextViewController.filename = filenames[previousSelection]
             }
+        } else if segue.identifier == "addContent"{
+            let nextViewController = segue.destination as! AddContentViewController
+            nextViewController.contentVC = self
         }
     }
 }

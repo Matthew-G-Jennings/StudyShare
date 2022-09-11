@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct User {
     static var UID: String = "nil"
