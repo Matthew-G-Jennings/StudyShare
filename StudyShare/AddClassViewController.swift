@@ -10,7 +10,9 @@ import FirebaseFirestore
 
 class AddClassViewController: UIViewController {
     var groups: [Group?] = []
+    var groupsFiltered:[Group?] = []
     var previousSelection = -1
+    
     @IBOutlet weak var searchTable: UITableView!
     @IBOutlet weak var filterField: UITextField!
     @IBOutlet weak var addButton: UIButton!
@@ -24,7 +26,7 @@ class AddClassViewController: UIViewController {
     
     func getGroups() {
         let database = Firestore.firestore()
-        database.collection("classes").getDocuments() { (querySnapshot, err) in
+        database.collection("classes").getDocuments() { [self] (querySnapshot, err) in
             if let err = err {
                 print("Error retrieving user data: \(err)")
             } else {
@@ -42,6 +44,8 @@ class AddClassViewController: UIViewController {
                     self.groups.append(groupVar)
                 }
             }
+            
+            groupsFiltered = groups
             DispatchQueue.main.async {
                 self.searchTable.reloadData()
             }
@@ -51,7 +55,7 @@ class AddClassViewController: UIViewController {
     @IBAction func addTapped(_ sender: Any) {
         if previousSelection >= 0 {
             let database = Firestore.firestore()
-            let dirName = groups[previousSelection]!.filepath
+            let dirName = groupsFiltered[previousSelection]!.filepath
             let userRef = database.collection("users").document(User.docID)
             userRef.updateData(["groups": FieldValue.arrayUnion([dirName])])
             User.groups.append(dirName)
@@ -59,6 +63,21 @@ class AddClassViewController: UIViewController {
             
         } else {
             print("Please make a selection")
+        }
+    }
+    
+    @IBAction func filterChanged(_ sender: Any) {
+        previousSelection = -1
+        let filterText = filterField.text
+        if filterText!.count > 0 {
+            groupsFiltered = groups.filter {
+                $0?.filepath.uppercased().contains(filterText!.uppercased()) == true
+            }
+        } else {
+            groupsFiltered = groups
+        }
+        DispatchQueue.main.async {
+            self.searchTable.reloadData()
         }
     }
     
@@ -79,9 +98,6 @@ class AddClassViewController: UIViewController {
 
 extension AddClassViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let prevPath = IndexPath(arrayLiteral: 0, previousSelection)
-        tableView.cellForRow(at: prevPath)?.setHighlighted(false, animated: true)
-        tableView.cellForRow(at: indexPath)?.setHighlighted(true, animated: true)
         previousSelection = indexPath.row
     }
 }
@@ -89,12 +105,12 @@ extension AddClassViewController: UITableViewDelegate {
 extension AddClassViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups.count
+        return groupsFiltered.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = searchTable.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
-        cell.textLabel?.text = groups[indexPath.row]?.filepath
+        cell.textLabel?.text = groupsFiltered[indexPath.row]?.filepath
         return cell
     }
 }
