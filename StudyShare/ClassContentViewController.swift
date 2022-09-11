@@ -27,8 +27,6 @@ class ClassContentViewController: UIViewController {
     }
     
     func newFileAdded(_ filename: String){
-        print("adding file")
-        print(filename)
         self.filenames.append(filename)
         DispatchQueue.main.async {
             self.contentTable.reloadData()
