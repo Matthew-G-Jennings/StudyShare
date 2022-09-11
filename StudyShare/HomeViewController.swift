@@ -20,8 +20,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         setUpUserDetails()
         classTable.dataSource = self
         classTable.delegate = self
-        print("User groups:")
-        print(User.groupData)
         title = "Swipe Actions"
         
         self.classTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
