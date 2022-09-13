@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DD59BF328B851C00029EB06 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD59BF228B851C00029EB06 /* Group.swift */; };
+		B1589EAE28D0536D00E9203E /* MyContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1589EAD28D0536D00E9203E /* MyContentViewController.swift */; };
 		B16179D028B9B293006464BF /* AddContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16179CF28B9B293006464BF /* AddContentViewController.swift */; };
 		B1793FAA2897778000A2F9F3 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1793FA92897778000A2F9F3 /* Utilities.swift */; };
 		B1793FAC28977D4500A2F9F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1793FAB28977D4500A2F9F3 /* GoogleService-Info.plist */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		1DD59BF228B851C00029EB06 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		B1589EAD28D0536D00E9203E /* MyContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContentViewController.swift; sourceTree = "<group>"; };
 		B16179CF28B9B293006464BF /* AddContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentViewController.swift; sourceTree = "<group>"; };
 		B1793FA92897778000A2F9F3 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B1793FAB28977D4500A2F9F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				B1888AF028B88832002565DE /* ShowVideoViewController.swift */,
 				B1888AF228B88842002565DE /* ShowTranscriptionViewController.swift */,
 				B16179CF28B9B293006464BF /* AddContentViewController.swift */,
+				B1589EAD28D0536D00E9203E /* MyContentViewController.swift */,
 			);
 			path = StudyShare;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1589EAE28D0536D00E9203E /* MyContentViewController.swift in Sources */,
 				B1888AEB28B1DB8C002565DE /* User.swift in Sources */,
 				B1888AEF28B88819002565DE /* ShowNotesViewController.swift in Sources */,
 				B1AA571A2896245400A3A8A0 /* ViewController.swift in Sources */,

@@ -90,10 +90,6 @@ class AddContentViewController: UIViewController {
 extension AddContentViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let prevPath = IndexPath(arrayLiteral: 0, previousSelection)
-        tableView.cellForRow(at: prevPath)?.setHighlighted(false, animated: true)
-        tableView.cellForRow(at: indexPath)?.setHighlighted(true, animated: true)
         previousSelection = indexPath.row
         selectedFile = filenames[previousSelection]!
     }
