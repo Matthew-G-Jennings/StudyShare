@@ -45,7 +45,7 @@ class ClassContentViewController: UIViewController {
                 filenames.append(item.name)
             }
             self.filenames = filenames
-            self.filenames.removeFirst()
+            let _ = self.filenames.removeFirst()
             DispatchQueue.main.async {
                 self.contentTable.reloadData()
             }
