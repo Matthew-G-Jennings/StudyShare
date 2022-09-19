@@ -8,7 +8,7 @@
 import UIKit
 
 class MyContentViewController: UIViewController {
-    
+
     var filenames: [String?] = []
     var selectedFile: String = ""
     var previousSelection = 0
@@ -56,9 +56,8 @@ class MyContentViewController: UIViewController {
             }
         }
     }
-    
-
 }
+
 extension MyContentViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

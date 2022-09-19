@@ -12,7 +12,7 @@ class ShowTranscriptionViewController: UIViewController {
     var filepath: String?
     var filename: String?
     var remote = true
-    
+
     @IBOutlet weak var transcriptionTitle: UILabel!
     @IBOutlet weak var transcriptionView: UITextView!
     override func viewDidLoad() {
@@ -38,8 +38,8 @@ class ShowTranscriptionViewController: UIViewController {
             }
         }
     }
-    
-    func loadFileToTextLocal(){
+
+    func loadFileToTextLocal() {
         let manager = FileManager.default
         guard let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return
@@ -53,8 +53,7 @@ class ShowTranscriptionViewController: UIViewController {
             print("An error has occurred in reading file")
         }
     }
-        
-    
+
     @IBAction func likeButtonTapped(_ sender: Any) {
     }
     

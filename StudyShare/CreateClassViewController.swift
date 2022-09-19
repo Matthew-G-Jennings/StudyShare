@@ -18,7 +18,7 @@ class CreateClassViewController: UIViewController {
     @IBOutlet weak var semesterField: UITextField!
     @IBOutlet weak var institutionField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.alpha = 0

@@ -22,7 +22,7 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
     var recognitionTask: SFSpeechRecognitionTask?
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     let audioEngine = AVAudioEngine()
-    
+
     func setupSpeech() {
         
         self.beginButton?.isEnabled = true
@@ -45,7 +45,7 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
                 fatalError()
             }
             
-            OperationQueue.main.addOperation() {
+            OperationQueue.main.addOperation {
                 self.beginButton.isEnabled = isButtonEnabled
             }
         }

@@ -51,7 +51,7 @@ class RecordingViewController: UIViewController, UIImagePickerControllerDelegate
 
     // Generic view for containing video, this may not be what we want here
     @IBOutlet weak var videoView: UIView!
-    
+
     func imagePickerController(
         _ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]

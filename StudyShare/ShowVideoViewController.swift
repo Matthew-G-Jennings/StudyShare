@@ -26,7 +26,7 @@ class ShowVideoViewController: UIViewController, UIImagePickerControllerDelegate
           .isSourceTypeAvailable(.savedPhotosAlbum) == false {
         return
       }
-  
+
       let imgPicker = UIImagePickerController()
       imgPicker.sourceType = .savedPhotosAlbum
       imgPicker.mediaTypes = [kUTTypeMovie  as String]

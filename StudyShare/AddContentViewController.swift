@@ -12,7 +12,7 @@ class AddContentViewController: UIViewController {
     var filenames: [String?] = []
     var selectedFile: String = ""
     var previousSelection = 0
-    var contentVC: ClassContentViewController? = nil
+    var contentVC: ClassContentViewController?
 
     @IBOutlet weak var feedbackLabel: UILabel!
     @IBOutlet weak var typeSelector: UIButton!
@@ -25,7 +25,7 @@ class AddContentViewController: UIViewController {
         contentTable.dataSource = self
         self.contentTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
     }
-    
+
     func getFileNames() {
         let manager = FileManager.default
         guard let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {
@@ -73,10 +73,10 @@ class AddContentViewController: UIViewController {
             let storageRef = storage.reference()
             let targetDir = User.currentGroup + "/" + selectedFile
             let targetRef = storageRef.child(targetDir)
-            if (!manager.fileExists(atPath: fileToUpload.path)){
+            if (!manager.fileExists(atPath: fileToUpload.path)) {
                 showLabel("Failed to read file", true)
             }
-            let _ = targetRef.putFile(from: fileToUpload)
+            _ = targetRef.putFile(from: fileToUpload)
             showLabel("Uploaded successfully", false)
             contentVC?.newFileAdded(selectedFile.trimmingCharacters(in: .whitespacesAndNewlines))
             

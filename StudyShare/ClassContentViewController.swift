@@ -15,7 +15,7 @@ class ClassContentViewController: UIViewController {
     var previousSelection = -1
     @IBOutlet weak var classNameLabel: UILabel!
     @IBOutlet weak var contentTable: UITableView!
-   
+
     override func viewDidLoad() {
         super.viewDidLoad()
         classNameLabel.text = name
@@ -26,7 +26,7 @@ class ClassContentViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func newFileAdded(_ filename: String){
+    func newFileAdded(_ filename: String) {
         self.filenames.append(filename)
         DispatchQueue.main.async {
             self.contentTable.reloadData()
