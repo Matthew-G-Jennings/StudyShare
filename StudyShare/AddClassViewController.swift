@@ -10,9 +10,8 @@ import FirebaseFirestore
 
 class AddClassViewController: UIViewController {
     var groups: [Group?] = []
-    var groupsFiltered:[Group?] = []
+    var groupsFiltered: [Group?] = []
     var previousSelection = -1
-    
     @IBOutlet weak var searchTable: UITableView!
     @IBOutlet weak var filterField: UITextField!
     @IBOutlet weak var addButton: UIButton!
@@ -26,7 +25,7 @@ class AddClassViewController: UIViewController {
     
     func getGroups() {
         let database = Firestore.firestore()
-        database.collection("classes").getDocuments() { [self] (querySnapshot, err) in
+        database.collection("classes").getDocuments { [self] (querySnapshot, err) in
             if let err = err {
                 print("Error retrieving user data: \(err)")
             } else {

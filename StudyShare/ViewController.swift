@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         // setUpElements()
     }
-    
+
     func setUpElements() {
         Utilities.styleFilledButton(signUpButton)
         Utilities.styleHollowButton(loginButton)

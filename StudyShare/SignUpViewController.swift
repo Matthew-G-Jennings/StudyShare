@@ -24,7 +24,7 @@ class SignUpViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tapGesture)
     }
-    
+
     /**
     Validates the fields are correct
     Returns: String: Contains the error message if an error occurred, otherwise nil

@@ -14,7 +14,7 @@ import Firebase
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var classTable: UITableView!
     var selectedIndexPath: IndexPath?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUserDetails()
@@ -94,7 +94,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             User.UID = user!.uid
             let database = Firestore.firestore()
             let userData = database.collection("users").whereField("uid", isEqualTo: User.UID)
-            userData.getDocuments() { (querySnaphot, err) in
+            userData.getDocuments { (querySnaphot, err) in
                 if let err = err {
                     print("Error retrieving user data: \(err)")
                 } else {
@@ -106,7 +106,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     User.groups = (userDataDict["groups"] as! [String])
                 }
                 let database = Firestore.firestore()
-                database.collection("classes").getDocuments() { (querySnapshot, err) in
+                database.collection("classes").getDocuments { (querySnapshot, err) in
                     if let err = err {
                         print("Error retrieving user data: \(err)")
                     } else {

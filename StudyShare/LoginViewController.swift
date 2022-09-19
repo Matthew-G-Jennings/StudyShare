@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
+
     /**
     Validates the fields are correct
      - Returns: A String with an error message if invalid, otherwise nil
