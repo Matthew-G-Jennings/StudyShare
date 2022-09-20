@@ -18,10 +18,13 @@ class CreateClassViewController: UIViewController {
     @IBOutlet weak var semesterField: UITextField!
     @IBOutlet weak var institutionField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
+    
+    var existingGroups: [String?] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         errorLabel.alpha = 0
+        getExistingGroups()
     }
     
     /**
@@ -33,20 +36,20 @@ class CreateClassViewController: UIViewController {
     @IBAction func createButtonTapped(_ sender: Any) {
         let error = validateFields()
         if error != nil {
-            errorLabel.text = error
+            showError(error!)
         } else {
-            let name = paperCodeField.text!
+            let name = paperCodeField.text!.uppercased()
             let desc = paperDescField.text!
-            let year = Int(yearField.text!)
-            let sem = Int(semesterField.text!)
+            let year = yearField.text!
+            let sem = semesterField.text!
             let instit = institutionField.text!
             let dirName = name + "_" + yearField.text! + "_" + semesterField.text!
-            
+
             let database = Firestore.firestore()
             database.collection("classes").addDocument(data: ["Name": name,
                                                         "Description": desc,
-                                                        "Year": String(year!),
-                                                        "Semester": String(sem!),
+                                                        "Year": year,
+                                                        "Semester": sem,
                                                         "Institution": instit,
                                                         "Filepath": dirName]) { (error) in
                 if error != nil {
@@ -54,6 +57,8 @@ class CreateClassViewController: UIViewController {
                     self.showError("Could not connect to database, class not created")
                 }
             }
+            let metaRef = database.collection("meta").document("groups")
+            metaRef.updateData(["fullname": FieldValue.arrayUnion([dirName])])
             let storerr = initStorage(dirName)
             if storerr != nil {
                 showError(storerr!)
@@ -64,6 +69,25 @@ class CreateClassViewController: UIViewController {
             userRef.updateData(["groups": FieldValue.arrayUnion([dirName])])
             User.groups.append(dirName)
             self.transitionToHome()
+        }
+    }
+    
+    /**
+     Gets the identifiers for the groups that currently exist and stores them in
+     an array.
+     Used to ensure uniqueness and prevent duplicate groups
+     */
+    func getExistingGroups(){
+        let database = Firestore.firestore()
+        let groupRef = database.collection("meta").document("groups")
+        groupRef.getDocument { (document, error) in
+            if let document = document, document.exists{
+                print("List of groups")
+                print(document.data()!["fullname"] as! [String?])
+                self.existingGroups = document.data()!["fullname"] as! [String?]
+            } else {
+                print("Error communicating with database")
+            }
         }
     }
     
@@ -86,17 +110,35 @@ class CreateClassViewController: UIViewController {
         }
         if !institutionField.hasText {
             return "Please fill out institution"
-            // TODO: Validate this a valid institution
         }
-        //TODO: Add more validation, prevent duplicates by checking db for existing name+year+sem combo
-        let semNum = Int(semesterField.text!) ?? 0
-        if semNum != 1 && semNum != 2 {
-            return "Semester must be 1 or 2"
+        let sem = semesterField.text!
+        if sem != "1" && sem != "2" && sem != "SS" && sem != "FY" {
+            return "Semester must be 1, 2, SS or FY"
         }
         let yearNum = Int(yearField.text!) ?? 0
         let currYear = Calendar.current.component(.year, from: Date())
         if yearNum != currYear && yearNum != currYear + 1 {
             return "Year must be this year or next year"
+        }
+        let paperCode = paperCodeField.text!
+        if paperCode.count != 7 {
+            return "Paper code must be in the format COSC345"
+        }
+        // This should probably be replaced with regex at some point
+        var strindex = 0
+        for char in paperCode {
+            if !char.isLetter && strindex < 4 {
+                return "Paper code must be in the format COSC345"
+            } else if !char.isNumber && strindex >= 4 {
+                return "Paper code must be in the format COSC345"
+            }
+            strindex += 1
+        }
+        let newName = paperCodeField.text!.uppercased() + "_" + yearField.text! + "_" + semesterField.text!
+        for fullName in existingGroups{
+            if newName == fullName{
+                return "This paper already exists for this year/semester"
+            }
         }
         return nil
     }
