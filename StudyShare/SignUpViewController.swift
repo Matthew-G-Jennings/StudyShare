@@ -26,21 +26,22 @@ class SignUpViewController: UIViewController {
     }
 
     /**
-    Validates the fields are correct
-    Returns: String: Contains the error message if an error occurred, otherwise nil
+    Ensures the text fields contain valid input values.
+      - Parameters:
+        - fname: [String] The first name value for the new account being created.
+        - lname: [String] The last name.
+        - email: [String] The email address.
+        - password: [String] The password.
+      - Returns: String containing an error message if an error occurred, otherwise nil.
     */
-    func validateFields() -> String? {
+    func validateFields(fname: String, lname: String, email: String, password: String) -> String? {
         // Check all fields have data
-        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+        if fname == "" || lname == "" || email == "" || password == "" {
             return "Please fill in all fields"
         }
         
         // Check if the password meets security standards
-        let passwordClean = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        if Utilities.isPasswordValid(passwordClean) == false {
+        if Utilities.isPasswordValid(password) == false {
             return "Password must contain at least 8 characters, a number and a symbol"
         }
         return nil
@@ -52,18 +53,20 @@ class SignUpViewController: UIViewController {
     */
     @IBAction func signUpTapped(_ sender: Any) {
         
+        // clean text field input
+        let firstname = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let lastname = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         // Validate fields
-        let error = validateFields()
+        let error = validateFields(fname: firstname, lname: lastname, email: email, password: password)
         
         if error != nil {
             // We have an error
             showError(error!)
         } else {
             // Create cleaned versions of fields
-            let firstname = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let lastname = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             // Create the user
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
                 // Check for errors
