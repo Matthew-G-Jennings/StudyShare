@@ -15,6 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        // if unit tests are running then set up mock 'firestore' database
+        // to isolate unit test data from production data.
+        if ProcessInfo.processInfo.environment["unit_tests"] == "true" {
+            print("Setting up Firebase emulator on localhost:8080")
+            let settings = Firestore.firestore().settings
+            settings.host = "localhost:8080"
+            settings.isPersistenceEnabled = false
+            settings.isSSLEnabled = false
+            Firestore.firestore().settings = settings
+        }
         return true
     }
 
