@@ -23,7 +23,7 @@ class MyContentViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+
     func getFileNames() {
         let manager = FileManager.default
         guard let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {
@@ -40,7 +40,7 @@ class MyContentViewController: UIViewController {
     @IBAction func backTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     /**
      - Parameters:
      - value:segue: The segue object containing information about the view controllers involved in the segue.
@@ -48,7 +48,7 @@ class MyContentViewController: UIViewController {
      */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "localtranscription" {
-            if let indexPath = contentTable.indexPathForSelectedRow {
+            if contentTable.indexPathForSelectedRow != nil {
                 let nextViewController = segue.destination as! ShowTranscriptionViewController
                 nextViewController.filepath = "Local"
                 nextViewController.remote = false
@@ -59,7 +59,6 @@ class MyContentViewController: UIViewController {
 }
 
 extension MyContentViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         previousSelection = indexPath.row
         performSegue(withIdentifier: "localtranscription", sender: nil)
@@ -70,7 +69,6 @@ extension MyContentViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.filenames.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = contentTable.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
         cell.textLabel?.text = self.filenames[indexPath.row]
