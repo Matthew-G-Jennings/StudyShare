@@ -25,14 +25,14 @@ class ClassContentViewController: UIViewController {
         self.contentTable.register(UITableViewCell.self, forCellReuseIdentifier: "contentCell")
         // Do any additional setup after loading the view.
     }
-    
+
     func newFileAdded(_ filename: String) {
         self.filenames.append(filename)
         DispatchQueue.main.async {
             self.contentTable.reloadData()
         }
     }
-    
+
     func getFileNames() {
         let storage = Storage.storage()
         let storageRef = storage.reference().child(filepath!)
@@ -52,11 +52,10 @@ class ClassContentViewController: UIViewController {
             }
         }
     }
-    
+
     @IBAction func backButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
 }
 
 extension ClassContentViewController: UITableViewDelegate {
@@ -64,6 +63,7 @@ extension ClassContentViewController: UITableViewDelegate {
         previousSelection = indexPath.row
         performSegue(withIdentifier: "transcriptiontrans", sender: nil)
     }
+    
     /**
      - Parameters:
      - value:segue: The segue object containing information about the view controllers involved in the segue.
@@ -71,7 +71,7 @@ extension ClassContentViewController: UITableViewDelegate {
      */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "transcriptiontrans" {
-            if let indexPath = contentTable.indexPathForSelectedRow {
+            if contentTable.indexPathForSelectedRow != nil {
                 let nextViewController = segue.destination as! ShowTranscriptionViewController
                 nextViewController.filepath = filepath
                 nextViewController.filename = filenames[previousSelection]
