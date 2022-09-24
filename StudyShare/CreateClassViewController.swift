@@ -37,15 +37,18 @@ class CreateClassViewController: UIViewController {
     content.
     */
     @IBAction func createButtonTapped(_ sender: Any) {
-        let error = validateFields()
+        //retrieve all text input values
+        let name = paperCodeField.text!.uppercased()
+        let desc = paperDescField.text!
+        let year = yearField.text!
+        let sem = semesterField.text!
+        let instit = institutionField.text!
+        // ensure input is valid
+        let error = validateFields(paperCode: name, paperDesc: desc, year: year, semester: sem, institution: instit)
+        
         if error != nil {
             showError(error!)
         } else {
-            let name = paperCodeField.text!.uppercased()
-            let desc = paperDescField.text!
-            let year = yearField.text!
-            let sem = semesterField.text!
-            let instit = institutionField.text!
             let dirName = name + "_" + yearField.text! + "_" + semesterField.text!
 
             let database = Firestore.firestore()
@@ -96,32 +99,30 @@ class CreateClassViewController: UIViewController {
     Validates the fields are free from errors
         -Returns: String containing the error message if an error occured, otherwise nil
     */
-    func validateFields() -> String? {
-        if !paperCodeField.hasText {
+    func validateFields(paperCode: String, paperDesc: String, year: String, semester: String, institution: String) -> String? {
+        if paperCode == "" {
             return "Please fill out name"
         }
-        if !paperDescField.hasText {
+        if paperDesc == "" {
             return "Please fill out description"
         }
-        if !yearField.hasText {
+        if year == "" {
             return "Please fill out year"
         }
-        if !semesterField.hasText {
+        if semester == "" {
             return "Please fill out semester"
         }
-        if !institutionField.hasText {
+        if institution == "" {
             return "Please fill out institution"
         }
-        let sem = semesterField.text!
-        if sem != "1" && sem != "2" && sem != "SS" && sem != "FY" {
+        if semester != "1" && semester != "2" && semester != "SS" && semester != "FY" {
             return "Semester must be 1, 2, SS or FY"
         }
-        let yearNum = Int(yearField.text!) ?? 0
+        let yearNum = Int(year) ?? 0
         let currYear = Calendar.current.component(.year, from: Date())
         if yearNum != currYear && yearNum != currYear + 1 {
             return "Year must be this year or next year"
         }
-        let paperCode = paperCodeField.text!
         if paperCode.count != 7 {
             return "Paper code must be in the format COSC345"
         }
@@ -135,7 +136,7 @@ class CreateClassViewController: UIViewController {
             }
             strindex += 1
         }
-        let newName = paperCodeField.text!.uppercased() + "_" + yearField.text! + "_" + semesterField.text!
+        let newName = paperCode.uppercased() + "_" + year + "_" + semester
         for fullName in existingGroups {
             if newName == fullName {
                 return "This paper already exists for this year/semester"
