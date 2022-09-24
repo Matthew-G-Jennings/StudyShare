@@ -19,7 +19,7 @@ Testers found that spelling check was annoying for logging in - this feature is 
 
 Testers found the transcription save button does nothing -  this is fixed and can now create a class and save the transcript.
 
-Testers found the app had a fixed size - our app now resizes according to the devices, this ensures full app visiblity on every device.
+Testers found the app had a fixed size - our app now resizes according to the devices, this ensures full app visiblity on every iPhone/iPad.
 
 ## Beta Testing
 Users wanted more info - will add more detailed cells with more information.
@@ -29,6 +29,9 @@ Users found button contrast too low -  will increase button brightness.
 Users want the options to edit transcriptions - will add this as an option.
 
 Users want to add images into the transcriptions - out of scope for what the app was meant to do.
+
+Bugs founds:
+Puttings spaces into the filename for a saved transcription causes the app to crash.
 
 ## Leak Testing
 ![image](https://user-images.githubusercontent.com/84311461/192069030-8faf4cc2-3509-4b6f-bfe6-7e85675d07b7.png)
