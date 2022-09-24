@@ -7,7 +7,9 @@
 
 import UIKit
 import FirebaseStorage
-
+/**
+ Allows a user to add content to a class
+ */
 class AddContentViewController: UIViewController {
     var filenames: [String?] = []
     var selectedFile: String = ""

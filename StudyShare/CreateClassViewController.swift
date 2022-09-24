@@ -9,7 +9,10 @@ import UIKit
 import FirebaseStorage
 import FirebaseFirestore
 import Firebase
-
+/**
+ Allows a user to create a new class, once created the user becomes the first member of that class
+ Ensures the format of the properties of a class are consistent and prevents duplicate classes
+ */
 class CreateClassViewController: UIViewController {
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var paperCodeField: UITextField!

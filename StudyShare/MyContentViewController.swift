@@ -6,7 +6,9 @@
 //
 
 import UIKit
-
+/**
+ Allows a user to view the content they have created and have stored locally
+ */
 class MyContentViewController: UIViewController {
 
     var filenames: [String?] = []
