@@ -12,7 +12,9 @@
 import UIKit
 import Speech
 import AVKit
-
+/**
+ Allows the user to create a transcription from audio and save it locally
+ */
 class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBOutlet weak var feedbackLabel: UILabel!
     @IBOutlet weak var fileNameField: UITextField!

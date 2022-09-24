@@ -7,7 +7,9 @@
 
 import Foundation
 import UIKit
-
+/**
+ Stores information about the currently logged in user for use throughout the app
+ */
 struct User {
     static var UID: String = "nil"
     static var docID: String = "nil"

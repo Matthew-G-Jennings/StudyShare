@@ -7,7 +7,10 @@
 
 import UIKit
 import FirebaseAuth
-
+/**
+ Allows a user to log in to a pre-existing account
+ If the provided credentials are correct, transitions the user to the home screen
+ */
 class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!

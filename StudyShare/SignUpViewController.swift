@@ -8,7 +8,10 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
-
+/**
+ Allows the user to create a new account, provides fields for this purpose
+ On creation if the fields are valid, transtions the user to the home screen
+ */
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var firstNameTextField: UITextField!

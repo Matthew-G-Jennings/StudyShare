@@ -6,7 +6,9 @@
 //
 
 import Foundation
-
+/**
+ Structure used to store the information related to a group.
+ */
 struct Group {
     var description: String = ""
     var filepath: String = ""
