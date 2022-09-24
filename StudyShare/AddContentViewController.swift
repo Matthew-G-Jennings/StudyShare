@@ -38,7 +38,7 @@ class AddContentViewController: UIViewController {
             showLabel("An error has occurred in reading directory contents", true)
         }
     }
-    
+
     /**
     Sets label to the given String
      - Parameters:
@@ -73,7 +73,7 @@ class AddContentViewController: UIViewController {
             let storageRef = storage.reference()
             let targetDir = User.currentGroup + "/" + selectedFile
             let targetRef = storageRef.child(targetDir)
-            if (!manager.fileExists(atPath: fileToUpload.path)) {
+            if !manager.fileExists(atPath: fileToUpload.path) {
                 showLabel("Failed to read file", true)
             }
             _ = targetRef.putFile(from: fileToUpload)
@@ -99,7 +99,6 @@ extension AddContentViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.filenames.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = contentTable.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
         cell.textLabel?.text = self.filenames[indexPath.row]

@@ -22,7 +22,7 @@ class AddClassViewController: UIViewController {
         searchTable.delegate = self
         self.searchTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
     }
-    
+
     func getGroups() {
         let database = Firestore.firestore()
         database.collection("classes").getDocuments { [self] (querySnapshot, err) in
@@ -43,14 +43,13 @@ class AddClassViewController: UIViewController {
                     self.groups.append(groupVar)
                 }
             }
-            
             groupsFiltered = groups
             DispatchQueue.main.async {
                 self.searchTable.reloadData()
             }
         }
     }
-    
+
     @IBAction func addTapped(_ sender: Any) {
         if previousSelection >= 0 {
             let database = Firestore.firestore()
@@ -64,7 +63,7 @@ class AddClassViewController: UIViewController {
             print("Please make a selection")
         }
     }
-    
+
     @IBAction func filterChanged(_ sender: Any) {
         previousSelection = -1
         let filterText = filterField.text
@@ -79,11 +78,11 @@ class AddClassViewController: UIViewController {
             self.searchTable.reloadData()
         }
     }
-    
+
     @IBAction func backTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     /**
     Instantiates and transitions to the home view controller.
     Necessary to force reloading of the class data.
@@ -102,11 +101,10 @@ extension AddClassViewController: UITableViewDelegate {
 }
 
 extension AddClassViewController: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groupsFiltered.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = searchTable.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
         cell.textLabel?.text = groupsFiltered[indexPath.row]?.filepath

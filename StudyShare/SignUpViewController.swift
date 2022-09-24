@@ -39,29 +39,26 @@ class SignUpViewController: UIViewController {
         if fname == "" || lname == "" || email == "" || password == "" {
             return "Please fill in all fields"
         }
-        
+    
         // Check if the password meets security standards
         if Utilities.isPasswordValid(password) == false {
             return "Password must contain at least 8 characters, a number and a symbol"
         }
         return nil
     }
-    
+
     /**
     Attempts to create the user given the information supplied
     If successful will transition to the home screen with this user logged in.
     */
     @IBAction func signUpTapped(_ sender: Any) {
-        
         // clean text field input
         let firstname = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let lastname = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        
         // Validate fields
         let error = validateFields(fname: firstname, lname: lastname, email: email, password: password)
-        
         if error != nil {
             // We have an error
             showError(error!)
@@ -94,7 +91,7 @@ class SignUpViewController: UIViewController {
             }
         }
     }
-    
+
     /**
     Displays an error in the UI label
     - Parameters:
@@ -104,7 +101,7 @@ class SignUpViewController: UIViewController {
         errorLabel.text = message
         errorLabel.alpha = 1
     }
-    
+
     /**
     Instantiates a home screen view controller and transitions to it.
     */
@@ -113,5 +110,4 @@ class SignUpViewController: UIViewController {
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()
     }
-
 }
