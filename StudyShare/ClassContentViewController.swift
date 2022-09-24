@@ -7,7 +7,11 @@
 
 import UIKit
 import FirebaseStorage
-
+/**
+ Displays the remote content for a given class
+ Allows a user to select and view existing content and provides navigation to allow
+ more content to be added
+ */
 class ClassContentViewController: UIViewController {
     var name: String?
     var filepath: String?

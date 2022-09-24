@@ -7,7 +7,9 @@
 
 import UIKit
 import FirebaseFirestore
-
+/**
+ Allows the user to select from a list of preexisting classes and join them
+ */
 class AddClassViewController: UIViewController {
     var groups: [Group?] = []
     var groupsFiltered: [Group?] = []

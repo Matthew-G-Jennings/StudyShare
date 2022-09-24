@@ -9,10 +9,7 @@ import UIKit
 import FirebaseStorage
 import FirebaseFirestore
 import Firebase
-/**
- Allows a user to create a new class, once created the user becomes the first member of that class
- Ensures the format of the properties of a class are consistent and prevents duplicate classes
- */
+
 class CreateClassViewController: UIViewController {
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var paperCodeField: UITextField!
@@ -21,7 +18,7 @@ class CreateClassViewController: UIViewController {
     @IBOutlet weak var semesterField: UITextField!
     @IBOutlet weak var institutionField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
-
+    
     var existingGroups: [String?] = []
 
     override func viewDidLoad() {
@@ -29,7 +26,7 @@ class CreateClassViewController: UIViewController {
         errorLabel.alpha = 0
         getExistingGroups()
     }
-
+    
     /**
     Attempts to create a new class given the provided information.
     Sets up this class in firebase and in local static User.swift
@@ -80,18 +77,20 @@ class CreateClassViewController: UIViewController {
      an array.
      Used to ensure uniqueness and prevent duplicate groups
      */
-    func getExistingGroups() {
+    func getExistingGroups(){
         let database = Firestore.firestore()
         let groupRef = database.collection("meta").document("groups")
         groupRef.getDocument { (document, error) in
-            if let document = document, document.exists {
+            if let document = document, document.exists{
+                print("List of groups")
+                print(document.data()!["fullname"] as! [String?])
                 self.existingGroups = document.data()!["fullname"] as! [String?]
             } else {
                 print("Error communicating with database")
             }
         }
     }
-
+    
     /**
     Validates the fields are free from errors
         -Returns: String containing the error message if an error occured, otherwise nil
@@ -136,14 +135,14 @@ class CreateClassViewController: UIViewController {
             strindex += 1
         }
         let newName = paperCodeField.text!.uppercased() + "_" + yearField.text! + "_" + semesterField.text!
-        for fullName in existingGroups {
-            if newName == fullName {
+        for fullName in existingGroups{
+            if newName == fullName{
                 return "This paper already exists for this year/semester"
             }
         }
         return nil
     }
-
+    
     /**
     Displays the provided error message in error UI label
     -Parameters:
@@ -153,7 +152,7 @@ class CreateClassViewController: UIViewController {
         errorLabel.text = message
         errorLabel.alpha = 1
     }
-
+    
     /**
     Initializes the firebase storage.
     Should only be called from createButtonTapped and after full validation.
@@ -167,14 +166,14 @@ class CreateClassViewController: UIViewController {
         classStorageLoc.putData(data!)
         return nil
     }
-
+    
     /**
     Dismisses this screen if the back button is tapped
     */
     @IBAction func backTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-
+    
     /**
     Instantiates and transitions to the home view controller.
     Necessary to force reloading of the class data.

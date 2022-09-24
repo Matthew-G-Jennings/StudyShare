@@ -10,7 +10,10 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 import Firebase
-
+/**
+ Home view, displays the users classes in a table allowing them to navigate to see the content in those classes
+ Provides navigate to other app functionality
+ */
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var classTable: UITableView!
     var selectedIndexPath: IndexPath?

@@ -10,7 +10,9 @@ import XCTest
 import Firebase
 
 @testable import StudyShare
-
+/**
+ Performs testing on the sign up view contoller
+ */
 class SignUpControllerTest: XCTestCase {
 
     private var firstName: String = ""

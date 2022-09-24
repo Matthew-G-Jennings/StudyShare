@@ -7,9 +7,7 @@
 
 import UIKit
 import FirebaseStorage
-/**
- Displays a transcription, the source of this transcription can be either local or remote
- */
+
 class ShowTranscriptionViewController: UIViewController {
     var filepath: String?
     var filename: String?
@@ -27,7 +25,7 @@ class ShowTranscriptionViewController: UIViewController {
         }
         // Do any additional setup after loading the view.
     }
-
+    
     func loadFileToTextRemote() {
         let storage = Storage.storage()
         let path = filepath! + "/" + filename!
@@ -58,6 +56,7 @@ class ShowTranscriptionViewController: UIViewController {
 
     @IBAction func likeButtonTapped(_ sender: Any) {
     }
+    
     @IBAction func backButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
