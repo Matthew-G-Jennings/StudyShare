@@ -67,4 +67,4 @@ jobs:
       - name: Generate Coverage
         run: xcodebuild clean test -scheme StudyShare -project StudyShare.xcodeproj -destination 'platform=iOS Simulator,OS=15.2,name=iPhone 11' -enableCodeCoverage YES 
       - name: Upload to CodeCov
-        uses: codecov/codecov-action@v1.2.1  
+        uses: codecov/codecov-action@v3 
