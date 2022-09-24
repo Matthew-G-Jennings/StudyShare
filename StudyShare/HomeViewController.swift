@@ -21,12 +21,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         classTable.dataSource = self
         classTable.delegate = self
         title = "Swipe Actions"
-        
+    
         self.classTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
         
         // Do any additional setup after loading the view.
     }
-    
+
     /**
      - Parameters:
      - value:tableview: A table view object requesting the cell
@@ -36,7 +36,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return User.groupData.count
     }
-    
+
     /**
      - Parameters:
      - value:tableview: A table view object requesting the cell
@@ -48,7 +48,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.textLabel?.text = User.groupData[indexPath.row].name
         return cell
     }
-    
+
     /**
      - Parameters:
      - value:tableview: A table view object requesting the cell
@@ -59,7 +59,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegue(withIdentifier: "transition", sender: nil)
         
     }
-    
+
     /**
      - Parameters:
      - value:segue: The segue object containing information about the view controllers involved in the segue.

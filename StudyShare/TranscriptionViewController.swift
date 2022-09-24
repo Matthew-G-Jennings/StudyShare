@@ -24,14 +24,10 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
     let audioEngine = AVAudioEngine()
 
     func setupSpeech() {
-        
         self.beginButton?.isEnabled = true
         self.speechRecognizer?.delegate = self
-        
         SFSpeechRecognizer.requestAuthorization { (authStatus) in
-            
             var isButtonEnabled = false
-            
             switch authStatus {
             case .authorized:
                 isButtonEnabled = true
@@ -44,7 +40,6 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
             @unknown default:
                 fatalError()
             }
-            
             OperationQueue.main.addOperation {
                 self.beginButton.isEnabled = isButtonEnabled
             }
@@ -56,36 +51,27 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
             recognitionTask?.cancel()
             recognitionTask = nil
         }
-        
         if #available(iOS 13, *) { // patch around the 60seconds apple limit, does not work in simulator!
             self.recognitionRequest?.requiresOnDeviceRecognition = true
         }
-        
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(AVAudioSession.Category.record, mode: AVAudioSession.Mode.measurement, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
         }
-        
         self.recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
-        
         let inputNode = audioEngine.inputNode
-        
         guard let recognitionRequest = recognitionRequest else {
             fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
         }
         recognitionRequest.shouldReportPartialResults = true
-        
         self.recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
-            
             var isFinal = false
-            
             if result != nil {
                 self.transcriptionText.text = result?.bestTranscription.formattedString
                 isFinal = (result?.isFinal)!
             }
-            
             if error != nil || isFinal {
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
@@ -95,14 +81,13 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
                 //self.transcriptionText.text! << this final to save!
             }
         })
-        
+
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
             self.recognitionRequest?.append(buffer)
         }
-        
+
         self.audioEngine.prepare()
-        
         do {
             try self.audioEngine.start()
         } catch {
@@ -120,7 +105,6 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
         // make the keyboard disappear, when click outside fields
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tapGesture)
-        
     }
     
     @IBAction func beginButtonTapped(_ sender: UIButton) {
@@ -133,7 +117,7 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
             self.beginButton?.setTitle("Stop Transcription", for: .normal)
         }
     }
-    
+
     @IBAction func saveTapped(_ sender: UIButton) {
         let saveError = saveValidate()
         if saveError != nil {
@@ -155,9 +139,8 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
             manager.createFile(atPath: filePath.path + ".txt", contents: saveData)
             showLabel("Successfully created file " + fileNameField.text! + ".txt", false)
         }
-        
     }
-    
+
     /**
     Sets label to the given String
      - Parameters:
@@ -173,9 +156,8 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
         feedbackLabel.text = message
         feedbackLabel.alpha = 1
     }
-    
+
     func saveValidate() -> String? {
-        // TODO: Validated fields for saving
         if !transcriptionText.hasText {
             return "No text to save"
         } else if !fileNameField.hasText {
@@ -183,7 +165,7 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
         }
         return nil
     }
-    
+
     @IBAction func backTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

@@ -12,7 +12,7 @@ import Firebase
 @testable import StudyShare
 
 class SignUpControllerTest: XCTestCase {
-    
+
     private var firstName: String = ""
     private var lastName: String = ""
     private var password: String = ""
@@ -29,7 +29,7 @@ class SignUpControllerTest: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-    
+
     /** Tests a few of the validateFields method cases when input fields are left empty,
      *  to ensure method is detecting and managing invalid input correctly.
      */

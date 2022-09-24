@@ -58,7 +58,7 @@ class LoginViewController: UIViewController {
         }
         return nil
     }
-    
+
     /**
     Sets error label to the given String
      - Parameters:
@@ -68,7 +68,7 @@ class LoginViewController: UIViewController {
         errorLabel.text = message
         errorLabel.alpha = 1
     }
-    
+
     /**
     Initilizes the home screen view controller and navigates to it
     */
