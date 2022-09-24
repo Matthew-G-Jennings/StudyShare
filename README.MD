@@ -39,7 +39,9 @@ Puttings spaces into the filename for a saved transcription causes the app to cr
 
 With Xcode's leak checker we found a memory leak in our library when running the application. It appears to be leaking in the external libraries and not so much in our code. We are keeping an eye on this to ensure our app runs smoothly and avoids any crashing.
 
-
+## CPU profiling
+![image](https://user-images.githubusercontent.com/97982879/192091759-d7496137-32a7-49ca-8d21-d4f707795415.png)
+The appears ordinary and as expected. Difficult to benchmark without a point of comparison but this will serve as a benchmark for future builds.
 
 ## Code Sources/References
 Firebase authentication/logins - codewithchris
