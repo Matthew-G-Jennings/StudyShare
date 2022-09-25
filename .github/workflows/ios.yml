@@ -69,6 +69,6 @@ jobs:
       - name: Upload to CodeCov
         uses: codecov/codecov-action@v3.1.1
         with:
-          args: -f
+          directory: /Users/runner/Library/Developer/Xcode/DerivedData
 
 
