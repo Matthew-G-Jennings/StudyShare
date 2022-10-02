@@ -14,7 +14,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="StudyShare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeScreenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="LlT-Iz-LV7">
@@ -68,7 +68,7 @@
             <objects>
                 <viewController id="6nL-hv-Hd2" customClass="LoginViewController" customModule="StudyShare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Pl-bX-eNJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ntd-Z0-ZDq">
@@ -103,7 +103,7 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiN-xt-9JP">
                                         <rect key="frame" x="0.0" y="140" width="334" height="50"/>
-                                        <color key="tintColor" systemColor="linkColor"/>
+                                        <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Login"/>
                                         <connections>
@@ -123,7 +123,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQa-3U-tt8">
-                                <rect key="frame" x="40" y="742" width="334" height="40"/>
+                                <rect key="frame" x="40" y="722" width="334" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="IXk-HF-fEk"/>
                                 </constraints>
@@ -182,7 +182,7 @@
             <objects>
                 <viewController id="zpS-YU-FpY" customClass="SignUpViewController" customModule="StudyShare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ha1-vU-hH1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9gQ-vB-p4Z">
@@ -241,6 +241,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="e2i-VM-h7P"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Create Account"/>
                                         <connections>
@@ -262,7 +263,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TmY-3h-XgP">
-                                <rect key="frame" x="40" y="742" width="334" height="40"/>
+                                <rect key="frame" x="40" y="722" width="334" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="osD-l7-h8F"/>
                                 </constraints>
@@ -345,6 +346,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZD-vN-wCv">
                                         <rect key="frame" x="0.0" y="0.0" width="88.5" height="31"/>
+                                        <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Back"/>
                                         <connections>
@@ -353,6 +355,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YaK-YJ-lhL">
                                         <rect key="frame" x="267.5" y="0.0" width="88.5" height="31"/>
+                                        <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Like This?"/>
                                         <connections>
@@ -421,6 +424,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4nN-Qb-NEs">
                                         <rect key="frame" x="0.0" y="0.0" width="105.5" height="31"/>
+                                        <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Back"/>
                                         <connections>
@@ -429,6 +433,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPq-mT-6IR">
                                         <rect key="frame" x="210.5" y="0.0" width="105.5" height="31"/>
+                                        <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Add Content"/>
                                         <connections>
@@ -504,6 +509,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEe-6B-7p4">
                                         <rect key="frame" x="0.0" y="0.0" width="110.5" height="31"/>
+                                        <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Back"/>
                                         <connections>
@@ -512,6 +518,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjR-03-qGj">
                                         <rect key="frame" x="244.5" y="0.0" width="110.5" height="31"/>
+                                        <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Add Selected"/>
                                         <connections>
@@ -580,6 +587,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3e-ZW-N4s">
                                 <rect key="frame" x="157.5" y="792" width="99" height="31"/>
+                                <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="My Content"/>
                                 <connections>
@@ -588,6 +596,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iFF-TW-ptn">
                                 <rect key="frame" x="130.5" y="831" width="153" height="31"/>
+                                <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Create transcription"/>
                                 <connections>
@@ -613,6 +622,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufZ-OZ-pcc">
                                 <rect key="frame" x="162.5" y="753" width="89" height="31"/>
+                                <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Add Class"/>
                                 <connections>
@@ -673,6 +683,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6w-bF-EpR">
                                 <rect key="frame" x="30" y="781" width="56" height="31"/>
+                                <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Back"/>
                                 <connections>
@@ -681,6 +692,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7iA-9Z-1Yr">
                                 <rect key="frame" x="328.5" y="781" width="55.5" height="31"/>
+                                <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
                                 <connections>
@@ -695,6 +707,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AT1-su-9ne">
                                 <rect key="frame" x="132.5" y="643" width="149" height="31"/>
+                                <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Begin Transcription" titleAlignment="center"/>
                                 <connections>
@@ -767,6 +780,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAK-Zz-f9k">
                                 <rect key="frame" x="179" y="781" width="56" height="31"/>
+                                <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Back"/>
                                 <connections>
@@ -861,6 +875,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="lg8-wH-3uh"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Back"/>
                                         <connections>
@@ -880,6 +895,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="N4d-pS-7Qf"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Add Selected"/>
                                         <connections>
@@ -1018,6 +1034,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="EF5-5c-0ja"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Create"/>
                                         <connections>
@@ -1034,6 +1051,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="Rle-9G-8kR"/>
                                         </constraints>
+                                        <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Back"/>
                                         <connections>
@@ -1112,17 +1130,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yJP-47-Tuj"/>
-        <segue reference="5dh-rh-IKz"/>
+        <segue reference="HV2-Hy-GwH"/>
+        <segue reference="0UF-5S-zLo"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="HomeScreenLogo" width="348" height="339"/>
         <image name="StudyShareHeader" width="158" height="39"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

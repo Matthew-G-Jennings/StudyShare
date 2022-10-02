@@ -121,7 +121,8 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
     }
 
     @IBAction func saveTapped(_ sender: UIButton) {
-        let saveError = saveValidate()
+        let saveFileName = fileNameField.text!.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: " ", with: "_")
+        let saveError = saveValidate(fileName: saveFileName)
         if saveError != nil {
             showLabel(saveError!, true)
         } else {
@@ -132,14 +133,14 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
             }
             let transDir = url.appendingPathComponent("Transcriptions")
             print(transDir)
-            let filePath = transDir.appendingPathComponent(fileNameField.text!)
+            let filePath = transDir.appendingPathComponent(saveFileName)
             do {
                 try manager.createDirectory(at: transDir, withIntermediateDirectories: true)
             } catch {
                 print(error)
             }
             manager.createFile(atPath: filePath.path + ".txt", contents: saveData)
-            showLabel("Successfully created file " + fileNameField.text! + ".txt", false)
+            showLabel("Successfully created file " + saveFileName + ".txt", false)
         }
     }
 
@@ -159,10 +160,10 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
         feedbackLabel.alpha = 1
     }
 
-    func saveValidate() -> String? {
+    func saveValidate(fileName: String) -> String? {
         if !transcriptionText.hasText {
             return "No text to save"
-        } else if !fileNameField.hasText {
+        } else if fileName.isEmpty {
             return "Please specify a filename"
         }
         return nil

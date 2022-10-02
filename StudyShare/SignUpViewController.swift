@@ -45,7 +45,7 @@ class SignUpViewController: UIViewController {
     
         // Check if the password meets security standards
         if Utilities.isPasswordValid(password) == false {
-            return "Password must contain at least 8 characters, a number and a symbol"
+            return "Password must contain at least 8 characters, a number and a symbol. Valid symbols are @$#!%*?&"
         }
         return nil
     }
