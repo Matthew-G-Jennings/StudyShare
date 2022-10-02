@@ -47,7 +47,7 @@ class SignUpControllerTest: XCTestCase {
     /** Tests multiple cases of invalid password input.
      */
     func test_validateFields_invalidPassword() throws {
-        let errorMessage = "Password must contain at least 8 characters, a number and a symbol"
+        let errorMessage = "Password must contain at least 8 characters, a number and a symbol. Valid symbols are @$#!%*?&"
         
         // first ensure no error message is shown
         XCTAssertEqual(self.vm.validateFields(fname: self.firstName, lname: self.lastName, email: self.email, password: self.password), nil)
