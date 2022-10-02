@@ -37,7 +37,7 @@ class AddContentViewController: UIViewController {
         do {
             self.filenames = try manager.contentsOfDirectory(atPath: currDir.path)
         } catch {
-            showLabel("An error has occurred in reading directory contents", true)
+            // showLabel("An error has occurred in reading directory contents", true)
         }
     }
 
