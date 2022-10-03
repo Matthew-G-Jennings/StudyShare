@@ -47,9 +47,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
      - Returns: Displays the class name which the user just created to the cell
      */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
-        cell.textLabel?.text = User.groupData[indexPath.row].name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! HomeViewCell
+        cell.paperCode?.text = User.groupData[indexPath.row].name + ": " + User.groupData[indexPath.row].description
+        cell.institution?.text = User.groupData[indexPath.row].institution
+        cell.yearSem?.text = "Year: " + User.groupData[indexPath.row].year + " Semester: " + User.groupData[indexPath.row].semester
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 
     /**
@@ -137,4 +143,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
     }
+}
+
+class HomeViewCell: UITableViewCell{
+    
+    @IBOutlet weak var paperCode: UILabel!
+    @IBOutlet weak var institution: UILabel!
+    @IBOutlet weak var yearSem: UILabel!
+    
+    
 }
