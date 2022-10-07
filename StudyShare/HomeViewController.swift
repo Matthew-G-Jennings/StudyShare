@@ -24,13 +24,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         classTable.dataSource = self
         classTable.delegate = self
         title = "Swipe Actions"
-    
         self.classTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let helpVC = storyboard.instantiateViewController(withIdentifier: "HelpViewController")
-        show(helpVC, sender: self)
     }
+    
 
     /**
      - Parameters:

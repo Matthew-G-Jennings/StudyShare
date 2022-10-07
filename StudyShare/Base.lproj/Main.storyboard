@@ -181,19 +181,20 @@
         <scene sceneID="SMj-dE-mWn">
             <objects>
                 <viewController storyboardIdentifier="HelpViewController" id="hZw-Zo-eCL" customClass="HelpViewController" customModule="StudyShare" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="v84-I7-8e6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <view key="view" alpha="0.80000000000000004" contentMode="scaleToFill" id="v84-I7-8e6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" text="Sample text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Wol-5c-EOB">
-                                <rect key="frame" x="20" y="104" width="374" height="647"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wol-5c-EOB">
+                                <rect key="frame" x="20" y="104" width="374" height="627"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">Welcome to StudyShare!   This is the Home screen where you can see your classes. If you don't have any yet you can press the "Add Class" button to find your classes and create new ones.   You can create transcriptions with the "Create Transcription" button and   Pressing the "My Content" button will show your locally stored content.   Once you've added some classes you can tap on them to see their content.  Tap "Dismiss" at the bottom of this message to get started!</mutableString>
+                                <color key="textColor" systemColor="systemTealColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UL5-3O-Vu5">
-                                <rect key="frame" x="169.5" y="771" width="75" height="31"/>
+                                <rect key="frame" x="169.5" y="751" width="75" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Dismiss"/>
                                 <connections>
@@ -202,7 +203,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qCR-Nw-yq5"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qCR-Nw-yq5" firstAttribute="bottom" secondItem="UL5-3O-Vu5" secondAttribute="bottom" constant="60" id="2Eb-sH-lmN"/>
                             <constraint firstItem="UL5-3O-Vu5" firstAttribute="top" secondItem="Wol-5c-EOB" secondAttribute="bottom" constant="20" id="9fL-g2-hW9"/>
@@ -218,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fMz-gZ-rVN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="448" y="-690"/>
+            <point key="canvasLocation" x="1412" y="-915"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="hyI-Xf-PR4">
@@ -752,10 +753,21 @@
                                     <segue destination="RNF-VR-9WW" kind="show" id="0v8-vI-JgU"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4E-1t-bLb">
+                                <rect key="frame" x="340" y="68" width="54" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Help"/>
+                                <connections>
+                                    <segue destination="hZw-Zo-eCL" kind="popoverPresentation" popoverAnchorView="I4E-1t-bLb" id="Kam-3C-Yby">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="i2D-eT-TKy"/>
                         <color key="backgroundColor" red="0.051928359129999997" green="0.090184948779999996" blue="0.24532468060000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="i2D-eT-TKy" firstAttribute="trailing" secondItem="I4E-1t-bLb" secondAttribute="trailing" constant="20" id="1aj-zp-t61"/>
                             <constraint firstItem="OBq-Sq-IZn" firstAttribute="top" secondItem="eg1-fJ-YKe" secondAttribute="bottom" constant="7.5" id="2BK-3f-3Ta"/>
                             <constraint firstItem="c3e-ZW-N4s" firstAttribute="top" secondItem="ufZ-OZ-pcc" secondAttribute="bottom" constant="8" symbolic="YES" id="6gW-ag-7C6"/>
                             <constraint firstItem="ufZ-OZ-pcc" firstAttribute="centerX" secondItem="AmT-D5-nYs" secondAttribute="centerX" id="BBq-dN-TMv"/>
@@ -765,6 +777,7 @@
                             <constraint firstItem="i2D-eT-TKy" firstAttribute="trailing" secondItem="OBq-Sq-IZn" secondAttribute="trailing" id="RIq-rW-pkg"/>
                             <constraint firstItem="mP8-Qc-dTq" firstAttribute="leading" secondItem="AmT-D5-nYs" secondAttribute="leading" constant="20" id="VMV-TV-pFw"/>
                             <constraint firstItem="mP8-Qc-dTq" firstAttribute="top" secondItem="i2D-eT-TKy" secondAttribute="top" constant="20" id="azv-t4-bH5"/>
+                            <constraint firstItem="I4E-1t-bLb" firstAttribute="top" secondItem="i2D-eT-TKy" secondAttribute="top" constant="24" id="czH-h1-dVN"/>
                             <constraint firstItem="iFF-TW-ptn" firstAttribute="bottom" secondItem="i2D-eT-TKy" secondAttribute="bottom" id="exb-II-qYD"/>
                             <constraint firstItem="eg1-fJ-YKe" firstAttribute="top" secondItem="mP8-Qc-dTq" secondAttribute="bottom" constant="8" symbolic="YES" id="pTC-Mi-dPL"/>
                             <constraint firstItem="ufZ-OZ-pcc" firstAttribute="top" secondItem="OBq-Sq-IZn" secondAttribute="bottom" constant="7.5" id="qm7-cf-WVc"/>
@@ -1321,7 +1334,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HV2-Hy-GwH"/>
+        <segue reference="yJP-47-Tuj"/>
         <segue reference="0UF-5S-zLo"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -1335,6 +1348,9 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
