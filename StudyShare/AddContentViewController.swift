@@ -21,6 +21,7 @@ class AddContentViewController: UIViewController {
     @IBOutlet weak var contentTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        User.currentScreen = "addContent"
         feedbackLabel.alpha = 0
         getFileNames()
         contentTable.delegate = self
@@ -58,6 +59,7 @@ class AddContentViewController: UIViewController {
     }
 
     @IBAction func backTapped(_ sender: Any) {
+        User.currentScreen = "classContent"
         self.dismiss(animated: true, completion: nil)
     }
     /**

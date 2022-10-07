@@ -22,6 +22,7 @@ class ClassContentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        User.currentScreen = "classContent"
         classNameLabel.text = name
         getFileNames()
         contentTable.dataSource = self
@@ -58,6 +59,7 @@ class ClassContentViewController: UIViewController {
     }
 
     @IBAction func backButtonTapped(_ sender: Any) {
+        User.currentScreen = "home"
         self.dismiss(animated: true, completion: nil)
     }
 }

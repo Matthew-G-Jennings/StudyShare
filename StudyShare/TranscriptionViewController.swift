@@ -104,6 +104,7 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
         super.viewDidLoad()
         self.setupSpeech()
         self.feedbackLabel.alpha = 0
+        User.currentScreen = "transcription"
         // make the keyboard disappear, when click outside fields
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tapGesture)
@@ -170,6 +171,7 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
     }
 
     @IBAction func backTapped(_ sender: Any) {
+        User.currentScreen = "home"
         self.dismiss(animated: true, completion: nil)
     }
 }

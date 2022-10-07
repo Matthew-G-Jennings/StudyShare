@@ -11,6 +11,7 @@
 		1F2F7BD028DE93070077239E /* CreateClassControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2F7BCF28DE93070077239E /* CreateClassControllerTest.swift */; };
 		1F5F178D28DB32FC00DD74A2 /* SignUpControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F178C28DB32FC00DD74A2 /* SignUpControllerTest.swift */; };
 		B11ABE4528F0108B00357BC4 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11ABE4428F0108B00357BC4 /* HelpViewController.swift */; };
+		B11ABE4728F0CA4100357BC4 /* HelpText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11ABE4628F0CA4100357BC4 /* HelpText.swift */; };
 		B1589EAE28D0536D00E9203E /* MyContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1589EAD28D0536D00E9203E /* MyContentViewController.swift */; };
 		B16179D028B9B293006464BF /* AddContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16179CF28B9B293006464BF /* AddContentViewController.swift */; };
 		B1793FAA2897778000A2F9F3 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1793FA92897778000A2F9F3 /* Utilities.swift */; };
@@ -62,6 +63,7 @@
 		1F2F7BCF28DE93070077239E /* CreateClassControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateClassControllerTest.swift; sourceTree = "<group>"; };
 		1F5F178C28DB32FC00DD74A2 /* SignUpControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpControllerTest.swift; sourceTree = "<group>"; };
 		B11ABE4428F0108B00357BC4 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HelpViewController.swift; path = StudyShare/HelpViewController.swift; sourceTree = SOURCE_ROOT; };
+		B11ABE4628F0CA4100357BC4 /* HelpText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpText.swift; sourceTree = "<group>"; };
 		B1589EAD28D0536D00E9203E /* MyContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContentViewController.swift; sourceTree = "<group>"; };
 		B16179CF28B9B293006464BF /* AddContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContentViewController.swift; sourceTree = "<group>"; };
 		B1793FA92897778000A2F9F3 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				B1AA574B289628F800A3A8A0 /* View Controllers */,
 				B1AA57152896245400A3A8A0 /* AppDelegate.swift */,
 				B11ABE4428F0108B00357BC4 /* HelpViewController.swift */,
+				B11ABE4628F0CA4100357BC4 /* HelpText.swift */,
 				B1AA57172896245400A3A8A0 /* SceneDelegate.swift */,
 				B1AA571B2896245400A3A8A0 /* Main.storyboard */,
 				B1AA571E2896245500A3A8A0 /* Assets.xcassets */,
@@ -346,6 +349,7 @@
 				1DD59BF328B851C00029EB06 /* Group.swift in Sources */,
 				B1AA57162896245400A3A8A0 /* AppDelegate.swift in Sources */,
 				B1888AE928AF6812002565DE /* CreateClassViewController.swift in Sources */,
+				B11ABE4728F0CA4100357BC4 /* HelpText.swift in Sources */,
 				B16179D028B9B293006464BF /* AddContentViewController.swift in Sources */,
 				B1793FAA2897778000A2F9F3 /* Utilities.swift in Sources */,
 				B1888AED28B61153002565DE /* ClassContentViewController.swift in Sources */,
