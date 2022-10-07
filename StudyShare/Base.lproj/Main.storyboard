@@ -387,24 +387,15 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="179" translatesAutoresizingMaskIntoConstraints="NO" id="uPM-Bt-5AA">
-                                <rect key="frame" x="29" y="791" width="356" height="31"/>
+                                <rect key="frame" x="179" y="791" width="56" height="31"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZD-vN-wCv">
-                                        <rect key="frame" x="0.0" y="0.0" width="88.5" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="56" height="31"/>
                                         <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Back"/>
                                         <connections>
                                             <action selector="backButtonTapped:" destination="CYL-wl-UC9" eventType="touchUpInside" id="jie-xf-ofy"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YaK-YJ-lhL">
-                                        <rect key="frame" x="267.5" y="0.0" width="88.5" height="31"/>
-                                        <color key="tintColor" red="0.65111321209999995" green="0.89051717519999996" blue="0.97627657649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Like This?"/>
-                                        <connections>
-                                            <action selector="likeButtonTapped:" destination="CYL-wl-UC9" eventType="touchUpInside" id="reg-Qt-yhT"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1063,7 +1054,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.16770195960000001" green="0.18196699020000001" blue="0.21454000470000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
@@ -1073,6 +1064,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="zpL-C9-Q36" secondAttribute="bottom" id="zdx-OQ-XDf"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <color key="backgroundColor" red="0.16770195960000001" green="0.18196699020000001" blue="0.21454000470000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <outlet property="institution" destination="rKJ-Jl-DPA" id="el6-oT-wfk"/>
                                                     <outlet property="paperCode" destination="L7j-Jd-aH6" id="JT0-si-KfG"/>
@@ -1387,7 +1379,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="HV2-Hy-GwH"/>
-        <segue reference="jWR-qc-5Oz"/>
+        <segue reference="oOO-3R-emh"/>
         <segue reference="0UF-5S-zLo"/>
     </inferredMetricsTieBreakers>
     <resources>
