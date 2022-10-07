@@ -25,6 +25,10 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     let audioEngine = AVAudioEngine()
 
+    /**
+     Setup buttons for user interaction and requests authorization if not given to
+     use the speech recognition.
+    */
     func setupSpeech() {
         self.beginButton?.isEnabled = true
         self.speechRecognizer?.delegate = self
@@ -47,7 +51,10 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
             }
         }
     }
-    
+ 
+    /**
+     starts recording, patches if on device the 60seconds limit for recognition and makes sure to safe or discard content
+    */
     func startRecording() {
         if recognitionTask != nil {
             recognitionTask?.cancel()
@@ -119,7 +126,9 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
             self.beginButton?.setTitle("Stop Transcription", for: .normal)
         }
     }
-
+    /**
+     when save is tapped, save the content in a local file
+    */
     @IBAction func saveTapped(_ sender: UIButton) {
         let saveFileName = fileNameField.text!.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: " ", with: "_")
         let saveError = saveValidate(fileName: saveFileName)
