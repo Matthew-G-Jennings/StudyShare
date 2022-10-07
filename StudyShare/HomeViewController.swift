@@ -27,7 +27,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
         self.classTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
         
-        // Do any additional setup after loading the view.
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let helpVC = storyboard.instantiateViewController(withIdentifier: "HelpViewController")
+        show(helpVC, sender: self)
     }
 
     /**

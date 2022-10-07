@@ -177,16 +177,44 @@
             </objects>
             <point key="canvasLocation" x="1413" y="515"/>
         </scene>
-        <!--View Controller-->
+        <!--Help View Controller-->
         <scene sceneID="SMj-dE-mWn">
             <objects>
-                <viewController id="hZw-Zo-eCL" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HelpViewController" id="hZw-Zo-eCL" customClass="HelpViewController" customModule="StudyShare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v84-I7-8e6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" text="Sample text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Wol-5c-EOB">
+                                <rect key="frame" x="20" y="104" width="374" height="647"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UL5-3O-Vu5">
+                                <rect key="frame" x="169.5" y="771" width="75" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Dismiss"/>
+                                <connections>
+                                    <action selector="dismissTapped:" destination="hZw-Zo-eCL" eventType="touchUpInside" id="9xO-Fs-M3I"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="qCR-Nw-yq5"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qCR-Nw-yq5" firstAttribute="bottom" secondItem="UL5-3O-Vu5" secondAttribute="bottom" constant="60" id="2Eb-sH-lmN"/>
+                            <constraint firstItem="UL5-3O-Vu5" firstAttribute="top" secondItem="Wol-5c-EOB" secondAttribute="bottom" constant="20" id="9fL-g2-hW9"/>
+                            <constraint firstItem="Wol-5c-EOB" firstAttribute="top" secondItem="qCR-Nw-yq5" secondAttribute="top" constant="60" id="M5N-8I-ZLN"/>
+                            <constraint firstItem="Wol-5c-EOB" firstAttribute="leading" secondItem="qCR-Nw-yq5" secondAttribute="leading" constant="20" id="Mej-tO-YKG"/>
+                            <constraint firstItem="qCR-Nw-yq5" firstAttribute="trailing" secondItem="Wol-5c-EOB" secondAttribute="trailing" constant="20" id="WNv-DX-jqq"/>
+                            <constraint firstItem="UL5-3O-Vu5" firstAttribute="centerX" secondItem="v84-I7-8e6" secondAttribute="centerX" id="uDx-M7-dU9"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textField" destination="Wol-5c-EOB" id="EgZ-o8-4hZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fMz-gZ-rVN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
