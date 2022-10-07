@@ -18,4 +18,5 @@ struct User {
     static var groups: [String] = ["nil"]
     static var groupData: [Group] = []
     static var currentGroup: String = "nil"
+    static var currentScreen: String = ""
 }

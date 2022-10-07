@@ -21,6 +21,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUserDetails()
+        User.currentScreen = "home"
         classTable.dataSource = self
         classTable.delegate = self
         title = "Swipe Actions"

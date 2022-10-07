@@ -20,6 +20,7 @@ class AddClassViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getGroups()
+        User.currentScreen = "addClass"
         searchTable.dataSource = self
         searchTable.delegate = self
         self.searchTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
@@ -82,6 +83,7 @@ class AddClassViewController: UIViewController {
     }
 
     @IBAction func backTapped(_ sender: Any) {
+        User.currentScreen = "home"
         self.dismiss(animated: true, completion: nil)
     }
 

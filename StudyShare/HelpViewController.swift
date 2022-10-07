@@ -10,11 +10,33 @@ import UIKit
 class HelpViewController: UIViewController {
     
     @IBOutlet weak var textField: UITextView!
-    var helpText = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setHelpText()
     }
 
+    func setHelpText(){
+        switch User.currentScreen {
+        case "home":
+            textField.text = Help.homeHelp
+        case "addClass":
+            textField.text = Help.addClassHelp
+        case "transcription":
+            textField.text = Help.transHelp
+        case "myContent":
+            textField.text = Help.myContentHelp
+        case "createClass":
+            textField.text = Help.createClassHelp
+        case "classContent":
+            textField.text = Help.classContentHelp
+        case "addContent":
+            textField.text = Help.addContentHelp
+        default:
+            textField.text = Help.homeHelp + "ERROR"
+        }
+    }
+    
     @IBAction func dismissTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

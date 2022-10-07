@@ -18,6 +18,7 @@ class MyContentViewController: UIViewController {
     @IBOutlet weak var contentTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        User.currentScreen = "myContent"
         getFileNames()
         contentTable.delegate = self
         contentTable.dataSource = self
@@ -40,6 +41,7 @@ class MyContentViewController: UIViewController {
     }
 
     @IBAction func backTapped(_ sender: Any) {
+        User.currentScreen = "home"
         self.dismiss(animated: true, completion: nil)
     }
 

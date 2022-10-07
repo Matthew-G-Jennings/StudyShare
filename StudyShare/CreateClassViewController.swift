@@ -26,6 +26,7 @@ class CreateClassViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        User.currentScreen = "createClass"
         errorLabel.alpha = 0
         getExistingGroups()
     }
@@ -173,6 +174,7 @@ class CreateClassViewController: UIViewController {
     Dismisses this screen if the back button is tapped
     */
     @IBAction func backTapped(_ sender: Any) {
+        User.currentScreen = "addClass"
         self.dismiss(animated: true, completion: nil)
     }
 
