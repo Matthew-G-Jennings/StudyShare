@@ -462,6 +462,7 @@
                                                     <color key="backgroundColor" red="0.16770195960000001" green="0.18196699020000001" blue="0.21454000470000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </stackView>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.16770195960000001" green="0.18196699020000001" blue="0.21454000470000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="u6w-gP-CGD" secondAttribute="bottom" id="EmT-bB-wmY"/>
                                                 <constraint firstItem="u6w-gP-CGD" firstAttribute="top" secondItem="O24-uC-Rd1" secondAttribute="topMargin" id="kRb-bB-Az6"/>
@@ -567,11 +568,11 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addContentCell" rowHeight="60" id="UTi-O9-PVk" customClass="AddContentCell" customModule="StudyShare" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="374" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UTi-O9-PVk" id="8jg-Hh-dIO">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UTi-O9-PVk" id="8jg-Hh-dIO">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HeQ-aE-tCd">
+                                                <stackView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HeQ-aE-tCd">
                                                     <rect key="frame" x="20" y="11" width="334" height="38"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fileName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYZ-Q7-FSC">
@@ -581,8 +582,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <color key="backgroundColor" red="0.16770195960000001" green="0.18196699020000001" blue="0.21454000470000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </stackView>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.16770195960000001" green="0.18196699020000001" blue="0.21454000470000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="HeQ-aE-tCd" firstAttribute="top" secondItem="8jg-Hh-dIO" secondAttribute="topMargin" id="596-6f-IoU"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="HeQ-aE-tCd" secondAttribute="bottom" id="6pG-cl-bwF"/>
@@ -1379,7 +1382,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="HV2-Hy-GwH"/>
-        <segue reference="oOO-3R-emh"/>
+        <segue reference="jWR-qc-5Oz"/>
         <segue reference="0UF-5S-zLo"/>
     </inferredMetricsTieBreakers>
     <resources>
