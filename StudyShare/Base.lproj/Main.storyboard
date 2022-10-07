@@ -188,7 +188,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wol-5c-EOB">
                                 <rect key="frame" x="20" y="104" width="374" height="627"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">Welcome to StudyShare!   This is the Home screen where you can see your classes. If you don't have any yet you can press the "Add Class" button to find your classes and create new ones.   You can create transcriptions with the "Create Transcription" button.   Pressing the "My Content" button will show your locally stored content.   </mutableString>
+                                <string key="text">Welcome to StudyShare!   This is the Home screen where you can see your classes. If you don't have any yet you can press the "Add Class" button to find your classes and create new ones.   You can create transcriptions with the "Create Transcription" button.   Pressing the "My Content" button will show your locally stored content.   </string>
                                 <color key="textColor" systemColor="systemTealColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1019,7 +1019,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JZn-5o-rHs">
-                                <rect key="frame" x="20" y="156" width="374" height="550"/>
+                                <rect key="frame" x="20" y="110" width="374" height="550"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bcA-7v-y53">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="550"/>
@@ -1119,11 +1119,12 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VPg-mf-2gX">
-                                <rect key="frame" x="20" y="726" width="374" height="31"/>
+                                <rect key="frame" x="20" y="680" width="374" height="77"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bau-tb-uIB">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="77"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Create"/>
                                         <connections>
@@ -1143,12 +1144,12 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RZ9-BD-D54">
-                                <rect key="frame" x="20" y="76" width="374" height="80"/>
+                                <rect key="frame" x="20" y="76" width="374" height="34"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Filter papers.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ICD-Y3-bSp">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
-                                        <color key="backgroundColor" red="0.16770195960000001" green="0.18196699020000001" blue="0.21454000470000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -1382,7 +1383,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="HV2-Hy-GwH"/>
-        <segue reference="jWR-qc-5Oz"/>
+        <segue reference="oOO-3R-emh"/>
         <segue reference="0UF-5S-zLo"/>
     </inferredMetricsTieBreakers>
     <resources>
