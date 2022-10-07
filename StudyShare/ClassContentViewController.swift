@@ -64,7 +64,6 @@ class ClassContentViewController: UIViewController {
 
 extension ClassContentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        previousSelection = indexPath.row
         performSegue(withIdentifier: "transcriptiontrans", sender: nil)
     }
     
@@ -76,6 +75,7 @@ extension ClassContentViewController: UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "transcriptiontrans" {
             if contentTable.indexPathForSelectedRow != nil {
+                previousSelection = contentTable.indexPathForSelectedRow!.row
                 let nextViewController = segue.destination as! ShowTranscriptionViewController
                 nextViewController.filepath = filepath
                 nextViewController.filename = filenames[previousSelection]
@@ -92,8 +92,12 @@ extension ClassContentViewController: UITableViewDataSource {
         return filenames.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contentCell", for: indexPath)
-        cell.textLabel?.text = filenames[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "classContentCell", for: indexPath) as! ClassContentCell
+        cell.fileName?.text = filenames[indexPath.row]
         return cell
     }
+}
+
+class ClassContentCell: UITableViewCell{
+    @IBOutlet weak var fileName: UILabel!
 }
