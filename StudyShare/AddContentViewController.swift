@@ -102,8 +102,13 @@ extension AddContentViewController: UITableViewDataSource {
         return self.filenames.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = contentTable.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
-        cell.textLabel?.text = self.filenames[indexPath.row]
+        let cell = contentTable.dequeueReusableCell(withIdentifier: "addContentCell", for: indexPath) as! AddContentCell
+        cell.fileName?.text = self.filenames[indexPath.row]
         return cell
     }
+}
+
+class AddContentCell: UITableViewCell{
+    
+    @IBOutlet weak var fileName: UILabel!
 }

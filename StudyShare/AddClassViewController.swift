@@ -71,7 +71,7 @@ class AddClassViewController: UIViewController {
         let filterText = filterField.text
         if filterText!.count > 0 {
             groupsFiltered = groups.filter {
-                $0?.filepath.uppercased().contains(filterText!.uppercased()) == true
+                ($0?.filepath.uppercased().contains(filterText!.uppercased()))! || $0?.description.uppercased().contains(filterText!.uppercased()) == true
             }
         } else {
             groupsFiltered = groups
@@ -108,8 +108,18 @@ extension AddClassViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = searchTable.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
-        cell.textLabel?.text = groupsFiltered[indexPath.row]?.filepath
+        let cell = searchTable.dequeueReusableCell(withIdentifier: "addClassCell", for: indexPath) as! AddClassCell
+        cell.paperCode?.text = groupsFiltered[indexPath.row]!.name + ": " + groupsFiltered[indexPath.row]!.description
+        cell.institution?.text = groupsFiltered[indexPath.row]!.institution
+        cell.yearSem?.text = "Year: " + groupsFiltered[indexPath.row]!.year + " Semester: " + groupsFiltered[indexPath.row]!.semester
         return cell
     }
+}
+
+class AddClassCell: UITableViewCell{
+    
+    @IBOutlet weak var paperCode: UILabel!
+    @IBOutlet weak var institution: UILabel!
+    @IBOutlet weak var yearSem: UILabel!
+    
 }

@@ -24,11 +24,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         classTable.dataSource = self
         classTable.delegate = self
         title = "Swipe Actions"
-    
         self.classTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
-        
-        // Do any additional setup after loading the view.
     }
+    
 
     /**
      - Parameters:

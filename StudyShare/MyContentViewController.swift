@@ -65,6 +65,9 @@ extension MyContentViewController: UITableViewDelegate {
         previousSelection = indexPath.row
         performSegue(withIdentifier: "localtranscription", sender: nil)
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
 }
 
 extension MyContentViewController: UITableViewDataSource {
@@ -72,8 +75,12 @@ extension MyContentViewController: UITableViewDataSource {
         return self.filenames.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = contentTable.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
-        cell.textLabel?.text = self.filenames[indexPath.row]
+        let cell = contentTable.dequeueReusableCell(withIdentifier: "myContentCell", for: indexPath) as! MyContentCell
+        cell.fileName?.text = self.filenames[indexPath.row]
         return cell
     }
+}
+
+class MyContentCell: UITableViewCell{
+    @IBOutlet weak var fileName: UILabel!
 }
