@@ -53,6 +53,7 @@ class MyContentViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "localtranscription" {
             if contentTable.indexPathForSelectedRow != nil {
+                previousSelection = contentTable.indexPathForSelectedRow!.row
                 let nextViewController = segue.destination as! ShowTranscriptionViewController
                 nextViewController.filepath = "Local"
                 nextViewController.remote = false
