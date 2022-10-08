@@ -87,8 +87,6 @@ class StudyShareUITests: XCTestCase {
         loginButton.tap()
         var textF = self.app.textFields["Email"]
         XCTAssert(textF.exists)
-        textF = self.app.textFields["Password"]
-        XCTAssert(textF.exists)
         let title = self.app.staticTexts["Sign In"]
         XCTAssert(title.exists)
         let backButton = self.app.buttons["Back"]
