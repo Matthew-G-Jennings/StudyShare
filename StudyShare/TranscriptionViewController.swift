@@ -117,7 +117,7 @@ class TranscriptionViewController: UIViewController, SFSpeechRecognizerDelegate 
             self.beginButton?.setTitle("Start Transcription", for: .normal)
         } else {
             self.startRecording()
-            self.beginButton?.setTitle("Stop Transcription", for: .normal)
+            self.beginButton?.setTitle("Recording in progress... Tap to stop", for: .normal)
         }
     }
 
