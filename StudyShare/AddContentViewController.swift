@@ -90,7 +90,9 @@ class AddContentViewController: UIViewController {
         }
     }
 }
-
+/**
+ Table definitions
+ */
 extension AddContentViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -109,7 +111,9 @@ extension AddContentViewController: UITableViewDataSource {
         return cell
     }
 }
-
+/**
+ Defines a cell on the add content screen
+ */
 class AddContentCell: UITableViewCell{
     
     @IBOutlet weak var fileName: UILabel!

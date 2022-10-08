@@ -6,7 +6,9 @@
 //
 
 import Foundation
-
+/**
+ Struct to hold all the text needed for help screens
+ */
 struct Help {
     static var homeHelp = "Welcome to StudyShare!   This is the Home screen where you can see your classes. If you don't have any yet you can press the \"Add Class\" button to find your classes and create new ones.\n\n   You can create transcriptions with the \"Create Transcription\" button.\n\n   Pressing the \"My Content\" button will show your locally stored content.\n\n   Once you've added some classes you can tap on them to see their content.\n\n  Tap \"Dismiss\" at the bottom of this message to get started!\n"
     

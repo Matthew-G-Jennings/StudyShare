@@ -6,7 +6,9 @@
 //
 
 import UIKit
-
+/**
+ Controls the help screen and ensures the correct text is displayed
+ */
 class HelpViewController: UIViewController {
     
     @IBOutlet weak var textField: UITextView!
@@ -16,6 +18,10 @@ class HelpViewController: UIViewController {
         setHelpText()
     }
 
+    /**
+     Sets the help text to the correct message for the current screen.
+     Determined by the current screen as defined in User. Pulls text from static class Help in HelpText.swift
+     */
     func setHelpText(){
         switch User.currentScreen {
         case "home":
@@ -36,7 +42,9 @@ class HelpViewController: UIViewController {
             textField.text = Help.homeHelp + "ERROR"
         }
     }
-    
+    /**
+     Dismisses the help screen showing the underlying screen again
+     */
     @IBAction func dismissTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
