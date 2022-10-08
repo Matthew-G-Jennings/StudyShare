@@ -30,14 +30,21 @@ class ClassContentViewController: UIViewController {
         self.contentTable.register(UITableViewCell.self, forCellReuseIdentifier: "contentCell")
         // Do any additional setup after loading the view.
     }
-
+    /**
+     Adds a new file.
+     - Parameters: The file to add as a string
+     */
     func newFileAdded(_ filename: String) {
         self.filenames.append(filename)
         DispatchQueue.main.async {
             self.contentTable.reloadData()
         }
     }
-
+    
+    /**
+     Retreives the files available for this class from the remote bucket for this class.
+     Reloads the table once complete.
+     */
     func getFileNames() {
         let storage = Storage.storage()
         let storageRef = storage.reference().child(filepath!)
@@ -58,6 +65,9 @@ class ClassContentViewController: UIViewController {
         }
     }
 
+    /**
+     Dismisses this screen and sets the current screen to home.
+     */
     @IBAction func backButtonTapped(_ sender: Any) {
         User.currentScreen = "home"
         self.dismiss(animated: true, completion: nil)
@@ -88,7 +98,9 @@ extension ClassContentViewController: UITableViewDelegate {
         }
     }
 }
-
+/**
+ Table definitions
+ */
 extension ClassContentViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filenames.count
@@ -99,7 +111,9 @@ extension ClassContentViewController: UITableViewDataSource {
         return cell
     }
 }
-
+/**
+ Defines a table cell on the class content screen.
+ */
 class ClassContentCell: UITableViewCell{
     @IBOutlet weak var fileName: UILabel!
 }

@@ -26,7 +26,9 @@ class MyContentViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
+    /**
+     Retreives a list of files stored locally within the apps documents directory.
+     */
     func getFileNames() {
         let manager = FileManager.default
         guard let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {
@@ -62,7 +64,9 @@ class MyContentViewController: UIViewController {
         }
     }
 }
-
+/**
+ Table definitions
+ */
 extension MyContentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         previousSelection = indexPath.row
@@ -83,7 +87,9 @@ extension MyContentViewController: UITableViewDataSource {
         return cell
     }
 }
-
+/**
+ Defines a cell on the my content screen.
+ */
 class MyContentCell: UITableViewCell{
     @IBOutlet weak var fileName: UILabel!
 }

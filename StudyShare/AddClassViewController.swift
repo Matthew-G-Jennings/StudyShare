@@ -25,7 +25,11 @@ class AddClassViewController: UIViewController {
         searchTable.delegate = self
         self.searchTable.register(UITableViewCell.self, forCellReuseIdentifier: "groupCell")
     }
-
+    
+    /**
+     Retrieves all groups which are available for the user to add.
+     Stores within this class and reloads the table to show them once complete.
+     */
     func getGroups() {
         let database = Firestore.firestore()
         database.collection("classes").getDocuments { [self] (querySnapshot, err) in
@@ -53,6 +57,9 @@ class AddClassViewController: UIViewController {
         }
     }
 
+    /**
+     Adds the currently selected class to the users list of classes as defined by UI selection
+     */
     @IBAction func addTapped(_ sender: Any) {
         if previousSelection >= 0 {
             let database = Firestore.firestore()
@@ -67,6 +74,9 @@ class AddClassViewController: UIViewController {
         }
     }
 
+    /**
+     Performs filtering on the shown groups. Updates filtered groups whenever the filter changes.
+     */
     @IBAction func filterChanged(_ sender: Any) {
         previousSelection = -1
         let filterText = filterField.text
@@ -82,6 +92,9 @@ class AddClassViewController: UIViewController {
         }
     }
 
+    /**
+     Dismisses this screen and sets the current screen to home.
+     */
     @IBAction func backTapped(_ sender: Any) {
         User.currentScreen = "home"
         self.dismiss(animated: true, completion: nil)
@@ -98,6 +111,9 @@ class AddClassViewController: UIViewController {
     }
 }
 
+/**
+ Table definitions
+ */
 extension AddClassViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         previousSelection = indexPath.row
@@ -117,7 +133,9 @@ extension AddClassViewController: UITableViewDataSource {
         return cell
     }
 }
-
+/**
+ Definition of a table cell on the add class screen
+ */
 class AddClassCell: UITableViewCell{
     
     @IBOutlet weak var paperCode: UILabel!

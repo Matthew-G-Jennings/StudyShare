@@ -143,7 +143,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
 }
-
+/**
+ Defines a cell for the home screen.
+ */
 class HomeViewCell: UITableViewCell{
     
     @IBOutlet weak var paperCode: UILabel!

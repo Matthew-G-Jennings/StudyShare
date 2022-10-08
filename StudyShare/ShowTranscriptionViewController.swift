@@ -27,7 +27,10 @@ class ShowTranscriptionViewController: UIViewController {
         }
         // Do any additional setup after loading the view.
     }
-
+    
+    /**
+     Handles loading of files in the case where they are stored in a remote bucket.
+     */
     func loadFileToTextRemote() {
         let storage = Storage.storage()
         let path = filepath! + "/" + filename!
@@ -41,6 +44,9 @@ class ShowTranscriptionViewController: UIViewController {
         }
     }
 
+    /**
+     Handles loading of files in the case they are stored locally.
+     */
     func loadFileToTextLocal() {
         let manager = FileManager.default
         guard let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {
@@ -55,7 +61,7 @@ class ShowTranscriptionViewController: UIViewController {
             print("An error has occurred in reading file")
         }
     }
-
+    
     @IBAction func likeButtonTapped(_ sender: Any) {
     }
     @IBAction func backButtonTapped(_ sender: Any) {
