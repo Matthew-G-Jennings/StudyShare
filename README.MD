@@ -15,23 +15,34 @@ An inclusive app designed to assist in facilitating shared learning experiences!
 [![codecov](https://codecov.io/gh/Matthew-G-Jennings/StudyShare/branch/main/graph/badge.svg?token=5CN4FZIA13)](https://codecov.io/gh/Matthew-G-Jennings/StudyShare)
 
 ## Alpha Testing
-Testers found that spelling check was annoying for logging in - this feature is now turned off.
+Testers found that spelling check was annoying for logging in:
+This feature is now turned off.
 
-Testers found the transcription save button does nothing -  this is fixed and can now create a class and save the transcript.
+Testers found the transcription save button does nothing:
+This is fixed and can now create a class and save the transcript.
 
-Testers found the app had a fixed size - our app now resizes according to the devices, this ensures full app visiblity on every iPhone/iPad.
+Testers found the app had a fixed size:
+Our app now resizes according to the devices, this ensures full app visiblity on every iPhone/iPad.
 
 ## Beta Testing
-Users wanted more info - will add more detailed cells with more information.
+Users wanted more info:
+Table cells now display more detailed information.
 
-Users found button contrast too low -  will increase button brightness.
+Users found button contrast too low:
+Contrast and readability improved throughout the app.
 
-Users want the options to edit transcriptions - will add this as an option.
+Users were often unsure how things worked:
+Added help screens through the app with information that is pertinent to the screens they are on. This essentially replaces the verbal prompting and explanations that were required during user testing.
 
-Users want to add images into the transcriptions - out of scope for what the app was meant to do.
+Users want the options to edit transcriptions:
+Transcriptions can be edited while they are being created but once saved they are immutable and must be saved over in order to edit. This is not ideal but fixing not viable within the time allotted due to bucket/local issues and object/file ownership complications.
+
+Users want to add images into the transcriptions:
+Outside the scope of what transcriptions are meant to be, not implemented but should be considered for allowing the addition of more detailed notes in the future.
 
 Bugs founds:
-Puttings spaces into the filename for a saved transcription causes the app to crash.
+Puttings spaces into the filename for a saved transcription causes the app to crash:
+Fixed.
 
 ## Leak Testing
 ![image](https://user-images.githubusercontent.com/84311461/192069030-8faf4cc2-3509-4b6f-bfe6-7e85675d07b7.png)
